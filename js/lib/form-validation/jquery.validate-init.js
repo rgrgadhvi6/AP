@@ -15,13 +15,28 @@ var form_validation = function() {
                     jQuery(e).closest(".form-group").removeClass("is-invalid"), jQuery(e).remove()
                 },
                 rules: {
-                    "val-username": {
+                    "val-Bname": {
                         required: !0,
-                        minlength: 3
+
                     },
-                    "val-email": {
+                    "val-Bcontactpersonrole": {
+
+
+                    },
+                    "val-Baddress": {
                         required: !0,
-                        email: !0
+
+                    },
+                    "val-Btype": {
+                        required: !0,
+
+                    },
+                    "val-Bcontactperson": {
+                    
+
+                    },
+                    "val-Bemail": {
+
                     },
                     "val-password": {
                         required: !0,
@@ -42,23 +57,23 @@ var form_validation = function() {
                         required: !0,
                         minlength: 5
                     },
-                    "val-skill": {
-                        required: !0
+                    "val-Bsize": {
+
                     },
                     "val-currency": {
                         required: !0,
                         currency: ["$", !0]
                     },
-                    "val-website": {
-                        required: !0,
+                    "val-Bwebsite": {
+
                         url: !0
                     },
-                    "val-phoneus": {
+                    "val-Bphone": {
                         required: !0,
-                        phoneUS: !0
+                        phone: !0
                     },
-                    "val-digits": {
-                        required: !0,
+                    "val-Babn": {
+
                         digits: !0
                     },
                     "val-number": {
@@ -74,11 +89,33 @@ var form_validation = function() {
                     }
                 },
                 messages: {
-                    "val-username": {
-                        required: "Please enter a username",
-                        minlength: "Your username must consist of at least 3 characters"
+                    "val-Bname": {
+                        required: "Please enter Business name",
+
                     },
-                    "val-email": "Please enter a valid email address",
+                    "val-Bcontactpersonrole": {
+                        required: "Please enter Businesscontact person name",
+
+                    },
+
+
+                    "val-Baddress": {
+                        required: "Please enter Business address",
+
+                    },
+                    "val-Btype": {
+                        required: "Please enter Business type",
+
+                    },
+                    "val-Bcontactperson": {
+                        required: "Please enter Business contact person name",
+
+                    },
+                    "val-Bcontactpersonrole": {
+                        required: "Please enter name only",
+
+                    },
+                    "val-Bemail": "Please enter a valid email address",
                     "val-password": {
                         required: "Please provide a password",
                         minlength: "Your password must be at least 5 characters long"
@@ -88,15 +125,23 @@ var form_validation = function() {
                         minlength: "Your password must be at least 5 characters long",
                         equalTo: "Please enter the same password as above"
                     },
+                    "val-Bsize": "Please select Business size!",
+                    "val-Bwebsite": "Please enter Business website!",
+                    "val-Bcontactpersonrole": "Please enter Business contact person role!",
+                    "val-Bphone": "Please enter a valid phone number!",
+                    "val-Babn": "Please enter only digits for ABN!",
+
+
                     "val-select2": "Please select a value!",
                     "val-select2-multiple": "Please select at least 2 values!",
                     "val-suggestions": "What can we do to become better?",
-                    "val-skill": "Please select a skill!",
+
                     "val-currency": "Please enter a price!",
-                    "val-website": "Please enter your website!",
-                    "val-phoneus": "Please enter a US phone!",
-                    "val-digits": "Please enter only digits!",
-                    "val-number": "Please enter a number!",
+
+
+
+                    "val-digits": "Please enter only digits for ABN!",
+
                     "val-range": "Please enter a number between 1 and 5!",
                     "val-terms": "You must agree to the service terms!"
                 }
