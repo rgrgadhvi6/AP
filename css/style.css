@@ -5688,7 +5688,7 @@ tbody tr td:last-child {
   bottom: -15px;
   left: 50%;
   margin-left: -15px;
-  width: 30px;
+
   height: 1px;
   background: #000;
 }
@@ -5708,7 +5708,7 @@ tbody tr td:last-child {
   width: 33.333333%;
   float: left;
   text-align: center;
-  color: #1976d2;
+  color: #F25F24;
 }
 .card-two .contacts a:hover {
   color: #333;
@@ -5726,7 +5726,7 @@ tbody tr td:last-child {
   line-height: 39px;
   overflow: hidden;
   text-align: center;
-  border: 2px solid #1976d2;
+  border: 2px solid #F25F24;
   border-radius: 50%;
 }
 .card-two .contacts a .fa:before {
@@ -5742,7 +5742,7 @@ tbody tr td:last-child {
   height: 100%;
   -webkit-transition: top 0.3s;
   transition: top 0.3s;
-  background: #1976d2;
+  background: #F25F24;
 }
 .card-two .contacts a:last-of-type .fa {
   line-height: 36px;
@@ -5822,14 +5822,14 @@ tbody tr td:last-child {
 /*Aleart
 -------------*/
 .alert-primary {
-  background-color: #a2bfff;
-  border-color: #a2bfff;
-  color: #4680ff;
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
 }
 .alert-success {
-  background-color: #93ede9;
-  border-color: #93ede9;
-  color: #28a745;
+  background-color: #d6e9c6;
+  border-color: #dff0d8;
+  color: #3c763d;
 }
 .alert-warning {
   background-color: #ffeacd;
@@ -6830,6 +6830,15 @@ table.table .avatar {
     float: left;
     margin-top: 35px;
     font-size: 13px;
+}
+#customdelete{
+
+
+padding: 0px 20px;
+}
+#buttonalign{
+  font-size: 16px;
+  float: right;
 }
 
 

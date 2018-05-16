@@ -84,7 +84,7 @@
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
-                                      <form action="addbusiness.php" class="form-valide" method="post" novalidate="novalidate">
+                                      <form action="#add" class="form-valide" method="post" novalidate="novalidate">
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
@@ -106,7 +106,7 @@
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bphone">Business Contact <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContact" name="busContact" placeholder="212-999-0000">
+                                                  <input type="text" class="form-control" id="busContact" name="busContact" placeholder="7534575785">
                                               </div>
                                           </div>
                                           <div class="form-group row">
@@ -118,7 +118,7 @@
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Babn">Business ABN <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busABN" name="busABN" placeholder="574 582 XXX XXX">
+                                                  <input type="text" class="form-control" id="busABN" name="busABN" placeholder="5745463545345">
                                               </div>
                                           </div>
 
@@ -159,10 +159,52 @@
                                           </div>
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
-                                                  <button type="submit" class="btn btn-primary btn-flat ">Submit</button>
+                                                  <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>
                                               </div>
 
                                           </div>
+                                          <div id="add">
+                                          <?php
+
+                                          if(isset($_POST['submit']))
+                                          {
+                                          $busName=$_POST['busName'];
+                                          $busAddress=$_POST['busAddress'];
+                                          $busType=$_POST['busType'];
+                                          $busABN=$_POST['busABN'];
+                                          $busEmail=$_POST['busEmail'];
+                                          $busContact=$_POST["busContact"];
+                                          $busContactPerson=$_POST['busContactPerson'];
+                                          $busContactPersonRole=$_POST['busContactPersonRole'];
+                                          $busWebsite=$_POST['busWebsite'];
+                                          $busSize=$_POST['busSize'];
+
+                                            $query = "INSERT INTO `business`(`busName`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
+                                                      VALUES (?,?,?,?,?,?,?,?,?,?)";
+                                            $stmt = mysqli_prepare($conn,$query);
+                                            mysqli_stmt_bind_param($stmt,"ssssssssss",$busName, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
+                                            mysqli_stmt_execute($stmt);
+                                            if(($rows=mysqli_stmt_affected_rows($stmt))==1)
+                                            {
+                                                  ?><div class="alert alert-success">
+                                                    <strong>Success! </strong> Business Details are Added.
+                                                  </div>
+                                                            <script type='text/javascript'>
+                                                              window.setTimeout(function(){
+                                                                window.location = 'business.php';
+
+                                                              } , 4000);
+                                                            </script>
+                                                <?php
+                                                            }
+                                                            else
+                                                            {
+                                                                echo "Something went wrong, business not updated";
+                                                            }
+                                          }
+                                                ?>
+                                                </div>
+
                                       </form>
                                   </div>
 

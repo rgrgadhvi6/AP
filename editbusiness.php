@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include "include/db_config.php";
-
+<?php include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM business WHERE busId = $id";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
 ?>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,10 +53,8 @@ $row = mysqli_fetch_assoc($result);
 <!-- * -->
     <!--************************************ lEFT SIDEBAR*************************************************  -->
         <div class="left-sidebar" style="overflow: visible;">
-            <!-- Sidebar scroll -->
+            <!-- Sidebar scroll-->
             <?php include "include/side_nav.php"; ?>
-
-
             <!-- End Sidebar scroll-->
         </div>
         <!-- End Left Sidebar  -->
@@ -94,7 +89,7 @@ $row = mysqli_fetch_assoc($result);
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
-                                      <form action="?id=<?php echo $row['busId'];$_SERVER['PHP_SELF']?>" class="form-valide" method="POST" novalidate="novalidate">
+                                      <form action="#edit" class="form-valide" method="POST" novalidate="novalidate">
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
@@ -172,6 +167,7 @@ $row = mysqli_fetch_assoc($result);
                                               </div>
 
                                           </div>
+                                          <div id="edit">
                                           <?php
                                                   if(isset($_POST['submit']))
                                                   { $id = $_GET['id'];
@@ -196,13 +192,13 @@ $row = mysqli_fetch_assoc($result);
                                                       {
                                             ?>
                                             <div class="alert alert-success">
-                                              <strong>Success! </strong> Business Details is Updated.
+                                              <strong>Success! </strong> Business Details are Updated.
                                             </div>
                                                       <script type='text/javascript'>
                                                         window.setTimeout(function(){
                                                           window.location = 'business.php';
 
-                                                        } , 3000);
+                                                        } , 4000);
                                                       </script>
                                           <?php
                                                       }
@@ -212,6 +208,7 @@ $row = mysqli_fetch_assoc($result);
                                                       }
                                               }
                                           ?>
+                                          </div>
 
                                       </form>
                                   </div>
@@ -248,6 +245,7 @@ $row = mysqli_fetch_assoc($result);
     <!-- End Wrapper -->
 
 
+
     <!--********************************** All Jquery/JavaScript*************************************************  -->
     <!--*********************************** All Jquery/JavaScript*************************************************  -->
 
@@ -271,11 +269,9 @@ $row = mysqli_fetch_assoc($result);
     <!-- Form validation -->
     <script src="js/lib/form-validation/jquery.validate.min.js"></script>
     <script src="js/lib/form-validation/jquery.validate-init.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script type="text/javascript">
-    $(function ()
-    {
+    $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
     </script>
