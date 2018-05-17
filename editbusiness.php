@@ -89,7 +89,7 @@ $row = mysqli_fetch_assoc($result);
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
-                                      <form action="#edit" class="form-valide" method="POST" novalidate="novalidate">
+                                      <form action="#edit" class="form-valide" method="POST">
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
@@ -126,12 +126,10 @@ $row = mysqli_fetch_assoc($result);
                                                   <input type="text" class="form-control" id="busABN" name="busABN" value="<?php echo $row['busABN'];?>">
                                               </div>
                                           </div>
-
-
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bcontactperson">Business Contact Person <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" value="<?php echo $row['busName'];?>">
+                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" value="<?php echo $row['busContactPerson'];?>">
                                               </div>
                                           </div>
                                           <div class="form-group row">
@@ -140,8 +138,6 @@ $row = mysqli_fetch_assoc($result);
                                                   <input type="text" class="form-control" id="busContactPersonRole" name="busContactPersonRole" value="<?php echo $row['busContactPersonRole'];?>">
                                               </div>
                                           </div>
-
-
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bwebsite">Business Website <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
@@ -153,6 +149,7 @@ $row = mysqli_fetch_assoc($result);
                                               <label class="col-lg-4 col-form-label" for="val-Bsize">Business Size <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
                                                   <select class="form-control" id="busSize" name="busSize">
+                                                    <option value="">Please select</option>
                                                       <option value="Small"<?php echo($row['busSize']==="Small")? "selected":"";?>> Small</option>
                                                       <option value="Medium"<?php echo($row['busSize']==="Medium")? "selected":"";?>> Medium</option>
                                                       <option value="Big"<?php echo($row['busSize']==="Big")? "selected":"";?>> Big</option>

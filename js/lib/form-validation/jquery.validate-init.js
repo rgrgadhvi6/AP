@@ -15,135 +15,63 @@ var form_validation = function() {
                     jQuery(e).closest(".form-group").removeClass("is-invalid"), jQuery(e).remove()
                 },
                 rules: {
-                    "val-Bname": {
+                    "busName": {
                         required: !0,
 
                     },
-                    "val-Bcontactpersonrole": {
+                    "busContactPersonRole": {
 
 
                     },
-                    "val-Baddress": {
+                    "busAddress": {
                         required: !0,
 
                     },
-                    "val-Btype": {
+                    "busType": {
                         required: !0,
 
                     },
-                    "val-Bcontactperson": {
-                    
+                    "busContactPerson": {
 
                     },
-                    "val-Bemail": {
+                    "busEmail": {
+                      email: !0
+                    },
 
-                    },
-                    "val-password": {
-                        required: !0,
-                        minlength: 5
-                    },
-                    "val-confirm-password": {
-                        required: !0,
-                        equalTo: "#val-password"
-                    },
-                    "val-select2": {
-                        required: !0
-                    },
-                    "val-select2-multiple": {
-                        required: !0,
-                        minlength: 2
-                    },
-                    "val-suggestions": {
-                        required: !0,
-                        minlength: 5
-                    },
-                    "val-Bsize": {
-
-                    },
-                    "val-currency": {
-                        required: !0,
-                        currency: ["$", !0]
-                    },
-                    "val-Bwebsite": {
-
+                    "busWebsite": {
                         url: !0
                     },
-                    "val-Bphone": {
+                    "busContact": {
                         required: !0,
                         phone: !0
                     },
-                    "val-Babn": {
+                    "busABN": {
 
                         digits: !0
-                    },
-                    "val-number": {
-                        required: !0,
-                        number: !0
-                    },
-                    "val-range": {
-                        required: !0,
-                        range: [1, 5]
-                    },
-                    "val-terms": {
-                        required: !0
                     }
+
                 },
                 messages: {
-                    "val-Bname": {
-                        required: "Please enter Business name",
+                    "busName": {
+                        required: "Please enter business name",
 
                     },
-                    "val-Bcontactpersonrole": {
-                        required: "Please enter Businesscontact person name",
+                    "busAddress": {
+                        required: "Please enter business address",
 
                     },
-
-
-                    "val-Baddress": {
-                        required: "Please enter Business address",
+                    "busType": {
+                        required: "Please enter business type",
 
                     },
-                    "val-Btype": {
-                        required: "Please enter Business type",
+                    "busContact": {
+                        required: "Please enter a valid phone number!",
 
                     },
-                    "val-Bcontactperson": {
-                        required: "Please enter Business contact person name",
+                    "busEmail": "Please enter a valid email address",
+                    "busWebsite": "Please enter business website!",
+                    "busABN": "Please enter only digits for ABN!"
 
-                    },
-                    "val-Bcontactpersonrole": {
-                        required: "Please enter name only",
-
-                    },
-                    "val-Bemail": "Please enter a valid email address",
-                    "val-password": {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long"
-                    },
-                    "val-confirm-password": {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 5 characters long",
-                        equalTo: "Please enter the same password as above"
-                    },
-                    "val-Bsize": "Please select Business size!",
-                    "val-Bwebsite": "Please enter Business website!",
-                    "val-Bcontactpersonrole": "Please enter Business contact person role!",
-                    "val-Bphone": "Please enter a valid phone number!",
-                    "val-Babn": "Please enter only digits for ABN!",
-
-
-                    "val-select2": "Please select a value!",
-                    "val-select2-multiple": "Please select at least 2 values!",
-                    "val-suggestions": "What can we do to become better?",
-
-                    "val-currency": "Please enter a price!",
-
-
-
-                    "val-digits": "Please enter only digits for ABN!",
-
-                    "val-range": "Please enter a number between 1 and 5!",
-                    "val-terms": "You must agree to the service terms!"
                 }
             })
         }

@@ -136,7 +136,7 @@ $row = mysqli_fetch_assoc($result);
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bcontactperson">Business Contact Person <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" value="<?php echo $row['busName'];?>">
+                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" value="<?php echo $row['busContactPerson'];?>">
                                               </div>
                                           </div>
                                           <div class="form-group row">

@@ -84,11 +84,11 @@
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
-                                      <form action="#add" class="form-valide" method="post" novalidate="novalidate">
+                                      <form action="#add" class="form-valide" method="post">
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busName" name="busName" placeholder="Enter Business Name..">
+                                                  <input type="text" class="form-control" id="Bname" name="busName" placeholder="Enter Business Name..">
                                               </div>
                                           </div>
                                           <div class="form-group row">
@@ -126,7 +126,7 @@
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-Bcontactperson">Business Contact Person <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" placeholder="Business Contact Person..">
+                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" placeholder="Contact Person Name..">
                                               </div>
                                           </div>
                                           <div class="form-group row">
