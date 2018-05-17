@@ -5837,9 +5837,9 @@ tbody tr td:last-child {
   color: #ffb64d;
 }
 .alert-danger {
-  background-color: #fedee5;
-  border-color: #fedee5;
-  color: #fc6180;
+  background-color: #f2dede;
+  border-color: #ebcccc;
+  color: #a94442;
 }
 .alert-pink {
   background-color: #f8e4fb;
