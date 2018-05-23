@@ -59,11 +59,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Business</h3> </div>
+                    <h3 class="text-primary">Students</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                        <li class="breadcrumb-item active">Business</li>
+                        <li class="breadcrumb-item active">Students</li>
                     </ol>
                 </div>
             </div>
@@ -82,10 +82,10 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                    <h4>Manage <b>Business</b></h4>
+                    <h4>Manage <b>Students</b></h4>
                   </div>
                   <div class="col-sm-6">
-                  <a href="addbusinessform.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Business</span></a>
+                  <a href="addstudent.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Student</span></a>
 
 
                   </div>
@@ -95,32 +95,34 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Business Name</th>
-                                <th>Contact Person</th>
-                                <th>Phone</th>
+                                <th>Student Name</th>
+                                <th>Parent Name</th>
+                                <th>Parent Contact</th>
+                                <th>School Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
-                          $query = "SELECT busId, busName, busContactPerson, busContact FROM business";
+                          $query = "SELECT stuId, CONCAT(`stuFirstName`,' ',`stuLastName`) AS 'whole_name', parentName, contact, schoolName FROM student";
                           $result = mysqli_query($conn,$query);
                           while($row = mysqli_fetch_assoc($result))
                           {
                         ?>
                             <tr>
-                                <td><?php echo $row['busId'];?></td>
-                                <td><?php echo $row['busName'];?></td>
-                                <td><?php echo $row['busContactPerson'];?></td>
-                                <td><?php echo $row['busContact'];?></td>
+                                <td><?php echo $row['stuId'];?></td>
+                                <td><?php echo $row['whole_name'];?></td>
+                                <td><?php echo $row['parentName'];?></td>
+                                <td><?php echo $row['contact'];?></td>
+                                <td><?php echo $row['schoolName'];?></td>
                                 <td>
-                                  <a href="viewbusiness.php?id=<?php echo $row['busId'];?>" class="view"  data-toggle="tooltip" rel="tooltip" data-placement="top" title="View Business">
+                                  <a href="viewstudent.php?id=<?php echo $row['stuId'];?>" class="view"  data-toggle="tooltip"   data-placement="top">
                                       <i class="material-icons"></i>
                                   </a>
-                                  <a  href="editbusiness.php?id=<?php echo $row['busId'];?>" class="edit" data-toggle="tooltip" data-placement="top" title="Edit Business">
+                                  <a  href="editstudent.php?id=<?php echo $row['stuId'];?>" class="edit" data-toggle="tooltip" title="Edit Business"  data-placement="top">
                                     <i class="material-icons"></i>
                                   </a>
-                                  <a  href="deletebusiness.php?id=<?php echo $row['busId'];?>" class="delete" data-toggle="tooltip" data-placement="top" title="Delete Business">
+                                  <a  href="deletestudent.php?id=<?php echo $row['stuId'];?>" class="delete" data-toggle="tooltip" title="Delete Business"  data-placement="top">
                                     <i class="material-icons" ></i>
                                   </a>
 
@@ -187,6 +189,7 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
@@ -199,9 +202,11 @@
 
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
+
     <script type="text/javascript">
-    $(function(){
-      $('[data-toggle="tooltip"]').tooltip()
+    $(function ()
+     {
+      $('[data-toggle="tooltip"]').tooltip();
     });
     </script>
 </body>

@@ -66,8 +66,9 @@ $row = mysqli_fetch_assoc($result);
                     <h3 class="text-primary"><?php echo $row['busName'];?></h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Businesses</li>
+                      <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                      <li class="breadcrumb-item"><a href="business.php">Business</a></li>
+                      <li class="breadcrumb-item active">Delete Business</li>
                     </ol>
                 </div>
             </div>
@@ -82,11 +83,26 @@ $row = mysqli_fetch_assoc($result);
             <!-- Container fluid  -->
             <div class="container-fluid">
                       <!-- Start Page Content -->
-              <div class="row">
 
+                <!-- <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                    <h4>Delete <b>Business</b></h4>
+                  </div>
+                        <div class="col-sm-6">
+                        <a href="addbusinessform.php" class="btn btn-danger"><i class="material-icons"></i> <span>Delete All Details</span></a>
+
+
+                        </div>
+                        </div>
+                    </div>
+              </div> -->
+        <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
+
                               <div id="buttonalign">
                             <form action="#deleteBusiness" class="form-valide" method="post" novalidate="novalidate">
                                 <button href="#deleteBusiness" type="submit" name="submit" class="btn btn-danger">

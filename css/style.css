@@ -2938,82 +2938,82 @@ table.dataTable thead .sorting::after {
   background: #028ee1;
 }
 .btn-success {
-  background: #5cb85c;
-  border: 1px solid #4cae4c;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(40, 190, 189, 0.14), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
-  box-shadow: 0 2px 2px 0 rgba(40, 190, 189, 0.14), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
+  background: #F3831E;
+  border: 1px solid #F3831E;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(242,95,36, 0.14), 0 3px 1px -2px rgba(242,95,36, 0.2), 0 1px 5px 0 rgba(242,95,36, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(242,95,36, 0.14), 0 3px 1px -2px rgba(242,95,36, 0.2), 0 1px 5px 0 rgba(242,95,36, 0.12);
   -webkit-transition: 0.2s ease-in;
   -o-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
 .btn-success:hover {
-  background: #5cb85c;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  border: 1px solid #5cb85c;
+  background: #F25F24;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  border: 1px solid #F25F24;
 }
 .btn-success:active {
-  background: #1eacbe;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-success:active:focus {
-  background-color: #1eacbe;
-  border: 1px solid #1eacbe;
+  background-color: #F3831E;
+  border: 1px solid #F3831E;
 }
 .btn-success:active:hover {
-  background-color: #1eacbe;
-  border: 1px solid #1eacbe;
+  background-color: #F25F24;
+  border: 1px solid #F25F24;
 }
 .btn-success:focus {
-  background: #1eacbe;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  background-color: #1eacbe;
-  border: 1px solid #1eacbe;
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  background-color: #F3831E;
+  border: 1px solid #F3831E;
 }
 .btn-success.disabled {
-  background: #28a745;
-  border: 1px solid #28a745;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(40, 190, 189, 0.14), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
-  box-shadow: 0 2px 2px 0 rgba(40, 190, 189, 0.14), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
+  background: #F3831E;
+  border: 1px solid #F3831E;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(242,95,36, 0.14), 0 3px 1px -2px rgba(242,95,36, 0.2), 0 1px 5px 0 rgba(242,95,36, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(242,95,36, 0.14), 0 3px 1px -2px rgba(242,95,36, 0.2), 0 1px 5px 0 rgba(242,95,36, 0.12);
   -webkit-transition: 0.2s ease-in;
   -o-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
 .btn-success.disabled:hover {
-  background: #28a745;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  border: 1px solid #4cae4c;
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  border: 1px solid #F3831E;
 }
 .btn-success.disabled:active {
-  background: #1eacbe;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-success.disabled:focus {
-  background: #1eacbe;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-success.active {
-  background: #1eacbe;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-success.active:focus {
-  background-color: #1eacbe;
-  border: 1px solid #1eacbe;
+  background-color: #F3831E;
+  border: 1px solid #F3831E;
 }
 .btn-success.active:hover {
-  background-color: #1eacbe;
-  border: 1px solid #1eacbe;
+  background-color: #F3831E;
+  border: 1px solid #F3831E;
 }
 .btn-success.disabled.active {
-  background: #1eacbe;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  background: #F3831E;
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-info {
   background: #1976d2;
@@ -3437,8 +3437,8 @@ table.dataTable thead .sorting::after {
   color: #28a745;
   background-color: transparent;
   border-color: #4cae4c;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(40, 190, 189, 0.14), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
-  box-shadow: 0 2px 2px 0 rgba(40, 190, 189, 0.14), 0 3px 1px -2px rgba(40, 190, 189, 0.2), 0 1px 5px 0 rgba(40, 190, 189, 0.12);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(242,95,36, 0.14), 0 3px 1px -2px rgba(242,95,36, 0.2), 0 1px 5px 0 rgba(242,95,36, 0.12);
+  box-shadow: 0 2px 2px 0 rgba(242,95,36, 0.14), 0 3px 1px -2px rgba(242,95,36, 0.2), 0 1px 5px 0 rgba(242,95,36, 0.12);
   -webkit-transition: 0.2s ease-in;
   -o-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
@@ -3447,32 +3447,32 @@ table.dataTable thead .sorting::after {
   background: #28a745;
   border-color: #4cae4c;
   color: #ffffff;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
   background: #1eacbe;
 }
 .btn-outline-success:hover {
   background: #28a745;
   border-color: #4cae4c;
   color: #ffffff;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-outline-success:active {
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
   background: #1eacbe;
 }
 .btn-outline-success.focus {
   background: #28a745;
   border-color: #4cae4c;
   color: #ffffff;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
 }
 .btn-outline-success.active {
-  -webkit-box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(40, 190, 189, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(40, 190, 189, 0.2);
+  -webkit-box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
+  box-shadow: 0 14px 26px -12px rgba(242,95,36, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(242,95,36, 0.2);
   background: #1eacbe;
 }
 .btn-outline-info {
@@ -5392,7 +5392,8 @@ thead tr th {
   font-weight: 500;
 }
 thead tr th:last-child {
-  text-align: right;
+width: 185px;
+text-align: center;
 }
 tbody tr th {
   color: #455a64;
@@ -6712,13 +6713,13 @@ tbody tr td:last-child {
 }
 
 
-/***************************THE STYLE FOR THE BUSINESS PAGE********************************************* */
-/***************************THE STYLE FOR THE BUSINESS PAGE********************************************* */
+/***************************THE STYLE FOR THE MAIN TABLE PAGE********************************************* */
+/***************************THE STYLE FOR THE  MAIN TABLE PAGE********************************************* */
 .table-wrapper {
       background: #fff;
       padding: 20px 25px;
       margin: 30px 0;
-  border-radius: 3px;
+      border-radius: 3px;
       box-shadow: 0 1px 1px rgba(0,0,0,.05);
   }
 .table-title {
@@ -6758,11 +6759,11 @@ tbody tr td:last-child {
   table.table tr th, table.table tr td {
       border-color: #e9e9e9;
       font-size: 12px;
-  padding: 5px 15px;
+  padding: 5px;
   vertical-align: middle;
   }
 table.table tr th:first-child {
-  width: 60px;
+  width: 50px;
 }
 
   table.table-striped tbody tr:nth-of-type(odd) {
@@ -6795,7 +6796,7 @@ table.table td a.edit:hover {
   }
   table.table td i {
       font-size: 17px;
-      padding: 5px;
+      margin-right: 30px;
   }
 table.table .avatar {
   border-radius: 50%;
@@ -6832,8 +6833,6 @@ table.table .avatar {
     font-size: 13px;
 }
 #customdelete{
-
-
 padding: 0px 20px;
 }
 #buttonalign{
