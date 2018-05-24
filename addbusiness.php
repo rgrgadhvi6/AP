@@ -149,7 +149,7 @@
                                               <label class="col-lg-4 col-form-label" for="val-Bsize">Business Size <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
                                                   <select class="form-control" id="busSize" name="busSize">
-                                                      <option value="">Please select</option>
+                                                      <option value="NOT-GIVEN">Please select</option>
                                                       <option value="Small">Small</option>
                                                       <option value="Medium">Medium</option>
                                                       <option value="Big">Big</option>
@@ -158,6 +158,7 @@
                                           </div>
 
                                           </div>
+                                          
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
                                                   <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>

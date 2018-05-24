@@ -8,7 +8,7 @@
             <li class="nav-label">Home</li>
             <li> <a href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Bulletin</span></a> </li>
             <li> <a href="business.php" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Business</span></a></li>
-            <li> <a href="dropout.php" aria-expanded="false"><i class="fa fa-graduation-cap"></i><span class="hide-menu">Student</span></a></li>
+            <li> <a href="student.php" aria-expanded="false"><i class="fa fa-graduation-cap"></i><span class="hide-menu">Student</span></a></li>
             <li class=""> <a class="has-arrow" href="skill.php" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu">Skill</span></a>
                 <ul aria-expanded="false" class="collapse" style="height: 0px;">
                     <li class="active"><a href="#">Courses</a>  </li>

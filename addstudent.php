@@ -81,114 +81,110 @@
 
                 <!-- Start Page Content -->
                 <div class="row justify-content-center">
-                      <div class="col-lg-9">
+                      <div class="col-lg-10">
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
                                       <form action="#add" class="form-valide" method="post">
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bname">Student Name <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-stuFirstName">Student First Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="Bname" name="busName" placeholder="Enter Business Name..">
+                                                  <input type="text" class="form-control" id="stuFirstName" name="stuFirstName" placeholder="Enter Student First Name..">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Baddress">Student Parent Name <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-stuLastName">Student Last Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busAddress" name="busAddress" placeholder="404 Wests Street, Albion 3032">
+                                                  <input type="text" class="form-control" id="stuLastName" name="stuLastName" placeholder="Enter Student Last Name..">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Btype">Student Flagged as Dropout <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-parentName">Student Parent Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busType" name="busType" placeholder="Bakery, Accounting, IT, Retail etc..">
+                                                  <input type="text" class="form-control" id="parentName" name="parentName" placeholder="Enter Student Parent Name..">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bphone">Student Age <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-flagged">Student Flagged as Dropout <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContact" name="busContact" placeholder="7534575785">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bemail">Parent Contact <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busEmail" name="busEmail" placeholder="bakeryalson@hotmail.com..">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Babn">Student Contact <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busABN" name="busABN" placeholder="5745463545345">
-                                              </div>
-                                          </div>
-
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bcontactperson">Email Address <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" placeholder="Contact Person Name..">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bcontactpersonrole">School Name<span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPersonRole" name="busContactPersonRole" placeholder="Owner, Managing Director etc..">
-                                              </div>
-                                          </div>
-
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">School Location <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" placeholder="http://example.com">
-                                              </div>
-                                          </div>
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">School Contact <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" placeholder="http://example.com">
-                                              </div>
-                                          </div>
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">Course Level <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" placeholder="http://example.com">
-                                              </div>
-                                          </div>
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">Course Name <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" placeholder="http://example.com">
-                                              </div>
-                                          </div>
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">Reason for Dropout <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" placeholder="http://example.com">
-                                              </div>
-                                          </div>
-
-                                          
-
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bsize">Business Size <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <select class="form-control" id="busSize" name="busSize">
-                                                      <option value="">Please select</option>
-                                                      <option value="Small">Small</option>
-                                                      <option value="Medium">Medium</option>
-                                                      <option value="Big">Big</option>
+                                                  <select class="form-control" id="flagged" name="flagged">
+                                                      <option value="No">No</option>
+                                                      <option value="Yes">Yes</option>
                                                   </select>
                                               </div>
                                           </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-age">Student Age <span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="age" name="age" placeholder="Student Age in Years">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-contact">Parent Contact <span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="contact" name="contact" placeholder="0404XXXXXX">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-stuContact">Student Contact <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="stuContact" name="stuContact" placeholder="0404XXXXXX">
+                                              </div>
+                                          </div>
+
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-email">Email Address <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="email" name="email" placeholder="student/parent@gmail.com">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-schoolName">School Name<span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Name of the School">
+                                              </div>
+                                          </div>
+
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-schoolLocation">School Location <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="schoolLocation" name="schoolLocation" placeholder="Suburb Name..">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-schoolContact">School Contact <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="schoolContact" name="schoolContact" placeholder="0404XXXXXX">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-courseLevel">Course Level <span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="courseLevel" name="courseLevel" placeholder="Primary,Secondary,Bachelor's Degree..">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-courseName">Course Name <span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Year12, Bachelor's of Mechanical....">
+                                              </div>
+                                          </div>
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-reasonOfDropout">Reason for Dropout <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="reasonOfDropout" name="reasonOfDropout" placeholder="Please explain in detail">
+                                              </div>
+                                          </div>
 
                                           </div>
+
+
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
                                                   <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>
@@ -200,30 +196,35 @@
 
                                           if(isset($_POST['submit']))
                                           {
-                                          $busName=$_POST['busName'];
-                                          $busAddress=$_POST['busAddress'];
-                                          $busType=$_POST['busType'];
-                                          $busABN=$_POST['busABN'];
-                                          $busEmail=$_POST['busEmail'];
-                                          $busContact=$_POST["busContact"];
-                                          $busContactPerson=$_POST['busContactPerson'];
-                                          $busContactPersonRole=$_POST['busContactPersonRole'];
-                                          $busWebsite=$_POST['busWebsite'];
-                                          $busSize=$_POST['busSize'];
+                                          $stuFirstName=$_POST['stuFirstName'];
+                                          $stuLastName=$_POST['stuLastName'];
+                                          $parentName=$_POST['parentName'];
+                                          $flagged=$_POST['flagged'];
+                                          $age=$_POST['age'];
+                                          $contact=$_POST["contact"];
+                                          $stuContact=$_POST['stuContact'];
+                                          $email=$_POST['email'];
+                                          $schoolName=$_POST['schoolName'];
+                                          $schoolLocation=$_POST['schoolLocation'];
+                                          $schoolContact=$_POST['schoolContact'];
+                                          $courseLevel=$_POST['courseLevel'];
+                                          $courseName=$_POST['courseName'];
+                                          $reasonOfDropout=$_POST['reasonOfDropout'];
 
-                                            $query = "INSERT INTO `business`(`busName`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
-                                                      VALUES (?,?,?,?,?,?,?,?,?,?)";
+                                            $query = "INSERT INTO `student`(`stuFirstName`, `stuLastName`, `parentName`, `email`, `contact`, `stuContact`, `age`, `schoolName`, `courseLevel`, `courseName`, `schoolContact`, `schoolLocation`, `reasonOfDropout`, `flagged`)
+                                                      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"ssssssssss",$busName, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
+                                            mysqli_stmt_bind_param($stmt,"ssssssssssssss",$stuFirstName, $stuLastName, $parentName, $email, $contact, $stuContact, $age, $schoolName, $courseLevel, $courseName, $schoolContact, $schoolLocation, $reasonOfDropout, $flagged);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
-                                                  ?><div class="alert alert-success">
-                                                    <strong>Success! </strong> Business Details are Added.
+                                                  ?>
+                                                  <div class="alert alert-success">
+                                                    <strong>Success! </strong> Student Details are Added.
                                                   </div>
                                                             <script type='text/javascript'>
                                                               window.setTimeout(function(){
-                                                                window.location = 'business.php';
+                                                                window.location = 'student.php';
 
                                                               } , 4000);
                                                             </script>
@@ -231,7 +232,7 @@
                                                             }
                                                             else
                                                             {
-                                                                echo "Something went wrong, business not updated";
+                                                                echo "Something went wrong, Student Detail(s) not updated";
                                                             }
                                           }
                                                 ?>

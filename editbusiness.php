@@ -150,7 +150,7 @@ $row = mysqli_fetch_assoc($result);
                                               <label class="col-lg-4 col-form-label" for="val-Bsize">Business Size <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
                                                   <select class="form-control" id="busSize" name="busSize">
-                                                    <option value="">Please select</option>
+                                                    <option value="NOT SELECTED">Please select</option>
                                                       <option value="Small"<?php echo($row['busSize']==="Small")? "selected":"";?>> Small</option>
                                                       <option value="Medium"<?php echo($row['busSize']==="Medium")? "selected":"";?>> Medium</option>
                                                       <option value="Big"<?php echo($row['busSize']==="Big")? "selected":"";?>> Big</option>
