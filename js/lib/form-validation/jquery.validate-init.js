@@ -61,7 +61,43 @@ var form_validation = function() {
                   "bullContent": {
                     required: !0
 
-                  }
+                  },
+                  "stuFirstName": {
+                    required: !0
+
+                  },
+                  "stuLastName": {
+                    required: !0
+
+                  },
+                  "parentName": {
+                    required: !0
+
+                  },
+                  "flagged": {
+                    required: !0
+
+                  },
+                  "age": {
+                    required: !0
+
+                  },
+                  "contact": {
+                    required: !0
+
+                  },
+                  "schoolName": {
+                    required: !0
+
+                  },
+                  "courseLevel": {
+                    required: !0
+
+                  },
+                  "courseName": {
+                    required: !0
+
+                  },
 
                 },
                 messages: {
@@ -91,6 +127,42 @@ var form_validation = function() {
                     },
                     "bullContent": {
                         required: "Please enter Bulletin Content",
+
+                    },
+                    "stuFirstName": {
+                        required: "Please enter Student First name",
+
+                    },
+                    "stuLastName": {
+                        required: "Please enter Student Last Name",
+
+                    },
+                    "parentName": {
+                        required: "Please enter Student's parent name",
+
+                    },
+                    "flagged": {
+                        required: "Please Notify Student!",
+
+                    },
+                    "age": {
+                        required: "Please enter Student Age",
+
+                    },
+                    "contact": {
+                        required: "Please enter Parent's Contact",
+
+                    },
+                    "schoolName": {
+                        required: "Please enter Student School Name",
+
+                    },
+                    "courseLevel": {
+                        required: "Please enter Course Level",
+
+                    },
+                    "courseName": {
+                        required: "Please enter Course Name",
 
                     },
                     "busEmail": "Please enter a valid email address",

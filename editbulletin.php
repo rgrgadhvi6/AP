@@ -2,9 +2,11 @@
 <html lang="en">
 <?php include "include/db_config.php";
 $id = $_GET['id'];
-$query = "SELECT * FROM business WHERE busId = $id";
+$query = "SELECT * FROM bulletin WHERE bullId = $id";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
+
+
 ?>
 <head>
     <meta charset="utf-8">
@@ -63,12 +65,11 @@ $row = mysqli_fetch_assoc($result);
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Edit Business</h3> </div>
+                    <h3 class="text-primary">Edit Bulletin</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                      <li class="breadcrumb-item"><a href="business.php">Business</a></li>
-                      <li class="breadcrumb-item active">Edit Business</li>
+                      <li class="breadcrumb-item active">Edit Bulletin</li>
                     </ol>
                 </div>
             </div>
@@ -91,73 +92,54 @@ $row = mysqli_fetch_assoc($result);
                               <div class="card-body">
                                   <div class="form-validation">
                                       <form action="#edit" class="form-valide" method="POST">
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busName" name="busName" value="<?php echo $row['busName'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Baddress">Business Address <span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busAddress" name="busAddress" value="<?php echo $row['busAddress'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Btype">Business Type <span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busType" name="busType" value="<?php echo $row['busType'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bphone">Business Contact <span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContact" name="busContact" value="<?php echo $row['busContact'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bemail">Business Email Address <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busEmail" name="busEmail" value="<?php echo $row['busEmail'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Babn">Business ABN <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busABN" name="busABN" value="<?php echo $row['busABN'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bcontactperson">Business Contact Person <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" value="<?php echo $row['busContactPerson'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bcontactpersonrole">Business Contact Person Role<span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPersonRole" name="busContactPersonRole" value="<?php echo $row['busContactPersonRole'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">Business Website <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" value="<?php echo $row['busWebsite'];?>">
-                                              </div>
-                                          </div>
 
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bsize">Business Size <span class="text-danger"></span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullTopic">Bulletin Topic <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <select class="form-control" id="busSize" name="busSize">
-                                                    <option value="NOT SELECTED">Please select</option>
-                                                      <option value="Small"<?php echo($row['busSize']==="Small")? "selected":"";?>> Small</option>
-                                                      <option value="Medium"<?php echo($row['busSize']==="Medium")? "selected":"";?>> Medium</option>
-                                                      <option value="Big"<?php echo($row['busSize']==="Big")? "selected":"";?>> Big</option>
-                                                  </select>
+                                                  <input type="text" class="form-control" id="bullTopic" name="bullTopic" value="<?php echo $row['bullTopic'];?>">
                                               </div>
                                           </div>
-
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullDate">Bulletin Date<span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="date"class="form-control" id="bullDate" name="bullDate" data-provide="datepicker"value="<?php echo $row['bullDate'];?>">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullLocation">Bulletin Location <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="bullLocation" name="bullLocation" value="<?php echo $row['bullLocation'];?>">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullTime">Bulletin Time <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="bullTime" name="bullTime" value="<?php echo $row['bullTime'];?>">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullOther">Bulletin Extra Info <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="bullOther" name="bullOther" value="<?php echo $row['bullOther'];?>">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullContent">Bulletin Content<span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="bullContent" name="bullContent" value="<?php echo $row['bullContent'];?>">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullReadMore">Bulletin Read More Link <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="bullReadMore" name="bullReadMore" value="<?php echo $row['bullReadMore'];?>">
+                                              </div>
+                                          </div>
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-bullImage">Bulletin Image <span class="text-danger"></span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="file" class="form-control,custom-file-label" id="bullImage" name="bullImage"value="<?php echo $row['bullImage'];?>">
+                                              </div>
                                           </div>
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
@@ -165,24 +147,26 @@ $row = mysqli_fetch_assoc($result);
                                               </div>
 
                                           </div>
+                                        </div>
+                                        
+
+
                                           <div id="edit">
                                           <?php
                                                   if(isset($_POST['submit']))
                                                   { $id = $_GET['id'];
-                                                    $busName=$_POST['busName'];
-                                                    $busAddress=$_POST['busAddress'];
-                                                    $busType=$_POST['busType'];
-                                                    $busABN=$_POST['busABN'];
-                                                    $busEmail=$_POST['busEmail'];
-                                                    $busContact=$_POST["busContact"];
-                                                    $busContactPerson=$_POST['busContactPerson'];
-                                                    $busContactPersonRole=$_POST['busContactPersonRole'];
-                                                    $busWebsite=$_POST['busWebsite'];
-                                                    $busSize=$_POST['busSize'];
+                                                    $bullTopic=$_POST['bullTopic'];
+                                                    $bullDate=$_POST['bullDate'];
+                                                    $bullLocation=$_POST['bullLocation'];
+                                                    $bullTime=$_POST['bullTime'];
+                                                    $bullOther=$_POST['bullOther'];
+                                                    $bullContent=$_POST["bullContent"];
+                                                    $bullReadMore=$_POST['bullReadMore'];
+                                                    $bullImage=$_POST['bullImage'];
 
-                                                  $query3= "UPDATE `business` SET `busName`='$busName',`busAddress`='$busAddress', `busType`='$busType',`busABN`='$busABN',
-                                                  `busEmail`='$busEmail',`busContact`='$busContact',`busContactPerson`='$busContactPerson',`busContactPersonRole`='$busContactPersonRole',
-                                                  `busWebsite`='$busWebsite',`busSize`='$busSize' WHERE busId = ?";
+
+                                                  $query3= "UPDATE `bulletin` SET `bullTopic`='$bullTopic',`bullDate`='$bullDate', `bullLocation`='$bullLocation',`bullTime`='$bullTime',
+                                                  `bullOther`='$bullOther',`bullContent`='$bullContent',`bullReadMore`='$bullReadMore',`bullImage`='$bullImage' WHERE bullId = ?";
                                                   $stmt3 = mysqli_prepare($conn,$query3);
                                                   mysqli_stmt_bind_param($stmt3,"i",$id) or die("unable to bind param");
                                                   mysqli_stmt_execute($stmt3) or die("Unable to execute");
@@ -190,19 +174,19 @@ $row = mysqli_fetch_assoc($result);
                                                       {
                                             ?>
                                             <div class="alert alert-success">
-                                              <strong>Success! </strong> Business Details are Updated.
+                                              <strong>Success! </strong> Bulletin Details are Updated.
                                             </div>
                                                       <script type='text/javascript'>
                                                         window.setTimeout(function(){
-                                                          window.location = 'business.php';
+                                                          window.location = 'bulletin.php';
 
-                                                        } , 4000);
+                                                        } , 3000);
                                                       </script>
                                           <?php
                                                       }
                                                       else
                                                       {
-                                                          echo "Something went wrong, business not updated";
+                                                          echo "Something went wrong, Bulletin not updated";
                                                       }
                                               }
                                           ?>
