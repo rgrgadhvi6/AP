@@ -48,7 +48,20 @@ var form_validation = function() {
                     "busABN": {
 
                         digits: !0
-                    }
+                    },
+
+                  "bullTopic": {
+                      required: !0
+
+                  },
+                  "bullDate": {
+                    required: !0
+
+                  },
+                  "bullContent": {
+                    required: !0
+
+                  }
 
                 },
                 messages: {
@@ -66,6 +79,18 @@ var form_validation = function() {
                     },
                     "busContact": {
                         required: "Please enter a valid phone number!",
+
+                    },
+                    "bullTopic": {
+                        required: "Please enter Bulletin Topic",
+
+                    },
+                    "bullDate": {
+                        required: "Please enter Bulletin Date",
+
+                    },
+                    "bullContent": {
+                        required: "Please enter Bulletin Content",
 
                     },
                     "busEmail": "Please enter a valid email address",

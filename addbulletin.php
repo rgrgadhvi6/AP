@@ -58,11 +58,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Businesses</h3> </div>
+                    <h3 class="text-primary">Add Bulletin</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Businesses</li>
+                        <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                        <li class="breadcrumb-item active">Add Bulletin</li>
                     </ol>
                 </div>
             </div>
@@ -86,76 +86,52 @@
                                   <div class="form-validation">
                                       <form action="#add" class="form-valide" method="post">
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullTopic">Bulletin Topic <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="Bname" name="busName" placeholder="Enter Business Name..">
+                                                  <input type="text" class="form-control" id="bullTopic" name="bullTopic" placeholder="Enter Bulletin Topic">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Baddress">Business Address <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullDate">Bulletin Date<span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busAddress" name="busAddress" placeholder="404 Wests Street, Albion 3032">
+                                                  <input type="date"class="form-control" id="bullDate" name="bullDate" data-provide="datepicker">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Btype">Business Type <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullLocation">Bulletin Location <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busType" name="busType" placeholder="Bakery, Accounting, IT, Retail etc..">
+                                                  <input type="text" class="form-control" id="bullLocation" name="bullLocation" placeholder="399 Lonsdale Street,Victoria 3000(if any)">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bphone">Business Contact <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullTime">Bulletin Time <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContact" name="busContact" placeholder="7534575785">
+                                                  <input type="text" class="form-control" id="bullTime" name="bullTime" placeholder="12pm (if any)">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bemail">Business Email Address <span class="text-danger"></span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullOther">Bulletin Extra Info <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busEmail" name="busEmail" placeholder="bakeryalson@hotmail.com..">
+                                                  <input type="text" class="form-control" id="bullOther" name="bullOther" placeholder="Other Important Info (if any)">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Babn">Business ABN <span class="text-danger"></span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullContent">Bulletin Content<span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busABN" name="busABN" placeholder="5745463545345">
-                                              </div>
-                                          </div>
-
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bcontactperson">Business Contact Person <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPerson" name="busContactPerson" placeholder="Contact Person Name..">
+                                                  <input type="text" class="form-control" id="bullContent" name="bullContent" placeholder="Short Content about Bulletin">
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bcontactpersonrole">Business Contact Person Role<span class="text-danger"></span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullReadMore">Bulletin Read More Link <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busContactPersonRole" name="busContactPersonRole" placeholder="Owner, Managing Director etc..">
+                                                  <input type="text" class="form-control" id="bullReadMore" name="bullReadMore" placeholder="Please Provide Link for Bulletin (if any) ">
                                               </div>
                                           </div>
-
-
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bwebsite">Business Website <span class="text-danger"></span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-bullImage">Bulletin Image <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="busWebsite" name="busWebsite" placeholder="http://example.com">
+                                                  <input type="file" class="form-control,custom-file-label" id="bullImage" name="bullImage">
                                               </div>
-                                          </div>
-
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bsize">Business Size <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <select class="form-control" id="busSize" name="busSize">
-                                                      <option value="">Please select</option>
-                                                      <option value="Small">Small</option>
-                                                      <option value="Medium">Medium</option>
-                                                      <option value="Big">Big</option>
-                                                  </select>
-                                              </div>
-                                          </div>
-
                                           </div>
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
@@ -163,43 +139,42 @@
                                               </div>
 
                                           </div>
+
                                           <div id="add">
                                           <?php
 
                                           if(isset($_POST['submit']))
                                           {
-                                          $busName=$_POST['busName'];
-                                          $busAddress=$_POST['busAddress'];
-                                          $busType=$_POST['busType'];
-                                          $busABN=$_POST['busABN'];
-                                          $busEmail=$_POST['busEmail'];
-                                          $busContact=$_POST["busContact"];
-                                          $busContactPerson=$_POST['busContactPerson'];
-                                          $busContactPersonRole=$_POST['busContactPersonRole'];
-                                          $busWebsite=$_POST['busWebsite'];
-                                          $busSize=$_POST['busSize'];
+                                          $bullTopic=$_POST['bullTopic'];
+                                          $bullDate=$_POST['bullDate'];
+                                          $bullLocation=$_POST['bullLocation'];
+                                          $bullTime=$_POST['bullTime'];
+                                          $bullOther=$_POST['bullOther'];
+                                          $bullContent=$_POST["bullContent"];
+                                          $bullReadMore=$_POST['bullReadMore'];
+                                          $bullImage=$_POST['bullImage'];
 
-                                            $query = "INSERT INTO `business`(`busName`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
-                                                      VALUES (?,?,?,?,?,?,?,?,?,?)";
+                                            $query = "INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`)
+                                                      VALUES (?,?,?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"ssssssssss",$busName, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
+                                            mysqli_stmt_bind_param($stmt,"ssssssss",$bullTopic, $bullDate, $bullLocation, $bullTime, $bullOther, $bullContent, $bullReadMore, $bullImage);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
                                                   ?><div class="alert alert-success">
-                                                    <strong>Success! </strong> Business Details are Added.
+                                                    <strong>Success! </strong> Bulletin Details are Added.
                                                   </div>
                                                             <script type='text/javascript'>
                                                               window.setTimeout(function(){
-                                                                window.location = 'business.php';
+                                                                window.location = 'bulletin.php';
 
-                                                              } , 4000);
+                                                              } , 2000);
                                                             </script>
                                                 <?php
                                                             }
                                                             else
                                                             {
-                                                                echo "Something went wrong, business not updated";
+                                                                echo "Something went wrong, Bulletin not Added";
                                                             }
                                           }
                                                 ?>
@@ -250,6 +225,7 @@
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 
+
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
 
@@ -267,8 +243,49 @@
 
     <script type="text/javascript">
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip();
+
+
     })
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`) VALUES (
+"Multicultural Arts Victoria AGM","2018-05-30","","","","Our Annual General Meeting was held on Monday 22nd May. We thank the Minister for Creative Industries Mr Martin Foley and Patron Hon John Cain and wife Nancye for attending along with over 80 of our members and supporters. MAV achievements are outlined in our Annual Report","https://www.google.com/url?q=http://app.streamsend.com/c/29002395/34833/EqbCxRF/kws9ugutlh?redirect_to%3Dhttps%253A%252F%252Fissuu.com%252Fmulticulturalarts%252Fdocs%252F2017_annual_report&source=gmail&ust=1527727970901000&usg=AFQjCNG25w7pdPVVBJ3Ltai1KZc6jHp3eQ","https://www.google.com.au/search?q=Multicultural+Arts+Victoria+AGM&rlz=1C1CHBF_en-GBAU756AU756&biw=1284&bih=632&tbm=isch&source=lnms&sa=X&ved=0ahUKEwj4vN-LnqzbAhUHu7wKHS4vD-EQ_AUIDCgD#imgrc=qdB--FEvLBmrHM:"); -->

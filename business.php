@@ -96,6 +96,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Business Name</th>
+                                <th>Business Type</th>
                                 <th>Contact Person</th>
                                 <th>Phone</th>
                                 <th>Action</th>
@@ -103,7 +104,7 @@
                         </thead>
                         <tbody>
                         <?php
-                          $query = "SELECT busId, busName, busContactPerson, busContact FROM business";
+                          $query = "SELECT busId, busName, busType, busContactPerson, busContact FROM business";
                           $result = mysqli_query($conn,$query);
                           while($row = mysqli_fetch_assoc($result))
                           {
@@ -111,6 +112,7 @@
                             <tr>
                                 <td><?php echo $row['busId'];?></td>
                                 <td><?php echo $row['busName'];?></td>
+                                <td><?php echo $row['busType'];?></td>
                                 <td><?php echo $row['busContactPerson'];?></td>
                                 <td><?php echo $row['busContact'];?></td>
                                 <td>
@@ -147,9 +149,16 @@
                         </ul>
                     </div>
                 </div>
+                <?php
+                $sqldate='2018-02-10';
+                $time = strtotime($sqldate);
+                echo date("j M, Y", $time);
+                ?>
                 </div>
 
       </div>
+
+
   </div>
 
             <!--  -->

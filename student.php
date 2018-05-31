@@ -130,13 +130,13 @@
                                 <td><?php echo $row['contact'];?></td>
                                 <td><?php echo $row['schoolName'];?></td>
                                 <td>
-                                  <a href="viewstudent.php?id=<?php echo $row['stuId'];?>" class="view"  data-toggle="tooltip"   data-placement="top">
+                                  <a href="viewstudent.php?id=<?php echo $row['stuId'];?>" class="view"  data-toggle="tooltip"  title="View Student"  data-placement="top">
                                       <i class="material-icons"></i>
                                   </a>
-                                  <a  href="editstudent.php?id=<?php echo $row['stuId'];?>" class="edit" data-toggle="tooltip" title="Edit Business"  data-placement="top">
+                                  <a  href="editstudent.php?id=<?php echo $row['stuId'];?>" class="edit" data-toggle="tooltip" title="Edit Student"  data-placement="top">
                                     <i class="material-icons"></i>
                                   </a>
-                                  <a  href="deletestudent.php?id=<?php echo $row['stuId'];?>" class="delete" data-toggle="tooltip" title="Delete Business"  data-placement="top">
+                                  <a  href="deletestudent.php?id=<?php echo $row['stuId'];?>" class="delete" data-toggle="tooltip" title="Delete Student"  data-placement="top">
                                     <i class="material-icons" ></i>
                                   </a>
 
@@ -205,7 +205,7 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
@@ -220,9 +220,8 @@
     <script src="js/custom.min.js"></script>
 
     <script type="text/javascript">
-    $(function ()
-     {
-      $('[data-toggle="tooltip"]').tooltip();
+    $(function (){
+      $('[data-toggle="tooltip"]').tooltip()
     });
     </script>
 </body>

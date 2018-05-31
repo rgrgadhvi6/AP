@@ -87,9 +87,9 @@
                                   <div class="form-validation">
                                       <form action="#add" class="form-valide" method="post">
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-Bname">Business Name <span class="text-danger">*</span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-busname">Business Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="Bname" name="busName" placeholder="Enter Business Name..">
+                                                  <input type="text" class="form-control" id="busname" name="busName" placeholder="Enter Business Name..">
                                               </div>
                                           </div>
                                           <div class="form-group row">
@@ -158,7 +158,7 @@
                                           </div>
 
                                           </div>
-                                          
+
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
                                                   <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>

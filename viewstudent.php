@@ -70,8 +70,8 @@ $fullName = $row['stuFirstName'] ." ". $row['stuLastName'];
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                      <li class="breadcrumb-item"><a href="dropout.php">Dropout</a></li>
-                      <li class="breadcrumb-item active">View Dropout</li>
+                      <li class="breadcrumb-item"><a href="student.php">Student</a></li>
+                      <li class="breadcrumb-item active">View Student</li>
                     </ol>
                 </div>
             </div>
@@ -105,7 +105,7 @@ $fullName = $row['stuFirstName'] ." ". $row['stuLastName'];
                                                                 <div class="card">
                                                                     <div class="card-body">
 
-                                                                      
+
                                                                       <div class="row">
                                                                         <div class="col-4"><h5><span class="text-primary">Student Name: </span></h5></div>
                                                                         <div class="col-8"><h5><?php echo $fullName;?></h5></div>

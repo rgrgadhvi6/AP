@@ -116,7 +116,7 @@ $row = mysqli_fetch_assoc($result);
                                                                             </div>
                                                                             <div class="contacts" >
                                                                                 <br>
-                                                                                <a href=""><i class="fa fa-phone"></i></a>
+                                                                                <a href="tel:5555555555"><i class="fa fa-phone"></i></a>
                                                                                 <a href=""><i class="fa fa-envelope"></i></a>
                                                                                 <a href=""><i class="fa fa-map-marker"></i></a>
 
@@ -261,8 +261,10 @@ $row = mysqli_fetch_assoc($result);
 
     <script type="text/javascript">
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip();
     })
+
+    $( "#menu_business" ).addClass("active");
     </script>
 </body>
 </html>
