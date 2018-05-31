@@ -184,13 +184,13 @@ $title = $row['bullTopic'];
                                                                       </div>
                                                                         <hr/>
 
-&nbsp;
-&nbsp;
-&nbsp;
+                                  &nbsp;
+                                  &nbsp;
+                                  &nbsp;
 
                                                                     </div>
 
-                                                            </div>
+                               </div>
 
                               </div>
                       </div>

@@ -149,11 +149,7 @@
                         </ul>
                     </div>
                 </div>
-                <?php
-                $sqldate='2018-02-10';
-                $time = strtotime($sqldate);
-                echo date("j M, Y", $time);
-                ?>
+                
                 </div>
 
       </div>

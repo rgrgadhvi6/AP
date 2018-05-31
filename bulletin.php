@@ -116,9 +116,12 @@
                                 <td><?php echo $row['bullId'];?></td>
                                 <td><?php echo $row['bullTopic'];?></td>
                                 <td><?php echo date("j M, Y", $D);?></td>
-                              
+
 
                                 <td>
+                                  <a href="viewbulletin.php?id=<?php echo $row['bullId'];?>" class="view"  data-toggle="tooltip" rel="tooltip" data-placement="top" title="View Bulletin">
+                                      <i class="material-icons"></i>
+                                  </a>
                                   <a  href="editbulletin.php?id=<?php echo $row['bullId'];?>" class="edit" data-toggle="tooltip" data-placement="top" title="Edit Bulletin">
                                     <i class="material-icons"></i>
                                   </a>
