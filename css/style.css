@@ -5722,9 +5722,9 @@ tbody tr td:last-child {
 }
 .card-two .contacts a .fa {
   position: relative;
-  width: 40px;
-  height: 40px;
-  line-height: 39px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
   overflow: hidden;
   text-align: center;
   border: 2px solid #F25F24;
@@ -5746,7 +5746,7 @@ tbody tr td:last-child {
   background: #F25F24;
 }
 .card-two .contacts a:last-of-type .fa {
-  line-height: 36px;
+  line-height: 50px;
 }
 .profile-widget-one .profile-one-bg {
   position: relative;
