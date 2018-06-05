@@ -5,8 +5,6 @@ $id = $_GET['id'];
 $query = "SELECT * FROM bulletin WHERE bullId = $id";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
-
-
 ?>
 <head>
     <meta charset="utf-8">
@@ -148,7 +146,7 @@ $row = mysqli_fetch_assoc($result);
 
                                           </div>
                                         </div>
-                                        
+
 
 
                                           <div id="edit">

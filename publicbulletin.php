@@ -5,9 +5,9 @@
 $query = "SELECT * FROM bulletin";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
+$sqldate=$row['bullDate'];
+$D = strtotime($sqldate);
 ?>
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,28 +86,30 @@ $row = mysqli_fetch_assoc($result);
         <div class="container-fluid">
                 <!-- Start Page Content -->
           <div class="row justify-content-center">
-            <div class="col-lg-12">
-              <div class="card">
-                <div class="row justify-content-center">
+
+                <div class="row">
                           <!-- Column -->
-                          <div class="sl-item">
-                                                <div class="sl-left"> <img src="images/users/avatar-2.jpg" alt="user" class="img-circle"> </div>
+
+                          <div class="col-lg-6">
+                            <div class="card">
+
                                                 <div class="sl-right">
-                                                    <div> <a href="#" class="link">Michael Qin</a> <span class="sl-date">5 minutes ago</span>
+                                                    <div> <h4 class="font-weight-bold"><?php echo $row['bullTopic'];?></h4> <i class="fa fa-clock-o">  </i><span class="sl-date"> <?php echo date("j M, Y", $D);?></span>
                                                         <div class="m-t-20 row">
-                                                            <div class="col-md-3 col-xs-12"><img src="images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
-                                                            <div class="col-md-9 col-xs-12">
-                                                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="#" class="btn btn-success"> Design weblayout</a></div>
+                                                            <div class="col-md-5 col-xs-12"><img src="<?php echo $row['bullImage'];?>" alt="user" class="img-responsive radius"></div>
+                                                            <div class="col-md-7 col-xs-12">
+                                                                <p class="text-justify"> <?php echo $row['bullContent'];?></p> <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"> Read More</a></div>
                                                         </div>
-                                                        <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
+                                                        <div class="like-comm m-t-20"> <i class="fa fa-comment-o text-info"></i> 2 Comments &nbsp; <i class="fa fa-thumbs-o-up text-info"></i> 5 Likes</div>
                                                     </div>
                                                 </div>
+                                          <hr>
                                             </div>
+                                              </div>
 
 
                 </div>
-              </div>
-            </div>
+
         </div>
     </div>
 

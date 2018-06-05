@@ -108,9 +108,9 @@ $row = mysqli_fetch_assoc($result);
 
                                           <div class="contacts" >
 
-                                              <a href="tel:5555555555"><i class="fa fa-phone"></i></a>
-                                              <a href=""><i class="fa fa-envelope"></i></a>
-                                              <a href=""><i class="fa fa-map-marker"></i></a>
+                                              <a href="tel:<?php echo $row['busContact'];?>"><i class="fa fa-phone"></i></a>
+                                              <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo $row['busEmail'];?>&body=my-text"><i class="fa fa-envelope"></i></a>
+                                              <a href="https://www.google.com/maps/search/?api=1&query=<?php echo $row['busAddress'];?>"><i class="fa fa-map-marker"></i></a>
 
 
                                           </div>
