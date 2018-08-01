@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <?php include "include/db_config.php";?>
 <html lang="en">
-<?php
-$query = "SELECT * FROM bulletin";
-$result = mysqli_query($conn,$query);
-$row = mysqli_fetch_assoc($result);
-
-?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +12,7 @@ $row = mysqli_fetch_assoc($result);
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-    <title>AAMEYS Portal</title>
+    <title>AAMEYS Portal Admin Dashboard</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -56,20 +50,19 @@ $row = mysqli_fetch_assoc($result);
     <!--************************************ lEFT SIDEBAR*************************************************  -->
         <div class="left-sidebar" style="overflow: visible;">
             <!-- Sidebar scroll-->
-            <?php include "include/publicside_nav.php"; ?>
+            <?php include "include/side_nav.php"; ?>
             <!-- End Sidebar scroll-->
         </div>
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
-  <div class="page-wrapper" style="min-height: 157px;">
+        <div class="page-wrapper" style="min-height: 157px;">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Bulletin</h3> </div>
+                    <h3 class="text-primary">Course</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="publicbulletin.php">Home</a></li>
-
+                        <li class="breadcrumb-item active">Home</a></li>
                     </ol>
                 </div>
             </div>
@@ -82,45 +75,78 @@ $row = mysqli_fetch_assoc($result);
             <!--*********************************** MAIN PAGE*************************************************  -->
 
             <!-- Container fluid  -->
-        <div class="container-fluid">
+            <div class="container-fluid">
                 <!-- Start Page Content -->
-          <div class="row justify-content-center">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                    <h4>Manage <b>Course</b></h4>
+                  </div>
+                  <div class="col-sm-6">
+                  <a href="addcourse.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Course</span></a>
 
-                <div class="row  justify-content-center">
-                          <!-- Column -->
+
+                  </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Course name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                          $query = "SELECT courId, courName FROM course";
+                          $result = mysqli_query($conn,$query);
+                          while($row = mysqli_fetch_assoc($result))
+                          {
+                        ?>
+
+                            <tr>
+                                <td><?php echo $row['courId'];?></td>
+                                <td><?php echo $row['courName'];?></td>
+                                <td>
+                                  <a hidden href="#" class="view"  data-toggle="tooltip" rel="tooltip" data-placement="top" title="#">
+                                      <i class="material-icons"></i>
+                                  </a>
+                                  <a  href="editcourse.php?id=<?php echo $row['courId'];?>" class="edit" data-toggle="tooltip" data-placement="top" title="Edit Course">
+                                    <i class="material-icons"></i>
+                                  </a>
+                                  <a  href="deletecourse.php?id=<?php echo $row['courId'];?>" class="delete" data-toggle="tooltip" data-placement="top" title="Delete Course">
+                                    <i class="material-icons" ></i>
+                                  </a>
+
+                                  <!-- Delete Modal HTML -->
+                                  <!-- Modal -->
+
+                                </td>
+                            </tr>
                           <?php
-
-                            while($row = mysqli_fetch_assoc($result))
-                            {
-                              $sqldate=$row['bullDate'];
-                              $D = strtotime($sqldate);
+                          }
                           ?>
-                          <div class="col-lg-9">
-                            <div class="card">
-
-                                                <div class="sl-right">
-                                                    <div> <h4 class="font-weight-bold"><?php echo $row['bullTopic'];?></h4> <i class="fa fa-clock-o">  </i><span class="sl-date"> <?php echo date("j M, Y", $D);?></span>
-                                                        <div class="m-t-20 row">
-                                                            <div class="col-md-5 col-xs-12"><img src="<?php echo $row['bullImage'];?>" alt="user" class="img-responsive radius"></div>
-                                                            <div class="col-md-7 col-xs-12">
-                                                                <p class="text-justify"> <?php echo $row['bullContent'];?></p> <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"> Read More</a></div>
-                                                        </div>
-                                                        <div class="like-comm m-t-20"> <i class="fa fa-comment-o text-info"></i> 2 Comments &nbsp;</div>
-                                                    </div>
-                                                </div>
-                                          <hr>
-                                            </div>
-                                              </div>
-
-                                              <?php
-                                              }
-                                              ?>
+                        </tbody>
+                    </table>
+                <div class="clearfix">
+                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                            <li class="page-item active"><a class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                        </ul>
+                    </div>
                 </div>
 
-        </div>
-    </div>
+                </div>
 
-</div>
+      </div>
 
 
   </div>
