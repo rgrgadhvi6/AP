@@ -21,6 +21,15 @@
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+
+
+    <!-- include libraries(jQuery, bootstrap) -->
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
 </head>
 
 <!--******************************* MAIN BODY OF THE PROJECT ***************************-->
@@ -58,11 +67,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Add Topic</h3> </div>
+                    <h3 class="text-primary">Add Content Description</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                        <li class="breadcrumb-item active">Add Topic</li>
+                        <li class="breadcrumb-item active">Add Content Description</li>
                     </ol>
                 </div>
             </div>
@@ -87,12 +96,12 @@
                                       <form action="#add" class="form-valide" method="post">
 
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-topName"> Select Course<span class="text-danger">*</span></label>
+                                            <label class="col-lg-4 col-form-label" for="val-conDescrip"> Select Course<span class="text-danger">*</span></label>
 
 
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="courId" name="courId">
-                                                <option value="">Please select</option>
+                                                <select class="form-control" id="courId" name="courId" onchange="changetopic(this.value);">
+                                                <option>Please select</option>
 
                                                   <?php
                                                   $query2 = "SELECT * FROM course";
@@ -106,16 +115,38 @@
                                                     ?>
                                                 </select>
                                             </div>
-
                                         </div>
 
+                                        <script type='text/javascript'>
+                                        function changetopic(value)
+                                        {
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-topName"> Topic Name<span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="topName" name="topName" placeholder="Enter Name of Topic">
-                                              </div>
-                                          </div>
+                                            if (value.length == 0)
+                                            {
+                                              document.getElementById("topId").innerHTML = "<option disabled selected> No Topics</option>";
+                                            }
+                                            else
+
+                                              $("#topId").load("loadtopics.php",{courId: $("#courId").val()}).done(function(data) {
+                                                  $("tr.courId").after(data);
+                                                });
+                                        }
+
+
+                                        </script>
+
+
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content Description<span class="text-danger">*</span></label>
+                                            <div id="summernote"><p></p></div>
+                                              <script>
+                                                $(document).ready(function() {
+                                                    $('#summernote').summernote();
+                                                });
+                                              </script>
+
+                                        </div>
 
                                   </div>
                                           <div class="form-group row">
@@ -131,13 +162,13 @@
                                           if(isset($_POST['submit']))
                                           {
 
-                                          $topName= $_POST['topName'];
-                                          $courId= $_POST['courId'];
+                                          $conDescrip= $_POST['conDescrip'];
+                                          $topId= $_POST['topId'];
 
-                                            $query = "INSERT INTO `topic`(`topName`, `courId`)
+                                            $query = "INSERT INTO `topic`(`conDescrip`, `topId`)
                                                       VALUES (?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"si",$topName,$courId);
+                                            mysqli_stmt_bind_param($stmt,"si",$conDescrip,$topId);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
@@ -159,6 +190,7 @@
                                           }
                                                 ?>
                                                 </div>
+
 
                                       </form>
                                   </div>
@@ -208,6 +240,7 @@
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
@@ -269,3 +302,4 @@
 
 <!-- INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`) VALUES (
 "Multicultural Arts Victoria AGM","2018-05-30","","","","Our Annual General Meeting was held on Monday 22nd May. We thank the Minister for Creative Industries Mr Martin Foley and Patron Hon John Cain and wife Nancye for attending along with over 80 of our members and supporters. MAV achievements are outlined in our Annual Report","https://www.google.com/url?q=http://app.streamsend.com/c/29002395/34833/EqbCxRF/kws9ugutlh?redirect_to%3Dhttps%253A%252F%252Fissuu.com%252Fmulticulturalarts%252Fdocs%252F2017_annual_report&source=gmail&ust=1527727970901000&usg=AFQjCNG25w7pdPVVBJ3Ltai1KZc6jHp3eQ","https://www.google.com.au/search?q=Multicultural+Arts+Victoria+AGM&rlz=1C1CHBF_en-GBAU756AU756&biw=1284&bih=632&tbm=isch&source=lnms&sa=X&ved=0ahUKEwj4vN-LnqzbAhUHu7wKHS4vD-EQ_AUIDCgD#imgrc=qdB--FEvLBmrHM:"); -->
+?>

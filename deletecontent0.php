@@ -108,7 +108,7 @@ function custom_echo($x, $length)
                               </div>
                               <div id="deleteContent">
                                 <?php
-                                $query4="DELETE FROM Content WHERE conId=?";
+                                $query4="DELETE FROM content WHERE conId=?";
                                 $stmt4 = mysqli_prepare($conn,$query4);
                                 if(isset($_POST['submit']))
                                 {$_GET['id'];
@@ -149,9 +149,7 @@ function custom_echo($x, $length)
 
 
                                                                     <div class="card-body">
-                                                                      <div class="row">
-                                                                        <div class="col-4"><h5><span class="text-primary">Content Description </span></h5></div>
-                                                                        <div class="col-8"><h5><?php custom_echo($row['conDes'], 100);?></h5></div>
+
                                                                         <div class="col-4"><h5><span class="text-primary">Text Content A </span></h5></div>
                                                                         <div class="col-8"><h5><?php echo $row['conTypeA'];?></h5></div>
                                                                         <hr/>
@@ -166,7 +164,11 @@ function custom_echo($x, $length)
                                                                         <hr/>
                                                                         <div class="col-4"><h5><span class="text-primary">Link Content B </span></h5></div>
                                                                         <div class="col-8"><h5><?php echo $row['conLinkB'];?></h5></div>
-                                                                        <hr/>                                                                        <hr/>
+                                                                        <hr/>
+                                                                        <div class="col-4"><h5><span class="text-primary">Content Description </span></h5></div>
+                                                                        <div class="col-8"><h5><?php custom_echo($row['conDes'], 400);;?></h5></div>
+                                                                      </div>
+                                                                        <hr/>
 
                                   &nbsp;
                                                                     </div>

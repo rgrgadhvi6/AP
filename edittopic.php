@@ -91,12 +91,41 @@ $row = mysqli_fetch_assoc($result);
                                   <div class="form-validation">
                                       <form action="#edit" class="form-valide" method="POST">
 
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-Bsize">Topic Course <span class="text-danger"></span></label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="courId" name="courId">
+
+                                                  <?php
+                                                  $query2 = "SELECT courName FROM course";
+                                                  $result2 = mysqli_query($conn,$query2);
+                                                    while($row2 = mysqli_fetch_assoc($result2))
+                                                    {
+                                                  ?>
+                                                    <option value="<?php echo $row2['courName'];?>"> <?php echo $row2['courName'];?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+
+                                        </div>
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-topName">Topic Name <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
                                                   <input type="text" class="form-control" id="topName" name="topName" value="<?php echo $row['topName'];?>">
                                               </div>
                                           </div>
+
+                                          <div class="form-group row">
+                                              <label class="col-lg-4 col-form-label" for="val-topDescrip">Topic Description <span class="text-danger">*</span></label>
+                                              <div class="col-lg-6">
+                                                  <input type="text" class="form-control" id="topDescrip" name="topDescrip" value="<?php echo $row['topDescrip'];?>">
+
+                                              </div>
+                                          </div>
+
+
 
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
@@ -111,8 +140,10 @@ $row = mysqli_fetch_assoc($result);
                                                   if(isset($_POST['submit']))
                                                   { $id = $_GET['id'];
                                                     $topname=$_POST['topName'];
+                                                    $courId=$_POST['courId'];
 
-                                                  $query3= "UPDATE `topic` SET `topName`='$topname' WHERE topId = ?";
+
+                                                  $query3= "UPDATE `topic` SET `topName`='$topname',`courId`='$courId'  WHERE topId = ?";
                                                   $stmt3 = mysqli_prepare($conn,$query3);
                                                   mysqli_stmt_bind_param($stmt3,"i",$id) or die("unable to bind param");
                                                   mysqli_stmt_execute($stmt3) or die("Unable to execute");

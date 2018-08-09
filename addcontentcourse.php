@@ -58,11 +58,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Add Topic</h3> </div>
+                    <h3 class="text-primary">Select Course</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                        <li class="breadcrumb-item active">Add Topic</li>
+                        <li class="breadcrumb-item active">Select Course</li>
                     </ol>
                 </div>
             </div>
@@ -84,15 +84,15 @@
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
-                                      <form action="#add" class="form-valide" method="post">
+                                      <form action="addcontent.php" class="form-valide" method="post">
 
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-topName"> Select Course<span class="text-danger">*</span></label>
+                                            <label class="col-lg-4 col-form-label" for="val-topName"> Please Select Course for the topic and content<span class="text-danger">*</span></label>
 
 
                                             <div class="col-lg-6">
                                                 <select class="form-control" id="courId" name="courId">
-                                                <option value="">Please select</option>
+                                                <option value=""  disabled selected>Please select</option>
 
                                                   <?php
                                                   $query2 = "SELECT * FROM course";
@@ -110,17 +110,12 @@
                                         </div>
 
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-topName"> Topic Name<span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="topName" name="topName" placeholder="Enter Name of Topic">
-                                              </div>
-                                          </div>
+
 
                                   </div>
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
-                                                  <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>
+                                                  <button type="submit" name="submit" class="btn btn-primary btn-flat ">Next</button>
                                               </div>
 
                                           </div>

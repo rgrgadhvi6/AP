@@ -97,7 +97,7 @@ function custom_echo($x, $length)
                     <h4>Manage <b>Content</b></h4>
                   </div>
                   <div class="col-sm-6">
-                  <a href="addcontent.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Content</span></a>
+                  <a href="addcontentcourse.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Content</span></a>
 
 
                   </div>

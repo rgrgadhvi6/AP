@@ -21,6 +21,15 @@
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+
+
+
+    <!-- include libraries(jQuery, bootstrap) -->
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
 </head>
 
 <!--******************************* MAIN BODY OF THE PROJECT ***************************-->
@@ -58,11 +67,11 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Add Topic</h3> </div>
+                    <h3 class="text-primary">Add Content Description</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                        <li class="breadcrumb-item active">Add Topic</li>
+                        <li class="breadcrumb-item active">Add Content Description</li>
                     </ol>
                 </div>
             </div>
@@ -87,16 +96,18 @@
                                       <form action="#add" class="form-valide" method="post">
 
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-topName"> Select Course<span class="text-danger">*</span></label>
+                                            <label class="col-lg-4 col-form-label" for="val-conDescrip"> Select Course<span class="text-danger">*</span></label>
 
 
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="courId" name="courId">
-                                                <option value="">Please select</option>
+                                              <tr class="courseRow"><td></td><td>
+                                                <select class="form-control" id="courId" name="courId" onchange="changetopic(this.value);">
+                                                <option>-- Select Course --</option>
 
                                                   <?php
                                                   $query2 = "SELECT * FROM course";
                                                   $result2 = mysqli_query($conn,$query2);
+
                                                     while($row2 = mysqli_fetch_assoc($result2))
                                                     {
                                                   ?>
@@ -105,17 +116,17 @@
                                                     }
                                                     ?>
                                                 </select>
+                                              </td></tr>
                                             </div>
-
                                         </div>
 
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-topName"> Topic Name<span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="topName" name="topName" placeholder="Enter Name of Topic">
-                                              </div>
-                                          </div>
+
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content Description<span class="text-danger">*</span></label>
+
+                                        </div>
 
                                   </div>
                                           <div class="form-group row">
@@ -131,13 +142,13 @@
                                           if(isset($_POST['submit']))
                                           {
 
-                                          $topName= $_POST['topName'];
-                                          $courId= $_POST['courId'];
+                                          $conDescrip= $_POST['conDescrip'];
+                                          $topId= $_POST['topId'];
 
-                                            $query = "INSERT INTO `topic`(`topName`, `courId`)
+                                            $query = "INSERT INTO `topic`(`conDescrip`, `topId`)
                                                       VALUES (?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"si",$topName,$courId);
+                                            mysqli_stmt_bind_param($stmt,"si",$conDescrip,$topId);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
@@ -159,6 +170,7 @@
                                           }
                                                 ?>
                                                 </div>
+
 
                                       </form>
                                   </div>
@@ -208,6 +220,7 @@
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
@@ -222,12 +235,29 @@
     <script src="js/lib/form-validation/jquery.validate-init.js"></script>
 
     <script type="text/javascript">
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-
-
-    })
+    $(function ()
+    {  $('[data-toggle="tooltip"]').tooltip();});
     </script>
+
+    <script type="text/javascript">
+    $(function () {
+
+      $("#courId").change(function(){
+      if($("#courId").val() !='-- Select Course --') {
+        $.get("loadtopics.php", {courId: $("#courId").val()})
+        .done(function(data) {
+          $("tr.courseRow").after(data);
+        });
+
+      }
+    });
+
+
+  });
+
+
+    </script>
+
 </body>
 </html>
 

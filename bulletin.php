@@ -96,7 +96,6 @@
                                 <th>ID</th>
                                 <th>Bulletin Topic</th>
                                 <th>Bulletin Date</th>
-
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -106,7 +105,6 @@
                           $result = mysqli_query($conn,$query);
                           while($row = mysqli_fetch_assoc($result))
                           {
-
                             $sqldate=$row['bullDate'];
                             $D = strtotime($sqldate);
 

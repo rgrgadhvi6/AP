@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php include "include/db_config.php";?>
 <html lang="en">
+<?php
+$query = "SELECT * FROM business";
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_assoc($result);
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +17,7 @@
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-    <title>AAMEYS Portal Admin</title>
+    <title>AAMEYS Portal</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -55,14 +60,15 @@
         </div>
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
-        <div class="page-wrapper" style="min-height: 157px;">
+  <div class="page-wrapper" style="min-height: 157px;">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Topic</h3> </div>
+                    <h3 class="text-primary">Business</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Home</a></li>
+                        <li class="breadcrumb-item"><a href="publicbulletin.php">Home</a></li>
+                        <li class="breadcrumb-item active">Business</li>
                     </ol>
                 </div>
             </div>
@@ -75,80 +81,43 @@
             <!--*********************************** MAIN PAGE*************************************************  -->
 
             <!-- Container fluid  -->
-            <div class="container-fluid">
+        <div class="container-fluid">
                 <!-- Start Page Content -->
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-sm-6">
-                    <h4>Manage <b>Topic</b></h4>
-                  </div>
-                  <div class="col-sm-6">
-                  <a href="addtopic.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Topic</span></a>
-
-
-                  </div>
+                <div class="row justify-content-center">
+                  <p>
+                        <div class="col-md-7" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <div class="card bg-primary p-20">
+                                <div class="media widget-ten">
+                                    <div class="media-left meida media-middle">
+                                        <span><i class="ti-book f-s-40"></i></span>
+                                    </div>
+                                    <div class="media-body media-text-right">
+                                        <h2 class="color-white">Starting a Business</h2>
+                                        <p class="m-b-0">6 Topics</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Topic Name</th>
-                                <th> Topic Course</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                          $query = "SELECT t.topId, t.topName, c.courName FROM topic t, course c WHERE t.courId= c.courId";
-                          $result = mysqli_query($conn,$query);
-                          while($row = mysqli_fetch_assoc($result))
-                          {
-                        ?>
 
-                            <tr>
-                                <td><?php echo $row['topId'];?></td>
-                                <td><?php echo $row['topName'];?></td>
-                                <td><?php echo $row['courName'];?></td>
-                                <td>
-                                  <a hidden href="#" class="view"  data-toggle="tooltip" rel="tooltip" data-placement="top" title="#">
-                                      <i class="material-icons"></i>
-                                  </a>
-                                  <a  href="edittopic.php?id=<?php echo $row['topId'];?>" class="edit" data-toggle="tooltip" data-placement="top" title="Edit Topic">
-                                    <i class="material-icons"></i>
-                                  </a>
-                                  <a  href="deletetopic.php?id=<?php echo $row['topId'];?>" class="delete" data-toggle="tooltip" data-placement="top" title="Delete Topic">
-                                    <i class="material-icons" ></i>
-                                  </a>
+                    </p>
+                    <div class="col-md-7">
+                    <div class="collapse" id="collapseExample">
+                      <div class="card card-body">
+                        <ul class="list-icons">
+                          <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> Australian Tax Office</a></li>
 
-                                  <!-- Delete Modal HTML -->
-                                  <!-- Modal -->
-
-                                </td>
-                            </tr>
-                          <?php
-                          }
-                          ?>
-                        </tbody>
-                    </table>
-                <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
                         </ul>
+                      </div>
                     </div>
-                </div>
+                  </div>
 
-                </div>
 
-      </div>
+
+              </div>
+        </div>
+    </div>
+
+</div>
 
 
   </div>
