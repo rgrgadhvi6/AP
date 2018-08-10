@@ -109,61 +109,29 @@
 
                                         </div>
 
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" name="submit" class="btn btn-primary btn-flat ">Next</button>
+                                            </div>
+
+                                        </div>
 
 
 
-                                  </div>
-                                          <div class="form-group row">
-                                              <div class="col-lg-8 ml-auto">
-                                                  <button type="submit" name="submit" class="btn btn-primary btn-flat ">Next</button>
-                                              </div>
 
-                                          </div>
+                                      </div>
 
-                                          <div id="add">
-                                          <?php
 
-                                          if(isset($_POST['submit']))
-                                          {
 
-                                          $topName= $_POST['topName'];
-                                          $courId= $_POST['courId'];
-
-                                            $query = "INSERT INTO `topic`(`topName`, `courId`)
-                                                      VALUES (?,?)";
-                                            $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"si",$topName,$courId);
-                                            mysqli_stmt_execute($stmt);
-                                            if(($rows=mysqli_stmt_affected_rows($stmt))==1)
-                                            {
-                                                  ?><div class="alert alert-success">
-                                                    <strong>Success! </strong> Topic Name is Added.
-                                                  </div>
-                                                            <script type='text/javascript'>
-                                                              window.setTimeout(function(){
-                                                                window.location = 'topic.php';
-
-                                                              } , 2000);
-                                                            </script>
-                                                <?php
-                                                            }
-                                                            else
-                                                            {
-                                                                echo "Something went wrong, Topic not Added";
-                                                            }
-                                          }
-                                                ?>
-                                                </div>
-
-                                      </form>
-                                  </div>
-
-                              </div>
+                              </form>
                           </div>
+
                       </div>
                   </div>
-                <!-- End PAge Content -->
+                </div>
             </div>
+                <!-- End PAge Content -->
+        </div>
             <!--  -->
             <!--***********************************-End Container fluid-************************************************  -->
             <!-- * -->
