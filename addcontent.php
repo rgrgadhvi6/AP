@@ -111,19 +111,11 @@ $result3 = mysqli_query($conn,$query3);
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-lg-4 col-form-label" for="val-conDescript"> Write Content Description<span class="text-danger">*</span></label>
-                                            <div id="summernote"><p>Wriret</p></div>
-                                            <script>
-                                              $(document).ready(function() {
-                                                  $('#summernote').summernote();
-                                              });
-                                            </script>
-
-                                            </div>
+                                            <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content Description<span class="text-danger">*</span></label>
                                         </div>
 
-
-
+                                        <textarea id="conDescrip" name="conDescrip" style="width: 780px; height: 300px;"> </textarea>
+                                        &nbsp;
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
                                                 <button type="submit" name="submitbtn" class="btn btn-primary btn-flat">Submit</button>
@@ -139,13 +131,13 @@ $result3 = mysqli_query($conn,$query3);
                                           if(isset($_POST['submitbtn']))
                                           {
 
-                                          $conDescript= $_POST['conDescript'];
+                                          $conDescrip= $_POST['conDescrip'];
                                           $topId= $_POST['topId'];
 
-                                            $query = "INSERT INTO `content`(`conDescript`, `topId`)
+                                            $query = "INSERT INTO `content`( `topId`,`conDescrip`)
                                                       VALUES (?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"si",$conDescript,$topId);
+                                            mysqli_stmt_bind_param($stmt,"is",$topId,$conDescrip);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
@@ -154,7 +146,7 @@ $result3 = mysqli_query($conn,$query3);
                                                   </div>
                                                             <script type='text/javascript'>
                                                               window.setTimeout(function(){
-                                                                window.location = 'topic.php';
+                                                                window.location = 'content.php';
 
                                                               } , 2000);
                                                             </script>
@@ -162,7 +154,7 @@ $result3 = mysqli_query($conn,$query3);
                                                             }
                                                             else
                                                             {
-                                                                echo "Something went wrong, Topic not Added";
+                                                                echo "Something went wrong, Content not Added";
                                                             }
                                           }
                                                 ?>
@@ -229,20 +221,16 @@ $result3 = mysqli_query($conn,$query3);
     <script src="js/lib/form-validation/jquery.validate.min.js"></script>
     <script src="js/lib/form-validation/jquery.validate-init.js"></script>
 
-
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-
     <script type="text/javascript">
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
 
 
     })
+    </script>
+    <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script type="text/javascript">
+    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
     </script>
 </body>
 </html>

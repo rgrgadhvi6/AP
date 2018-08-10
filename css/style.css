@@ -4113,7 +4113,7 @@ table.dataTable thead .sorting::after {
 }
 [contenteditable]:hover,
 [contenteditable]:focus {
-  background: #93b5ff;
+  
 }
 .control-bar {
   position: relative;
