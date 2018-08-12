@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <?php include "include/db_config.php";?>
 <html lang="en">
-<?php
-$query = "SELECT * FROM business";
-$result = mysqli_query($conn,$query);
-$row = mysqli_fetch_assoc($result);
-?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,32 +80,61 @@ $row = mysqli_fetch_assoc($result);
         <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div class="row justify-content-center">
+
+                  <?php
+                    $query = "SELECT * FROM course";
+                    $result = mysqli_query($conn,$query);
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                      $courName=$row['courName'];
+                      $ccourId=$row['courId'];
+                  ?>
                   <p>
-                        <div class="col-md-7" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <div class="col-md-7" data-toggle="collapse" href="#<?=$ccourId?>"  data-parent="#<?=$ccourId?>" role="button" aria-expanded="false" aria-controls="#<?=$ccourId?>">
                             <div class="card bg-primary p-20">
                                 <div class="media widget-ten">
                                     <div class="media-left meida media-middle">
                                         <span><i class="ti-book f-s-40"></i></span>
                                     </div>
                                     <div class="media-body media-text-right">
-                                        <h2 class="color-white">Starting a Business</h2>
-                                        <p class="m-b-0">6 Topics</p>
+                                        <h2 class="color-white"><?php echo $courName; ?></h2>
+                                        <?php
+                                        $query2 = "SELECT * FROM topic WHERE courId= $ccourId ";
+                                        $result2 = mysqli_query($conn,$query2);
+                                        $count= mysqli_num_rows($result2);
+                                        ?>
+                                        <p class="m-b-0"><?php echo $count; ?> Topic(s)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </p>
+
+
                     <div class="col-md-7">
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse" aria-expanded="false" id="<?=$ccourId?>">
                       <div class="card card-body">
                         <ul class="list-icons">
-                          <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i> Australian Tax Office</a></li>
-
+                          <?php
+                          while($row2 = mysqli_fetch_assoc($result2))
+                          {
+                          $topName=$row2['topName'];
+                          $tcourId=$row2['courId'];
+                          $count= mysqli_num_rows($result2);
+                          ?>
+                          <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i><?php echo $topName; ?></a></li>
+                          <?php
+                            }
+                           ?>
                         </ul>
                       </div>
                     </div>
                   </div>
+
+
+              <?php
+                }
+               ?>
 
 
 
@@ -120,7 +145,7 @@ $row = mysqli_fetch_assoc($result);
 </div>
 
 
-  </div>
+
 
             <!--  -->
             <!--***********************************-End Container fluid-************************************************  -->
@@ -142,10 +167,6 @@ $row = mysqli_fetch_assoc($result);
             <!-- * -->
             <!-- * -->
 
-        </div>
-        <!-- End Page wrapper  -->
-    </div>
-    <!-- End Wrapper -->
 
 
 
@@ -171,7 +192,8 @@ $row = mysqli_fetch_assoc($result);
     <script src="js/custom.min.js"></script>
     <script type="text/javascript">
     $(function(){
-      $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip();
+    
     });
     </script>
 </body>
