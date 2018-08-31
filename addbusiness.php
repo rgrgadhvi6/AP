@@ -171,6 +171,8 @@
                                           if(isset($_POST['submit']))
                                           {
                                           $busName=$_POST['busName'];
+                                          $Uid=1;
+
                                           $busAddress=$_POST['busAddress'];
                                           $busType=$_POST['busType'];
                                           $busABN=$_POST['busABN'];
@@ -181,10 +183,10 @@
                                           $busWebsite=$_POST['busWebsite'];
                                           $busSize=$_POST['busSize'];
 
-                                            $query = "INSERT INTO `business`(`busName`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
-                                                      VALUES (?,?,?,?,?,?,?,?,?,?)";
+                                            $query = "INSERT INTO `business`(`busName`,`UId`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
+                                                      VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"ssssssssss",$busName, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
+                                            mysqli_stmt_bind_param($stmt,"sisssssssss",$busName,$Uid, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
@@ -195,7 +197,7 @@
                                                               window.setTimeout(function(){
                                                                 window.location = 'business.php';
 
-                                                              } , 4000);
+                                                              } , 3000);
                                                             </script>
                                                 <?php
                                                             }
