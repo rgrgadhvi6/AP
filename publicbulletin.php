@@ -2,9 +2,16 @@
 <?php include "include/db_config.php";?>
 <html lang="en">
 <?php
-$query = "SELECT * FROM bulletin";
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+$query = "SELECT * FROM bulletin ORDER BY bullDate DESC";
 $result = mysqli_query($conn,$query);
-$row = mysqli_fetch_assoc($result);
+
 
 ?>
 <head>
@@ -28,12 +35,14 @@ $row = mysqli_fetch_assoc($result);
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <!-- <script src="//platform-api.sharethis.com/js/sharethis.js#property=5b74e9d12cefcd001169758c&product=inline-share-buttons"></script> -->
+
 </head>
 
 <!--******************************* MAIN BODY OF THE PROJECT ***************************-->
+<body class="fix-header fix-sidebar" data-gr-c-s-loaded="true">
 
 
-<body class="fix-header fix-sidebar">
 
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader" style="display: none;">
@@ -84,7 +93,7 @@ $row = mysqli_fetch_assoc($result);
             <!-- Container fluid  -->
         <div class="container-fluid">
                 <!-- Start Page Content -->
-          <div class="row justify-content-center">
+
 
                 <div class="row  justify-content-center">
                           <!-- Column -->
@@ -93,6 +102,7 @@ $row = mysqli_fetch_assoc($result);
                             while($row = mysqli_fetch_assoc($result))
                             {
                               $sqldate=$row['bullDate'];
+                                $Id=$row['bullId'];
                               $D = strtotime($sqldate);
                           ?>
                           <div class="col-lg-9">
@@ -103,27 +113,30 @@ $row = mysqli_fetch_assoc($result);
                                                         <div class="m-t-20 row">
                                                             <div class="col-md-5 col-xs-12"><img src="<?php echo $row['bullImage'];?>" alt="user" class="img-responsive radius"></div>
                                                             <div class="col-md-7 col-xs-12">
-                                                                <p class="text-justify"> <?php echo $row['bullContent'];?></p> <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"> Read More</a></div>
+                                                                <p class="text-justify"> <?php echo $row['bullContent'];?></p>   <a href="publicviewbulletin.php?id=<?php echo $row['bullId'];?>" class="btn btn-success"><i class="fa fa-commenting-o"></i> View</a>
+                                                                <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"><i class="fa fa-external-link"></i> Source</a>
+
+                                                              </div>
+
+                                                                  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                                                    <!-- <div class="addthis_inline_share_toolbox"></div> -->
                                                         </div>
-                                                        <div class="like-comm m-t-20"> <i class="fa fa-comment-o text-info"></i> 2 Comments &nbsp;</div>
+
                                                     </div>
                                                 </div>
-                                          <hr>
-                                            </div>
-                                              </div>
 
-                                              <?php
-                                              }
-                                              ?>
+                          </div>
+                        </div>
+
+                      <?php
+                      }
+                      ?>
                 </div>
 
-        </div>
-    </div>
 
-</div>
+          </div>
 
 
-  </div>
 
             <!--  -->
             <!--***********************************-End Container fluid-************************************************  -->
@@ -174,8 +187,12 @@ $row = mysqli_fetch_assoc($result);
     <script src="js/custom.min.js"></script>
     <script type="text/javascript">
     $(function(){
-      $('[data-toggle="tooltip"]').tooltip()
+      $('[data-toggle="tooltip"]').tooltip();
+      $( "#menu_bulletin" ).addClass("active");
     });
     </script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b74ed39045eb12d"></script>
+
 </body>
 </html>

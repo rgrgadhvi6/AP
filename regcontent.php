@@ -1,6 +1,14 @@
 <!DOCTYPE html>
-<?php include "include/db_config.php";?>
+
 <html lang="en">
+<?php
+include "include/db_config.php";
+$id = $_GET['id'];
+$query3 = "SELECT * FROM topic WHERE topId= $id ";
+$result3 = mysqli_query($conn,$query3);
+$row3 = mysqli_fetch_assoc($result3);
+$topicname =$row3['topName'];
+?>
 
 <head>
     <meta charset="utf-8">
@@ -37,7 +45,7 @@
     </div>
 
     <!-- Main wrapper  -->
-    <div id="main-wrapper">
+  <div id="main-wrapper">
 
         <!-- header header  -->
         <div class="header" style="">
@@ -56,15 +64,15 @@
         </div>
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
-  <div class="page-wrapper" style="min-height: 157px;">
+        <div class="page-wrapper" style="min-height: 157px;">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Skills</h3> </div>
+                    <h3 class="text-primary"><?php echo $topicname; ?></h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="publicbulletin.php">Home</a></li>
-                        <li class="breadcrumb-item active">Skills</li>
+                        <li class="breadcrumb-item active">Topics</li>
                     </ol>
                 </div>
             </div>
@@ -77,81 +85,45 @@
             <!--*********************************** MAIN PAGE*************************************************  -->
 
             <!-- Container fluid  -->
-        <div class="container-fluid">
-                <!-- Start Page Content -->
-                <div class="row justify-content-center">
+          <div class="container-fluid">
 
-                  <?php
-                    $query = "SELECT * FROM course";
-                    $result = mysqli_query($conn,$query);
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                      $courName=$row['courName'];
-                      $ccourId=$row['courId'];
-                  ?>
-                  <p>
-                        <div class="col-md-7" data-toggle="collapse" href="#<?=$ccourId?>"   role="button" aria-expanded="false" aria-controls="#<?=$ccourId?>">
+                <?php
+                $query = "SELECT * FROM content WHERE topId = $id";
+                $result = mysqli_query($conn,$query);
+                $row = mysqli_fetch_assoc($result);
 
-                            <div class="card col p-20">
-
-                                <div class="media widget-ten">
-                                    <div class="media-left meida media-middle">
-                                        <span><i class="ti-book f-s-40"></i></span>
-                                    </div>
-                                    <div class="media-body media-text-right">
-                                        <h3 class="color-white"><?php echo $courName; ?></h2>
-                                        <?php
-                                        $query2 = "SELECT * FROM topic WHERE courId= $ccourId ";
-                                        $result2 = mysqli_query($conn,$query2);
-                                        $count= mysqli_num_rows($result2);
-                                        ?>
-                                        <p class="m-b-0"><?php echo $count; ?> Topic(s)</p>
-                                    </div>
-                                </div>
-
-                          </div>
-                        </div>
-                    </p>
-
-
-                    <div class="col-md-7">
-                    <div class="collapse" aria-expanded="false" id="<?=$ccourId?>">
-                      <div class="card card-body">
-                          <?php
-                          while($row2 = mysqli_fetch_assoc($result2))
-                          {
-                          $topName=$row2['topName'];
-                          $tcourId=$row2['courId'];
-                          $topId=$row2['topId'];
-                          $count= mysqli_num_rows($result2);
-                          ?>
-
-                            <ul class="list-icons">
-
-                          <li><a href="regcontent.php?id=<?php echo $topId;?>"><i class="fa fa-file-text"></i>&nbsp;&nbsp;&nbsp; <?php echo $topName; ?></a></li>
-                        </ul>
-
-
-                          <?php
-                            }
-                           ?>
-                         </div>
-                    </div>
-                  </div>
-
-
-              <?php
+                while($row = mysqli_fetch_assoc($result))
+                {
+                  echo $row['conDescrip'];
                 }
-               ?>
+                ?>
 
 
 
-              </div>
-        </div>
-    </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+  <!-- Container end  -->
+
+
+
+
+      </div>
+      <<!--Page wrapper end  -->
 </div>
-
+    <!--Main wrapper end  -->
 
 
 
@@ -204,14 +176,6 @@
 
     });
     </script>
-    <script type="text/javascript">
-    var colors = ['#F4941A'];
-    var boxes = document.querySelectorAll(".col");
-    for (i = 0; i < boxes.length; i++)
-    {
-      // Pick a random color from the array 'colors'.
-    boxes[i].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    }
-    </script>
+
 </body>
 </html>

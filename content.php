@@ -108,12 +108,13 @@ function custom_echo($x, $length)
                             <tr>
                                 <th>ID</th>
                                 <th>Content Description</th>
+
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
-                          $query = "SELECT conId, conDes FROM content";
+                          $query = "SELECT conId, conDescrip,topId FROM content";
                           $result = mysqli_query($conn,$query);
                           while($row = mysqli_fetch_assoc($result))
                           {
@@ -122,12 +123,12 @@ function custom_echo($x, $length)
                             <tr>
                                 <td><?php echo $row['conId'];?></td>
 
-                                <td><?php custom_echo($row['conDes'], 100);?></td>
+                                <td><?php custom_echo($row['conDescrip'],0);?></td>
                                 <td>
                                   <a hidden href="#" class="view"  data-toggle="tooltip" rel="tooltip" data-placement="top" title="#">
                                       <i class="material-icons"></i>
                                   </a>
-                                  <a  href="editcontent.php?id=<?php echo $row['conId'];?>" class="edit" data-toggle="tooltip" data-placement="top" title="Edit Content">
+                                  <a  href="editcontentcourse.php?id=<?php echo $row['topId'];?>" class="edit" data-toggle="tooltip" data-placement="top" title="Edit Content">
                                     <i class="material-icons"></i>
                                   </a>
                                   <a  href="deletecontent.php?id=<?php echo $row['conId'];?>" class="delete" data-toggle="tooltip" data-placement="top" title="Delete Content">

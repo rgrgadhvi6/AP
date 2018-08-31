@@ -5,6 +5,7 @@ $id = $_GET['id'];
 $query = "SELECT * FROM bulletin WHERE bullId = $id";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
+
 ?>
 <head>
     <meta charset="utf-8">
@@ -89,6 +90,15 @@ $row = mysqli_fetch_assoc($result);
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
+                                    <form id="uploadform" action="upload.php?id=<?php echo $id?>" method="post" enctype="multipart/form-data">
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 col-form-label" for="val-fileToUpload">Bulletin Image <span class="text-danger"></span></label>
+                                        <div class="col-lg-6">
+                                            <input type="file" class="form-control,custom-file-label" name="fileToUpload" id="fileToUpload" value=""><?php echo $row['bullImage'];?>
+
+                                        </div>
+                                    </div>
+                                    </form>
                                       <form action="#edit" class="form-valide" method="POST">
 
                                           <div class="form-group row">
@@ -133,18 +143,16 @@ $row = mysqli_fetch_assoc($result);
                                                   <input type="text" class="form-control" id="bullReadMore" name="bullReadMore" value="<?php echo $row['bullReadMore'];?>">
                                               </div>
                                           </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-bullImage">Bulletin Image <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="file" class="form-control,custom-file-label" id="bullImage" name="bullImage"value="<?php echo $row['bullImage'];?>">
-                                              </div>
-                                          </div>
+
+
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
                                                   <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>
+
                                               </div>
 
                                           </div>
+
                                         </div>
 
 
@@ -160,37 +168,43 @@ $row = mysqli_fetch_assoc($result);
                                                     $bullOther=$_POST['bullOther'];
                                                     $bullContent=$_POST["bullContent"];
                                                     $bullReadMore=$_POST['bullReadMore'];
-                                                    $bullImage=$_POST['bullImage'];
+
 
 
                                                   $query3= "UPDATE `bulletin` SET `bullTopic`='$bullTopic',`bullDate`='$bullDate', `bullLocation`='$bullLocation',`bullTime`='$bullTime',
-                                                  `bullOther`='$bullOther',`bullContent`='$bullContent',`bullReadMore`='$bullReadMore',`bullImage`='$bullImage' WHERE bullId = ?";
+                                                  `bullOther`='$bullOther',`bullContent`='$bullContent',`bullReadMore`='$bullReadMore' WHERE bullId = ?";
                                                   $stmt3 = mysqli_prepare($conn,$query3);
                                                   mysqli_stmt_bind_param($stmt3,"i",$id) or die("unable to bind param");
                                                   mysqli_stmt_execute($stmt3) or die("Unable to execute");
                                                   if(mysqli_stmt_affected_rows($stmt3))
                                                       {
-                                            ?>
-                                            <div class="alert alert-success">
-                                              <strong>Success! </strong> Bulletin Details are Updated.
-                                            </div>
-                                                      <script type='text/javascript'>
-                                                        window.setTimeout(function(){
-                                                          window.location = 'bulletin.php';
-
-                                                        } , 3000);
-                                                      </script>
-                                          <?php
-                                                      }
-                                                      else
-                                                      {
-                                                          echo "Something went wrong, Bulletin not updated";
-                                                      }
-                                              }
-                                          ?>
-                                          </div>
+                                                      ?>
+                                                                <div class="alert alert-success">
+                                                                        <strong>Success! </strong> Bulletin Details are Updated.
+                                                                </div>
+                                                                <script type='text/javascript'>
+                                                                    window.setTimeout(function()
+                                                                    {window.location = 'bulletin.php';} , 3000);
+                                                                </script>
+                                                    <?php
+                                                                }
+                                                                else
+                                                                {
+                                                                  ?>
+                                                                  <strong>Details! </strong> Updated.
+                                                                  <script type='text/javascript'>
+                                                                      window.setTimeout(function()
+                                                                      {window.location = 'bulletin.php';} , 1000);
+                                                                  </script>
+                                                                  <?php
+                                                                }
+                                                        }
+                                                    ?>
+                                                    </div>
 
                                       </form>
+
+
                                   </div>
 
                               </div>
@@ -241,6 +255,7 @@ $row = mysqli_fetch_assoc($result);
     <!--Menu sidebar -->
     <script src="js/sidebarmenu.js"></script>
 
+
     <!--stickey kit -->
     <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
@@ -255,5 +270,10 @@ $row = mysqli_fetch_assoc($result);
       $('[data-toggle="tooltip"]').tooltip()
     })
     </script>
+      <script type="text/javascript">
+    document.getElementById("fileToUpload").onchange = function() {
+    document.getElementById("uploadform").submit();
+}
+  </script>
 </body>
 </html>

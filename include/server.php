@@ -4,6 +4,7 @@ session_start();
 
 // initializing variables
 $username = "";
+$id="";
 $email    = "";
 $errors = array();
 
@@ -40,14 +41,14 @@ if (isset($_POST['reg_user']))
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-   $password = md5($password);//encrypt the password before saving in the database
+   $password = md5($password);  //encrypt the password before saving in the database
 
    $query = "INSERT INTO users (username, email, password)
          VALUES('$username', '$email', '$password')";
    mysqli_query($conn, $query);
    $_SESSION['username'] = $username;
-   $_SESSION['success'] = "You are now logged in";
-   header('location: business.php');
+   //$_SESSION['success'] = "You are now logged in";
+   // header('location: business.php');
   }
 }
 
@@ -65,10 +66,20 @@ if (isset($_POST['login_user']))
   	$password = md5($password);
   	$query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
   	$results = mysqli_query($conn, $query);
+    $logged = mysqli_fetch_assoc($results);
   	if (mysqli_num_rows($results) == 1)
     {
-      $_SESSION['username'] = $username;
-  	  header('location: business.php');
+      if($_SESSION['usertype']== 0)
+          {
+            header('location: business.php');
+            $_SESSION['username'] = $logged['username'];
+          }
+
+      header('location: publicbulletin.php');
+      $_SESSION['username'] = $logged['username'];;
+      $_SESSION['id'] = $logged['id'];;
+
+
   	}
     else
     {

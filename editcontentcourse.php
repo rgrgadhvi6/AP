@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<?php include "include/db_config.php";?>
 <html lang="en">
-
+<?php include "include/db_config.php";
+ ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,7 @@
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/logo.png">
-    <title>AAMEYS Portal</title>
-
+    <title>AAMEYS Portal Admin Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.css" rel="stylesheet">
@@ -56,15 +55,15 @@
         </div>
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
-  <div class="page-wrapper" style="min-height: 157px;">
+        <div class="page-wrapper" style="min-height: 157px;">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Skills</h3> </div>
+                    <h3 class="text-primary">Select Course</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="publicbulletin.php">Home</a></li>
-                        <li class="breadcrumb-item active">Skills</li>
+                        <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                        <li class="breadcrumb-item active">Select Course</li>
                     </ol>
                 </div>
             </div>
@@ -77,84 +76,63 @@
             <!--*********************************** MAIN PAGE*************************************************  -->
 
             <!-- Container fluid  -->
-        <div class="container-fluid">
+
+            <div class="container-fluid">
+
                 <!-- Start Page Content -->
                 <div class="row justify-content-center">
+                      <div class="col-lg-9">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="form-validation">
+                                      <form action="editcontent.php" class="form-valide" method="post">
 
-                  <?php
-                    $query = "SELECT * FROM course";
-                    $result = mysqli_query($conn,$query);
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                      $courName=$row['courName'];
-                      $ccourId=$row['courId'];
-                  ?>
-                  <p>
-                        <div class="col-md-7" data-toggle="collapse" href="#<?=$ccourId?>"   role="button" aria-expanded="false" aria-controls="#<?=$ccourId?>">
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-topName"> Please Select Course content<span class="text-danger">*</span></label>
 
-                            <div class="card col p-20">
 
-                                <div class="media widget-ten">
-                                    <div class="media-left meida media-middle">
-                                        <span><i class="ti-book f-s-40"></i></span>
-                                    </div>
-                                    <div class="media-body media-text-right">
-                                        <h3 class="color-white"><?php echo $courName; ?></h2>
-                                        <?php
-                                        $query2 = "SELECT * FROM topic WHERE courId= $ccourId ";
-                                        $result2 = mysqli_query($conn,$query2);
-                                        $count= mysqli_num_rows($result2);
-                                        ?>
-                                        <p class="m-b-0"><?php echo $count; ?> Topic(s)</p>
-                                    </div>
-                                </div>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="courId" name="courId">
+                                                <option value=""  disabled selected>Please select</option>
 
+                                                  <?php
+                                                  $query2 = "SELECT * FROM course";
+                                                  $result2 = mysqli_query($conn,$query2);
+                                                    while($row2 = mysqli_fetch_assoc($result2))
+                                                    {
+                                                  ?>
+                                                    <option value="<?php echo $row2['courId'];?>"><?php echo $row2['courName']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-lg-8 ml-auto">
+                                                <button type="submit" name="submit" class="btn btn-primary btn-flat ">Next</button>
+                                            </div>
+
+                                        </div>
+
+
+
+
+                                      </div>
+
+
+
+                              </form>
                           </div>
-                        </div>
-                    </p>
 
-
-                    <div class="col-md-7">
-                    <div class="collapse" aria-expanded="false" id="<?=$ccourId?>">
-                      <div class="card card-body">
-                          <?php
-                          while($row2 = mysqli_fetch_assoc($result2))
-                          {
-                          $topName=$row2['topName'];
-                          $tcourId=$row2['courId'];
-                          $topId=$row2['topId'];
-                          $count= mysqli_num_rows($result2);
-                          ?>
-
-                            <ul class="list-icons">
-
-                          <li><a href="regcontent.php?id=<?php echo $topId;?>"><i class="fa fa-file-text"></i>&nbsp;&nbsp;&nbsp; <?php echo $topName; ?></a></li>
-                        </ul>
-
-
-                          <?php
-                            }
-                           ?>
-                         </div>
-                    </div>
+                      </div>
                   </div>
-
-
-              <?php
-                }
-               ?>
-
-
-
-              </div>
+                </div>
+            </div>
+                <!-- End PAge Content -->
         </div>
-    </div>
-
-</div>
-
-
-
-
             <!--  -->
             <!--***********************************-End Container fluid-************************************************  -->
             <!-- * -->
@@ -175,6 +153,10 @@
             <!-- * -->
             <!-- * -->
 
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
 
 
 
@@ -187,6 +169,7 @@
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
 
+
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
 
@@ -198,20 +181,55 @@
 
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
+    <!-- Form validation -->
+    <script src="js/lib/form-validation/jquery.validate.min.js"></script>
+    <script src="js/lib/form-validation/jquery.validate-init.js"></script>
+
     <script type="text/javascript">
-    $(function(){
+    $(function () {
       $('[data-toggle="tooltip"]').tooltip();
 
-    });
-    </script>
-    <script type="text/javascript">
-    var colors = ['#F4941A'];
-    var boxes = document.querySelectorAll(".col");
-    for (i = 0; i < boxes.length; i++)
-    {
-      // Pick a random color from the array 'colors'.
-    boxes[i].style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    }
+
+    })
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`) VALUES (
+"Multicultural Arts Victoria AGM","2018-05-30","","","","Our Annual General Meeting was held on Monday 22nd May. We thank the Minister for Creative Industries Mr Martin Foley and Patron Hon John Cain and wife Nancye for attending along with over 80 of our members and supporters. MAV achievements are outlined in our Annual Report","https://www.google.com/url?q=http://app.streamsend.com/c/29002395/34833/EqbCxRF/kws9ugutlh?redirect_to%3Dhttps%253A%252F%252Fissuu.com%252Fmulticulturalarts%252Fdocs%252F2017_annual_report&source=gmail&ust=1527727970901000&usg=AFQjCNG25w7pdPVVBJ3Ltai1KZc6jHp3eQ","https://www.google.com.au/search?q=Multicultural+Arts+Victoria+AGM&rlz=1C1CHBF_en-GBAU756AU756&biw=1284&bih=632&tbm=isch&source=lnms&sa=X&ved=0ahUKEwj4vN-LnqzbAhUHu7wKHS4vD-EQ_AUIDCgD#imgrc=qdB--FEvLBmrHM:"); -->

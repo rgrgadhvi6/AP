@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include "include/db_config.php";
-$id = $_GET['id'];
-$query = "SELECT * FROM content WHERE conId = $id";
-$result = mysqli_query($conn,$query);
-$row = mysqli_fetch_assoc($result);
+$courId = $_POST['courId'];
+$query3 = "SELECT * FROM topic WHERE courId= $courId";
+$result3 = mysqli_query($conn,$query3);
 ?>
 <head>
     <meta charset="utf-8">
@@ -92,97 +91,78 @@ $row = mysqli_fetch_assoc($result);
                                       <form action="#edit" class="form-valide" method="POST">
 
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-conTypeA"> Text Content A <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="conTypeA" name="conTypeA" value="<?php echo $row['conTypeA'];?>">
-                                              </div>
-                                          </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-topName"> Please Select Topic for the content<span class="text-danger">*</span></label>
+                                                    <div class="col-lg-6">
+                                                        <select class="form-control" id="topId" name="topId">
+                                                        <option value=""  disabled selected>Please select</option>
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-conTypeB"> Text Content B <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="conTypeB" name="conTypeB" value="<?php echo $row['conTypeB'];?>">
-                                              </div>
-                                          </div>
+                                                          <?php
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-conTypeC"> Text Content C <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="conTypeC" name="conTypeC" value="<?php echo $row['conTypeC'];?>">
-                                              </div>
-                                          </div>
+                                                            while($row3 = mysqli_fetch_assoc($result3))
+                                                            {
+                                                          ?>
+                                                            <option value="<?php echo $row3['topId'];?>"><?php echo $row3['topName']; ?></option>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-conLinkA"> Link Content A <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="conLinkA" name="conLinkA" value="<?php echo $row['conLinkA'];?>">
-                                              </div>
-                                          </div>
+                                                </div>
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-conLinkB"> Link Content B <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="conLinkB" name="conLinkB" value="<?php echo $row['conLinkB'];?>">
-                                              </div>
-                                          </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content Description<span class="text-danger">*</span></label>
+                                                </div>
+                                                <?php
+                                                $query5 = "SELECT * FROM content WHERE topId= $courId";
+                                                $result5 = mysqli_query($conn,$query5);
+                                                $row5 = mysqli_fetch_assoc($result5);
+                                                ?>
+                                                <textarea value="<?php echo $row5['conDescrip'];?>  "id="conDescrip" name="conDescrip" style="width: 600px; height: 300px;"> </textarea>
 
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-conDes"> Content Description<span class="text-danger">*</span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="conDes" name="conDes" value="<?php echo $row['conDes'];?>">
-                                              </div>
-                                          </div>
+                                                &nbsp;
+                                                <div class="form-group row">
+                                                    <div class="col-lg-8 ml-auto">
+                                                        <button type="submit" name="submitbtn" class="btn btn-primary btn-flat">Submit</button>
+                                                    </div>
 
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-lg-8 ml-auto">
-                                                <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>
-                                            </div>
-
-                                        </div>
-
-                                          <div id="edit">
-                                          <?php
-                                                  if(isset($_POST['submit']))
-                                                  { $id = $_GET['id'];
-                                                    $conDes= $_POST['conDes'];
-                                                    $conTypeA = $_POST['conTypeA'];
-                                                    $conTypeB = $_POST['conTypeB'];
-                                                    $conTypeC = $_POST['conTypeC'];
-                                                    $conLinkA = $_POST['conLinkA'];
-                                                    $conLinkB = $_POST['conLinkB'];
-
-
-                                                  $query3= "UPDATE `content` SET `conTypeA` = '$conTypeA',`conTypeB` = '$conTypeB',`conTypeC` = '$conTypeC',`conLinkA` ='$conLinkA' ,`conLinkB` = '$conLinkB',`conDes` = ' $conDes' WHERE conId = ?";
-                                                  $stmt3 = mysqli_prepare($conn,$query3);
-                                                  mysqli_stmt_bind_param($stmt3,"i",$id) or die("unable to bind param");
-                                                  mysqli_stmt_execute($stmt3) or die("Unable to execute");
-                                                  if(mysqli_stmt_affected_rows($stmt3))
-                                                      {
-                                            ?>
-                                            
-                                            <div class="alert alert-success">
-                                              <strong>Success! </strong> Content name is Updated.
-                                            </div>
-                                                      <script type='text/javascript'>
-                                                        window.setTimeout(function(){
-                                                          window.location = 'content.php';
-
-                                                        } , 2000);
-                                                      </script>
-                                          <?php
-                                                      }
-                                                      else
-                                                      {
-                                                          echo "Something went wrong, Content details are not updated";
-                                                      }
-                                              }
-                                          ?>
-                                          </div>
+                                                </div>
 
                                       </form>
+                                      <div id="edit">
+                                      <?php
+                                              if(isset($_POST['submitbtn']))
+                                              { $id = $_GET['id'];
+                                                $conDes= $_POST['conDes'];
+
+
+
+                                              $query6= "UPDATE `content` SET `conDes` = ' $conDes' WHERE conId = ?";
+                                              $stmt6 = mysqli_prepare($conn,$query6);
+                                              mysqli_stmt_bind_param($stmt6,"i",$id) or die("unable to bind param");
+                                              mysqli_stmt_execute($stmt6) or die("Unable to execute");
+                                              if(mysqli_stmt_affected_rows($stmt6))
+                                                  {
+                                        ?>
+
+                                        <div class="alert alert-success">
+                                          <strong>Success! </strong> Content name is Updated.
+                                        </div>
+                                                  <script type='text/javascript'>
+                                                    window.setTimeout(function(){
+                                                      window.location = 'content.php';
+
+                                                    } , 2000);
+                                                  </script>
+                                      <?php
+                                                  }
+                                                  else
+                                                  {
+                                                      echo "Something went wrong, Content details are not updated";
+                                                  }
+                                          }
+                                      ?>
                                   </div>
 
                               </div>
@@ -197,6 +177,8 @@ $row = mysqli_fetch_assoc($result);
             <!-- * -->
             <!-- * -->
             <!-- * -->
+
+            </div>
 
 
             <!--**********************************FOOTER*************************************************  -->
@@ -245,7 +227,11 @@ $row = mysqli_fetch_assoc($result);
     <script type="text/javascript">
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
+    </script>
+    <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script type="text/javascript">
+    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
     </script>
 </body>
 </html>

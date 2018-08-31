@@ -99,6 +99,9 @@ $row = mysqli_fetch_assoc($result);
                                                   <?php
                                                   $query2 = "SELECT courName FROM course";
                                                   $result2 = mysqli_query($conn,$query2);
+                                                  ?>
+                                                  <option value=""disabled selected> Please Select</option>
+                                                  <?php
                                                     while($row2 = mysqli_fetch_assoc($result2))
                                                     {
                                                   ?>

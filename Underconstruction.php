@@ -46,23 +46,18 @@ hr {
 </style>
 <body>
 
-<div class="bgimg">
-  <div class="topleft">
-    <p>Logo</p>
-  </div>
+
   <div class="middle">
     <h1>COMING SOON</h1>
     <hr>
     <p id="demo" style="font-size:30px"></p>
   </div>
-  <div class="bottomleft">
-    <p>Some text</p>
-  </div>
-</div>
+
+
 
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
+var countDownDate = new Date("Sept 4, 2018 15:37:25").getTime();
 
 // Update the count down every 1 second
 var countdownfunction = setInterval(function() {
