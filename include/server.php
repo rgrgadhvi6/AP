@@ -6,6 +6,9 @@ session_start();
 $username = "";
 $id="";
 $email    = "";
+$firstname    = "";
+$lastname    = "";
+
 $errors = array();
 
 // REGISTER USER
@@ -17,15 +20,18 @@ if (isset($_POST['reg_user']))
   $password = mysqli_real_escape_string($conn, $_POST['password']);
 
 
+
+
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "Username is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }
 
+
   // first check the database to make sure
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM users WHERE firstname='$firstname' OR lastname='$lastname' OR username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($conn, $user_check_query);
   $user = mysqli_fetch_assoc($result);
 
@@ -43,8 +49,8 @@ if (isset($_POST['reg_user']))
   if (count($errors) == 0) {
    $password = md5($password);  //encrypt the password before saving in the database
 
-   $query = "INSERT INTO users (username, email, password)
-         VALUES('$username', '$email', '$password')";
+   $query = "INSERT INTO users (firstname, lastname, username, email, password  )
+         VALUES('$firstname', '$lastname', '$username', '$email', '$password' )";
    mysqli_query($conn, $query);
    $_SESSION['username'] = $username;
    //$_SESSION['success'] = "You are now logged in";
@@ -69,15 +75,21 @@ if (isset($_POST['login_user']))
     $logged = mysqli_fetch_assoc($results);
   	if (mysqli_num_rows($results) == 1)
     {
+
       if($_SESSION['usertype']== 0)
           {
-            header('location: business.php');
-            $_SESSION['username'] = $logged['username'];
+
+            $_SESSION['username'] =$username;
+            $_SESSION['id'] = $logged['id'];
+            header('location: bulletin.php');
           }
 
-      header('location: publicbulletin.php');
-      $_SESSION['username'] = $logged['username'];;
-      $_SESSION['id'] = $logged['id'];;
+          else if($_SESSION['usertype']== 1)
+          {
+            $_SESSION['username'] = $username;
+            $_SESSION['id'] = $logged['id'];
+            header('location: business.php');
+          }
 
 
   	}

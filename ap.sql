@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2018 at 08:18 PM
+-- Generation Time: Sep 08, 2018 at 09:16 PM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bulletin` (
   `bullId` int(11) NOT NULL,
-  `bullTopic` varchar(500) NOT NULL,
-  `bullDate` date NOT NULL,
+  `bullTopic` varchar(500) DEFAULT NULL,
+  `bullDate` date DEFAULT NULL,
   `bullLocation` varchar(1000) DEFAULT NULL,
   `bullTime` varchar(50) DEFAULT NULL,
   `bullOther` varchar(1000) DEFAULT NULL,
-  `bullContent` varchar(1000) NOT NULL,
+  `bullContent` varchar(1000) DEFAULT NULL,
   `bullReadMore` varchar(1000) DEFAULT NULL,
   `bullImage` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,12 +43,18 @@ CREATE TABLE `bulletin` (
 --
 
 INSERT INTO `bulletin` (`bullId`, `bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`) VALUES
-(1, 'Multicultural Arts Victoria AGM', '2018-06-01', '', '', '', 'Our Annual General Meeting was held on Monday 22nd May. We thank the Minister for Creative Industries Mr Martin Foley and Patron Hon John Cain and wife Nancye for attending along with over 80 of our members and supporters. MAV achievements are outlined in our Annual Report', 'https://www.google.com/url?q=http://app.streamsend.com/c/29002395/34833/EqbCxRF/kws9ugutlh?redirect_to%3Dhttps%253A%252F%252Fissuu.com%252Fmulticulturalarts%252Fdocs%252F2017_annual_report&source=gmail&ust=1527727970901000&usg=AFQjCNG25w7pdPVVBJ3Ltai1KZc6jHp3eQ', 'images/bulletin/booking.png'),
-(14, 'Emerald Hill Cultural Precinct Sound & Colour Series', '2018-05-26', 'Australian Tapestry Workshop  262-266 Park St, South Melbourne ', '7pm', 'Free Entry', 'Multicultural Arts Victoria invites you to join us at the Australian Tapestry Workshop for the Sound & Colour Series #4. Listen to music by artists from Multicultural Art Victoria & students from Australian National Academy of Music amongst the colourful ATW tapestries. A collaborative piece curated by Peter Knight performed by:      Laura Barton, Violin, ANAM   Alexander MacDonald, Viola, ANAM   Eliza Shephard, Flute, ANAM   Peter Knight, Trumpet, MAV   Brandon Lee, KOTO MAV.', 'https://www.austapestry.com.au/whats-on/whats-on', 'images/bulletin/2.jpg'),
-(15, 'We are Pasefika!', '2018-06-02', 'South Melbourne Town Hall', '7.30pm', 'Director: Asalemo Tofete   Producer: Pacific Island Creative Arts Australia Inc. & Multicultural Arts Victoria  Composer: Rita Seumanutafa ', 'A musical that highlights the search for \'belonging\' within the Pacific Island community of Australia, giving hope and encouragement to those who are navigating their own cultural identities within their families, churches and community groups. The musical will showcase actors, musicians and dancers from the Melbourne Pacific Island community, including craftsmen and costume designers. Performers include: Pasefika Vitoria Choir and PICAA SKOOL Performing Arts students. ', '', 'images/bulletin/3.jpg'),
 (16, 'Emerge in Yarra', '2018-06-29', '', '', 'June 29 â€“ July 8', 'Emerge in Yarra 2017 presents a week long festival from June 29 - July 8, presenting a range of exhibitions, art installations, cooking demonstrations, live music, storytelling, spoken word, dance and conversations. The full program and ticket information will be available via the MAV website over the next week.  Founded in 2004 as a platform for artists in MAVâ€™s Visible Music Mentoring Program, the festival has since grown to encompass talented artists from refugee and emerging communities across the city, diverse art forms, new collaborations and commissioned works. ', '', 'images/bulletin/4.jpg'),
 (17, 'Emerge in the North', '2018-07-01', '', '', ' Emerge in the North - Volunteers call-out!', 'Emerge in the North Festival Concert Saturday 1 July 12noon â€“ 4pm. Come and celebrate the emerging refugee and Indigenous communities of Melbourneâ€™s outer north at our first Emerge in the North Festival. Featuring artists from diverse backgrounds including local Indigenous, Iranian, Syrian, Sudanese, Indian, Kurdish, Cook Islands and more. Cultural stalls, dance & music, with MC Sami Shah and headlined by Lamine Sonko and the African Intelligence. At Plenty Ranges Arts & Convention Centre, Ferres Boulevard South Morang. ', 'http://multiculturalarts.com.au/event/einn/', 'images/bulletin/5.jpg'),
-(19, 'Project 2 Demo', '2018-06-08', '399 lonsdale st', '10am', '', 'The presentation for the project 2 will be done in provided location', '', 'images/bulletin/seat.png');
+(19, 'Project 2 Demo', '2018-06-08', '399 lonsdale st', '10am', '', 'The presentation for the project 2 will be done in provided location', '', 'images/bulletin/seat.png'),
+(32, 'Rajesh', '2018-09-07', '', '', '', 'wtertertet', '', NULL),
+(33, 'rtyrt6yrt', '2018-09-09', '', '', '', 'ertyerterter', '', 'images/bulletin/Agile-Development-QualiteSoft.jpg'),
+(34, 'rtyrt6yrt', '2018-09-11', 'Yarravale', '', '', 'wtertertet', '', ''),
+(35, 'rtyrt6yrt', '2018-09-07', '', '', '', 'ererer', '', NULL),
+(36, 'rtyrt6yrt', '2018-09-07', '', '', '', 'wreqrq', '', NULL),
+(37, 'rtyrt6yrt', '2018-08-31', '', '', '', 'sdfsdf', '', NULL),
+(38, 'rtyrt6yrt', '2018-09-07', '', '', '', 'fgjhfgh', '', NULL),
+(39, 'rtyrt6yrt', '2018-09-08', '', '', '', 'wtertertet', 'rtytr', 'images/bulletin/Agile-Development-QualiteSoft.jpg'),
+(40, 'Anand', '2018-09-21', '', '', '', 'ertyerterter', '', 'images/bulletin/rtyjhnt.JPG');
 
 -- --------------------------------------------------------
 
@@ -76,7 +82,7 @@ CREATE TABLE `business` (
 --
 
 INSERT INTO `business` (`busId`, `UId`, `busName`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`) VALUES
-(26, 1, 'Rajesh IT Solutions', '44 wests road', 'Hospitality', '1475858', 'rgrgadhvi6@gmail.com', 1457894, 'rajesh', 'owner', 'www.rajroc.blogspot.com', 'Small');
+(26, 4, 'Rajesh IT Solutions', '44 wests road', 'Hospitality', '1475858', 'rgrgadhvi6@gmail.com', 1457894, 'rajesh', 'owner', 'www.rajroc.blogspot.com', 'Small');
 
 -- --------------------------------------------------------
 
@@ -104,7 +110,9 @@ INSERT INTO `bustype` (`busType`) VALUES
 CREATE TABLE `comment` (
   `comId` int(11) NOT NULL,
   `bullId` int(11) NOT NULL,
-  `UId` int(11) NOT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `comDescrip` text NOT NULL,
   `ComDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -113,13 +121,15 @@ CREATE TABLE `comment` (
 -- Dumping data for table `comment`
 --
 
-INSERT INTO `comment` (`comId`, `bullId`, `UId`, `comDescrip`, `ComDate`) VALUES
-(1, 1, 1, '1', '2018-08-24 02:28:42'),
-(21, 1, 1, '2', '2018-08-24 02:28:51'),
-(38, 1, 3, 'rajesh', '2018-08-24 02:55:03'),
-(39, 14, 3, 'hello', '2018-08-24 04:56:17'),
-(40, 1, 5, 'Hello, I am happy that you are rajesh', '2018-08-24 05:10:14'),
-(41, 17, 3, 'This bulletin seems good for the event.', '2018-08-27 05:15:05');
+INSERT INTO `comment` (`comId`, `bullId`, `firstname`, `lastname`, `email`, `comDescrip`, `ComDate`) VALUES
+(41, 17, '', '', '', 'This bulletin seems good for the event.', '2018-08-27 05:15:05'),
+(42, 17, '', '', '', 'hello', '2018-09-03 02:29:38'),
+(43, 16, '', '', '', 'I like this', '2018-09-04 01:30:48'),
+(44, 17, '', '', '', '', '2018-09-05 07:39:26'),
+(45, 17, 'rajesh', 'gadhvi', 'RGRGADHVI6@GMAIL.COM', 'I think this is the bst what we can hget', '2018-09-05 07:50:51'),
+(46, 16, 'Jasmel', 'Dhir', 'jass@jass.com', 'Yes, I am going to attend this at any cost.!', '2018-09-05 07:52:51'),
+(47, 17, 'Prince', 'Kumar', 'prince@yahoo.com', 'This is the real sghit!!!.', '2018-09-05 08:56:50'),
+(48, 17, 'RAJESH', 'GADHVI', 'RGRGADHVI6@GMAIL.COM', 'Good one', '2018-09-06 02:37:24');
 
 -- --------------------------------------------------------
 
@@ -174,10 +184,24 @@ INSERT INTO `course` (`courId`, `courName`) VALUES
 CREATE TABLE `message` (
   `mesId` int(11) NOT NULL,
   `senId` int(11) NOT NULL,
-  `recd` int(11) NOT NULL,
+  `recId` int(11) NOT NULL,
   `message` text NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`mesId`, `senId`, `recId`, `message`, `time`) VALUES
+(1, 4, 5, 'hello ', '2018-09-01 06:43:58'),
+(2, 5, 4, 'hiii', '2018-09-01 06:44:15'),
+(3, 4, 5, 'I want help', '2018-09-01 06:44:28'),
+(4, 4, 5, 'in my business', '2018-09-01 06:47:40'),
+(5, 5, 4, 'How can I help you ?', '2018-09-01 06:52:59'),
+(10, 4, 5, 'hello again?? no reply', '2018-09-02 00:59:50'),
+(17, 4, 5, 'hello dfkgfgk', '2018-09-02 23:29:19'),
+(18, 4, 5, 'rajesh', '2018-09-02 23:29:25');
 
 -- --------------------------------------------------------
 
@@ -235,8 +259,8 @@ INSERT INTO `topic` (`topId`, `topName`, `courId`, `topDescrip`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `uFirstName` varchar(100) NOT NULL,
-  `uLastName` varchar(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -247,12 +271,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `uFirstName`, `uLastName`, `username`, `email`, `password`, `userType`) VALUES
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `userType`) VALUES
 (1, '', '', 'rajesh', 'rgrgadhvi6@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 1),
 (2, '', '', 'jasmel', 'jass123@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-(3, 'Anand', 'Kamant', 'anand', 'anand@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1),
-(4, '', '', 'rajesh123', 'gadhvir1@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1),
-(5, 'Berhan', 'Ahmed', 'berhan', 'harmony@aameys.com.au', '3c0f4d25e8ab99620326b8adc4a75d71', 0);
+(3, 'Anand', 'Kamant', 'anand', 'anand@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 0),
+(4, 'Raj', 'Gadhvi', 'rajesh123', 'gadhvir1@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1),
+(5, 'Berhan', 'Ahmed', 'berhan', 'harmony@aameys.com.au', '3c0f4d25e8ab99620326b8adc4a75d71', 0),
+(7, '', '', 'rajesh25', 'gadhvir11@gmail.com', 'd6ec390e12c5e993e7b30db105a1d81c', 1),
+(8, '', '', 'princedfsdf', 'RGRGADHVI66@GMAIL.COM', 'fcea920f7412b5da7be0cf42b8c93759', 1),
+(9, '', '', 'rgrgadhvi6@gmail.com', 'RGRGADHVI66@GMAIL.COM', '25d55ad283aa400af464c76d713c07ad', 1),
+(10, '', '', 'prince', 'RGRGADHVI6@GMAIL.COM', '25f9e794323b453885f5181f1b624d0b', 1);
 
 --
 -- Indexes for dumped tables
@@ -284,8 +312,7 @@ ALTER TABLE `bustype`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`comId`),
-  ADD KEY `bullId` (`bullId`),
-  ADD KEY `UId` (`UId`);
+  ADD KEY `bullId` (`bullId`);
 
 --
 -- Indexes for table `content`
@@ -306,7 +333,7 @@ ALTER TABLE `course`
 ALTER TABLE `message`
   ADD PRIMARY KEY (`mesId`),
   ADD KEY `senId` (`senId`),
-  ADD KEY `recd` (`recd`);
+  ADD KEY `recd` (`recId`);
 
 --
 -- Indexes for table `student`
@@ -336,7 +363,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bulletin`
 --
 ALTER TABLE `bulletin`
-  MODIFY `bullId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `bullId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `business`
 --
@@ -346,7 +373,7 @@ ALTER TABLE `business`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `comId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `content`
 --
@@ -361,12 +388,12 @@ ALTER TABLE `course`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `mesId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mesId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `stuId` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `stuId` int(200) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `topic`
 --
@@ -376,7 +403,7 @@ ALTER TABLE `topic`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Constraints for dumped tables
 --
@@ -392,8 +419,7 @@ ALTER TABLE `business`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `FK` FOREIGN KEY (`bullId`) REFERENCES `bulletin` (`bullId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK1` FOREIGN KEY (`UId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK` FOREIGN KEY (`bullId`) REFERENCES `bulletin` (`bullId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `content`
@@ -405,7 +431,7 @@ ALTER TABLE `content`
 -- Constraints for table `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `recid` FOREIGN KEY (`recd`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `recid` FOREIGN KEY (`recId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `senid` FOREIGN KEY (`senId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

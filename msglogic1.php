@@ -217,13 +217,13 @@ $row = mysqli_fetch_assoc($result);
                                                     <div class="mesgs">
                                                       <div class="msg_history">
                                                         <?php
-
+                                                        $senid= 4;
                                                           $query4 = "SELECT * FROM message WHERE senId = 4 AND recId=5 ";
                                                           $result4 = mysqli_query($conn,$query4);
                                                           $query5 = "SELECT * FROM message WHERE senId = 5 AND recId=4 ";
                                                           $result5 = mysqli_query($conn,$query5);
 
-                                                          while($row4 = mysqli_fetch_assoc($result4))
+                                                          while(($row4 = mysqli_fetch_assoc($result4))&& ($row5 = mysqli_fetch_assoc($result5)))
                                                         {
                                                           $nameId= $row4['senId'];
                                                           $query6 = "SELECT * FROM users WHERE id = $nameId";
@@ -233,6 +233,10 @@ $row = mysqli_fetch_assoc($result);
                                                           $lastName = $row6['uLastName'];
                                                            $displaytime= $row4['time'];
                                                            $D = strtotime($displaytime);
+                                                           $displaytime2= $row5['time'];
+                                                           $D2 = strtotime($displaytime2);
+
+
                                                           ?>
                                                           <div class="incoming_msg">
                                                             <div class="incoming_msg_img"> </div>
@@ -245,25 +249,15 @@ $row = mysqli_fetch_assoc($result);
                                                               </div>
                                                             </div>
                                                           </div>
-                                                          <?php
-                                                        }
-                                                        ?>
-                                                        <?php
-
-                                                          while($row5 = mysqli_fetch_assoc($result5))
-                                                        {
-                                                           $displaytime2= $row5['time'];
-                                                           $D2 = strtotime($displaytime2);
-                                                          ?>
                                                           <div class="outgoing_msg">
                                                             <div class="sent_msg">
                                                               <p><?php echo $row5['message'];?></p>
                                                               <span class="time_date">  <?php  echo date("j M, Y  |  h:i A", $D2);?></span> </div>
                                                           </div>
+
                                                           <?php
                                                         }
                                                         ?>
-
 
 
 

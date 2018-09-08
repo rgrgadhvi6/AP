@@ -75,12 +75,12 @@ include "include/server.php";
                                         <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <div class="checkbox">
-                                        <label>
-        										<input type="checkbox"> Remember Me
+                                        <!-- <label>
+        										<!-- <input type="checkbox"> Remember Me
         									</label>
                                         <label class="pull-right">
         										<a href="#">Forgotten Password?</a>
-        									</label>
+        									</label> --> 
 
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30" name="login_user">Sign in</button>

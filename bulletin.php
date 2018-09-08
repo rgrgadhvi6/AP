@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<?php include "include/db_config.php";?>
+<?php
+include "include/db_config.php";
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -18,6 +27,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="DataTables-1.10.18/css/jquery.dataTables.css"/>
+
+
 
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
@@ -90,7 +102,8 @@
                   </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+
+                    <table id="example" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -137,19 +150,7 @@
                           ?>
                         </tbody>
                     </table>
-                <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
+
 
                 </div>
 
@@ -193,6 +194,10 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="DataTables-1.10.18/js/jquery.dataTables.js"></script>
+
+
+
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
@@ -209,6 +214,8 @@
     $(function(){
       $('[data-toggle="tooltip"]').tooltip()
     });
+    $('#example').DataTable();
+
     </script>
 </body>
 </html>

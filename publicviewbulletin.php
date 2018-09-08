@@ -2,12 +2,7 @@
 <html lang="en">
 <?php
 session_start();
-if(!isset($_SESSION['username']))
-{
-    // not logged in
-    header('Location: login.php');
-    exit();
-}
+
 include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM bulletin WHERE bullId = $id";
@@ -123,58 +118,90 @@ $row = mysqli_fetch_assoc($result);
                                                     </div>
                                                               </div>
                                                         <br/>
-                                                        <form action="#add" class="form-valide" method="post">
-                                        										<textarea id="comDescrip"  name="comDescrip" class="col-md-12 col-xs-9" placeholder="Please leave your thought on above bulletin..."></textarea>
-                                        										<ul>
-
-                                        										</ul>
-                                        										<button type="submit" name="submitpost" class="btn btn-success green"><i class="fa fa-share"></i> Post</button>
-
-                                                            <div id="add">
-                                                            <?php
-
-                                                            if(isset($_POST['submitpost']))
-                                                            {
-
-
-
-
-
-                                                              $comDescrip=	$_POST['comDescrip'];
-
-                                                              $query = "INSERT INTO `comment`(`bullId`, `UId`, `comDescrip`)
-                                                                        VALUES (?,?,?)";
-                                                              $stmt = mysqli_prepare($conn,$query);
-                                                              mysqli_stmt_bind_param($stmt,"iis",$id, $_SESSION['id'], $comDescrip);
-                                                              mysqli_stmt_execute($stmt);
-                                                              if(($rows=mysqli_stmt_affected_rows($stmt))==1)
-                                                              {
-                                                              ?>
-
-                                                                    <div class="alert alert-success">
-                                                                    <strong>Success! </strong> Comment Posted.
+                                                      <div class="col-md-7 col-xs-12">
+                                                        <button class="btn btn-success" data-toggle="collapse" href="#addcomment" role="button" aria-expanded="false" aria-controls="addcomment">
+                                                             Add Comment
+                                                           </button>
+                                                      </div>
+                                                        <div class="col-md-12">
+                                                        <div class="collapse" aria-expanded="false" id="addcomment">
+                                                          <div class="card card-body">
+                                                            <form action="#add" class="form-valide" method="post">
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-4 col-form-label" for="val-firstname">First Name <span class="text-danger">*</span></label>
+                                                                    <div class="col-lg-6">
+                                                                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
                                                                     </div>
-                                                                              <script type='text/javascript'>
-                                                                              window.setTimeout(function()
-                                                                              {
-                                                                              window.location = 'publicviewbulletin.php?id=<?php echo $id?>'
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-4 col-form-label" for="val-lastname">Last Name <span class="text-danger">*</span></label>
+                                                                    <div class="col-lg-6">
+                                                                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-lg-4 col-form-label" for="val-email">First Name <span class="text-danger">*</span></label>
+                                                                    <div class="col-lg-6">
+                                                                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address">
+                                                                    </div>
+                                                                </div>
+                                                                <textarea id="comDescrip"  name="comDescrip" class="col-md-12 col-xs-9" placeholder="Please leave your thought on above bulletin..."></textarea>
 
-                                                                                } , 2000);
-                                                                              </script>
+                                                                <button type="submit" name="submitpost" class="btn btn-success green"><i class="fa fa-share"></i> Post</button>
 
-                                                                  <?php
-                                                                }
-                                                                              else
-                                                                              {
-                                                                                  echo "Something went wrong, Comment not Posted";
+                                                                <div id="add">
+                                                                <?php
 
-                                                                              }
-                                                            }
+                                                                if(isset($_POST['submitpost']))
+                                                                {
+
+                                                                  $comDescrip=	$_POST['comDescrip'];
+                                                                  $firstname= $_POST['firstname'];
+                                                                  $lastname= $_POST['lastname'];
+                                                                  $useremail= $_POST['email'];
+
+                                                                  $query = "INSERT INTO `comment`(`bullId`, `firstname`,`lastname`,`email`, `comDescrip`)
+                                                                            VALUES (?,?,?,?,?)";
+                                                                  $stmt = mysqli_prepare($conn,$query);
+                                                                  mysqli_stmt_bind_param($stmt,"issss",$id, $firstname,$lastname ,$useremail, $comDescrip);
+                                                                  mysqli_stmt_execute($stmt);
+                                                                  if(($rows=mysqli_stmt_affected_rows($stmt))==1)
+                                                                  {
                                                                   ?>
-                                                          </div>
+
+                                                                        <div class="alert alert-success">
+                                                                        <strong>Success! </strong> Comment Posted.
+                                                                        </div>
+                                                                                  <script type='text/javascript'>
+                                                                                  window.setTimeout(function()
+                                                                                  {
+                                                                                  window.location = 'publicviewbulletin.php?id=<?php echo $id?>'
+
+                                                                                    } , 2000);
+                                                                                  </script>
+
+                                                                      <?php
+                                                                    }
+                                                                                  else
+                                                                                  {
+                                                                                      echo "Something went wrong, Comment not Posted";
+
+                                                                                  }
+                                                                }
+                                                                      ?>
+                                                              </div>
 
 
-                                    									</form>
+                                                            </form>
+
+
+
+                                                             </div>
+                                                            </div>
+                                                        </div>
+
+
+
                           </div>
                         </div>
 
@@ -201,16 +228,10 @@ $row = mysqli_fetch_assoc($result);
                                       {
                                         $ComDate=$row2['ComDate'];
                                         $D2 = strtotime($ComDate);
-                                        $comUserId= $row2['UId'];
                                         $comDescrip=$row2['comDescrip'];
-                                        $query3 = "SELECT uFirstName,uLastName FROM users WHERE id= $comUserId";
-                                        $result3 = mysqli_query($conn,$query3);
-                                        $row3 = mysqli_fetch_assoc($result3);
-
-                                        $uFirstName=$row3['uFirstName'];
-                                        $uLastName=$row3['uLastName'];
-
-
+                                        $firstname= $row2['firstname'];
+                                        $lastname= $row2['lastname'];
+                                        $useremail= $row2['email'];
 
                                       ?>
                                         <div class="profiletimeline">
@@ -221,7 +242,7 @@ $row = mysqli_fetch_assoc($result);
 
 
 
-                                                    <div><a class="link"><?php echo $uFirstName." ".$uLastName;?></a> <div class="sl-date">  <?php echo date("j M, Y", $D2);?></div>
+                                                    <div><a class="link"><?php echo $firstname." ".$lastname;?></a> <div class="sl-date">  <?php echo date("j M, Y", $D2);?></div>
                                                         <p class="text-justify m-t-10"><?php echo $comDescrip;?> </p>
                                                     </div>
 

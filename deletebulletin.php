@@ -1,6 +1,13 @@
 
 <!DOCTYPE html>
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
 include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM bulletin WHERE bullId = $id";
@@ -248,8 +255,8 @@ $title = $row['bullTopic'];
 
     <script type="text/javascript">
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
+      $( "#menu_bulletin" ).addClass("active");
     </script>
 </body>
 </html>

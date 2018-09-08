@@ -75,6 +75,14 @@ include "include/server.php";
                                         <input type="text" class="form-control" placeholder="User Name" name="username">
                                     </div>
                                     <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" placeholder="First Name" name="firstName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last Name" name="lastName">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Email address</label>
                                         <input type="email" class="form-control" placeholder="Email" name="email">
                                     </div>

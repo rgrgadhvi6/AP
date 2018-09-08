@@ -218,52 +218,50 @@ $row = mysqli_fetch_assoc($result);
                                                       <div class="msg_history">
                                                         <?php
 
-                                                          $query4 = "SELECT * FROM message WHERE senId = 4 AND recId=5 ";
+                                                          $query4 = "SELECT * FROM message";
                                                           $result4 = mysqli_query($conn,$query4);
-                                                          $query5 = "SELECT * FROM message WHERE senId = 5 AND recId=4 ";
-                                                          $result5 = mysqli_query($conn,$query5);
 
                                                           while($row4 = mysqli_fetch_assoc($result4))
                                                         {
-                                                          $nameId= $row4['senId'];
-                                                          $query6 = "SELECT * FROM users WHERE id = $nameId";
-                                                          $result6 = mysqli_query($conn,$query6);
-                                                          $row6 = mysqli_fetch_assoc($result6);
-                                                          $firstName = $row6['uFirstName'];
-                                                          $lastName = $row6['uLastName'];
-                                                           $displaytime= $row4['time'];
-                                                           $D = strtotime($displaytime);
-                                                          ?>
-                                                          <div class="incoming_msg">
-                                                            <div class="incoming_msg_img"> </div>
-                                                            <div class="received_msg">
-                                                              <div class="received_withd_msg">
-                                                                <p><?php echo $row4['message'];?></p>
-                                                                <span class="time_date"> <span id="firstName"><?php echo $firstName; echo " | "; ?></span><?php  echo date("j M, Y  |  h:i A", $D);?></span>
+                                                              $senderId= $row4['senId'];
+                                                              $recId=$row4['recId'];
+                                                              $int1=5;
+                                                              $int2=4;
+                                                              $query6 = "SELECT * FROM users WHERE id = $senderId";
+                                                              $result6 = mysqli_query($conn,$query6);
+                                                              $row6 = mysqli_fetch_assoc($result6);
+                                                              $firstName = $row6['uFirstName'];
+                                                              $lastName = $row6['uLastName'];
+                                                              $displaytime= $row4['time'];
+                                                              $D = strtotime($displaytime);
+                                                                      ?>
+                                                                      <?php if($row4=0 )
+                                                                      {?>
+                                                                        <div class="incoming_msg">
+                                                                        <div class="incoming_msg_img"> </div>
+                                                                        <div class="received_msg">
+                                                                          <div class="received_withd_msg">
+                                                                            <p><?php echo $row4['message'];?></p>
+                                                                            <span class="time_date"> <span id="firstName"><?php echo $firstName; echo " | "; ?></span><?php  echo date("j M, Y  |  h:i A", $D);?></span>
 
-                                                                <span id="lastName"style="visibility: hidden"><?php echo $lastName?></span>
-                                                              </div>
-                                                            </div>
-                                                          </div>
+                                                                            <span id="lastName"style="visibility: hidden"><?php echo $lastName?></span>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                      <?php
+                                                                    }  else if(($senderId=$int2) && ($recId=$int1)){?>
+
+                                                                        <div class="outgoing_msg">
+                                                                        <div class="sent_msg">
+                                                                          <p><?php echo $row4['message'];?></p>
+                                                                          <span class="time_date">  <?php  echo date("j M, Y  |  h:i A", $D);?></span> </div>
+                                                                      </div>
+                                                                      <?php
+                                                                      }?>
                                                           <?php
+
                                                         }
                                                         ?>
-                                                        <?php
-
-                                                          while($row5 = mysqli_fetch_assoc($result5))
-                                                        {
-                                                           $displaytime2= $row5['time'];
-                                                           $D2 = strtotime($displaytime2);
-                                                          ?>
-                                                          <div class="outgoing_msg">
-                                                            <div class="sent_msg">
-                                                              <p><?php echo $row5['message'];?></p>
-                                                              <span class="time_date">  <?php  echo date("j M, Y  |  h:i A", $D2);?></span> </div>
-                                                          </div>
-                                                          <?php
-                                                        }
-                                                        ?>
-
 
 
 

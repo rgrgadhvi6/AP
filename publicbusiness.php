@@ -4,7 +4,7 @@
 <?php
 $query = "SELECT * FROM business";
 $result = mysqli_query($conn,$query);
-$row = mysqli_fetch_assoc($result);
+
 ?>
 <head>
     <meta charset="utf-8">

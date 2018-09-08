@@ -335,7 +335,7 @@ $row = mysqli_fetch_assoc($result);
     <script type="text/javascript">
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
-    })
+    });
 
     $( "#menu_business" ).addClass("active");
     </script>

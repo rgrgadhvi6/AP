@@ -62,7 +62,13 @@ img{ max-width:100%;}
 
 .incoming_msg_img {
   display: inline-block;
-  width: 6%;
+  width: 5%;
+  border-radius: 50%;
+  background: #F25F24;
+  font-size: 28px;
+  color: #fff;
+   text-align: center;
+
 }
 .received_msg {
   display: inline-block;
@@ -93,7 +99,7 @@ img{ max-width:100%;}
 }
 
  .sent_msg p {
-  background: #05728f none repeat scroll 0 0;
+  background: #F3831E none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
   margin: 0; color:#fff;

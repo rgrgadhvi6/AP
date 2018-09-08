@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM bulletin WHERE bullId = $id";
 $result = mysqli_query($conn,$query);
@@ -267,13 +275,13 @@ $row = mysqli_fetch_assoc($result);
 
     <script type="text/javascript">
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
+      $( "#menu_bulletin" ).addClass("active");
     </script>
       <script type="text/javascript">
     document.getElementById("fileToUpload").onchange = function() {
     document.getElementById("uploadform").submit();
-}
+      }
   </script>
 </body>
 </html>

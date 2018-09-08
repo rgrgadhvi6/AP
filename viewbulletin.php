@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM bulletin WHERE bullId = $id";
 $result = mysqli_query($conn,$query);
@@ -72,8 +80,7 @@ $title = $row['bullTopic'];
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
-                      <li class="breadcrumb-item"><a href="student.php">Student</a></li>
-                      <li class="breadcrumb-item active">View Student</li>
+                      <li class="breadcrumb-item active">View Bulletin</li>
                     </ol>
                 </div>
             </div>
@@ -91,7 +98,7 @@ $title = $row['bullTopic'];
                       <div class="col-md-12">
                               <div class="card">
                                   <div class="card-body">
-                                      <h4 class="card-title">Student Details</h4>
+                                      <h4 class="card-title">Bulletin Details</h4>
                                       <!-- Nav tabs -->
                                       <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#home8" role="tab" aria-selected="true"><span><i class="ti-home"></i></span></a> </li>
@@ -235,7 +242,8 @@ $title = $row['bullTopic'];
     <script type="text/javascript">
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
-    })
+    });
+      $( "#menu_bulletin" ).addClass("active");
     </script>
 </body>
 </html>

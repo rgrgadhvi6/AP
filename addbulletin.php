@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php"; ?>
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php"; ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,7 +92,8 @@
                           <div class="card">
                               <div class="card-body">
                                   <div class="form-validation">
-                                      <form action="#add" class="form-valide" method="post">
+
+                                      <form action="#add" class="form-valide" method="post" enctype="multipart/form-data">
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-bullTopic">Bulletin Topic <span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
@@ -121,6 +130,7 @@
                                                   <input type="text" class="form-control" id="bullContent" name="bullContent" placeholder="Short Content about Bulletin">
                                               </div>
                                           </div>
+
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-bullReadMore">Bulletin Read More Link <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
@@ -128,14 +138,16 @@
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-bullImage">Bulletin Image <span class="text-danger"></span></label>
+                                              <label class="col-lg-4 col-form-label" for="val-fileToUpload">Bulletin Image <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
-                                                  <input type="file" class="form-control,custom-file-label" id="bullImage" name="bullImage">
+                                                  <input type="file" class="form-control,custom-file-label" name="fileToUpload" id="fileToUpload">
+
                                               </div>
                                           </div>
+
                                           <div class="form-group row">
                                               <div class="col-lg-8 ml-auto">
-                                                  <button type="submit" name="submit" class="btn btn-primary btn-flat ">Submit</button>
+                                                  <button type="submit" name="submitfullform" class="btn btn-primary btn-flat ">Submit</button>
                                               </div>
 
                                           </div>
@@ -143,8 +155,9 @@
                                           <div id="add">
                                           <?php
 
-                                          if(isset($_POST['submit']))
+                                          if(isset($_POST['submitfullform']))
                                           {
+                                          include "upload2.php";
                                           $bullTopic=$_POST['bullTopic'];
                                           $bullDate=$_POST['bullDate'];
                                           $bullLocation=$_POST['bullLocation'];
@@ -152,12 +165,12 @@
                                           $bullOther=$_POST['bullOther'];
                                           $bullContent=$_POST["bullContent"];
                                           $bullReadMore=$_POST['bullReadMore'];
-                                          $bullImage=$_POST['bullImage'];
+
 
                                             $query = "INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`)
                                                       VALUES (?,?,?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"ssssssss",$bullTopic, $bullDate, $bullLocation, $bullTime, $bullOther, $bullContent, $bullReadMore, $bullImage);
+                                            mysqli_stmt_bind_param($stmt,"ssssssss",$bullTopic, $bullDate, $bullLocation, $bullTime, $bullOther, $bullContent, $bullReadMore, $fileToUpload);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
@@ -168,7 +181,7 @@
                                                               window.setTimeout(function(){
                                                                 window.location = 'bulletin.php';
 
-                                                              } , 2000);
+                                                              } , 1000);
                                                             </script>
                                                 <?php
                                                             }
@@ -244,10 +257,11 @@
     <script type="text/javascript">
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
+    });
+      $( "#menu_bulletin" ).addClass("active");
 
-
-    })
     </script>
+
 </body>
 </html>
 
