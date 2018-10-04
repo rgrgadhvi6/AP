@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";
 $courId = $_POST['courId'];
 $query3 = "SELECT * FROM topic WHERE courId= $courId";
 $result3 = mysqli_query($conn,$query3);

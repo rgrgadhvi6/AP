@@ -26,6 +26,7 @@ include "include/db_config.php";?>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" type="text/css" href="DataTables-1.10.18/css/jquery.dataTables.css"/>
 
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
@@ -98,7 +99,7 @@ include "include/db_config.php";?>
                   </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table id="example" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -140,18 +141,7 @@ include "include/db_config.php";?>
                           ?>
                         </tbody>
                     </table>
-                <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
+                
                 </div>
 
                 </div>
@@ -205,6 +195,7 @@ include "include/db_config.php";?>
 
     <!--stickey kit -->
     <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+      <script type="text/javascript" src="DataTables-1.10.18/js/jquery.dataTables.js"></script>
 
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
@@ -212,6 +203,7 @@ include "include/db_config.php";?>
     $(function(){
       $('[data-toggle="tooltip"]').tooltip()
     });
+      $('#example').DataTable();
     </script>
 </body>
 </html>

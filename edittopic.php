@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM topic  WHERE topId = $id";
 $result = mysqli_query($conn,$query);
@@ -134,10 +142,10 @@ $selectedcourse= $row2['courName'];
                                                   if(isset($_POST['submit']))
                                                   { $id = $_GET['id'];
                                                     $topname=$_POST['topName'];
-                                                    $courId=$_POST['courId'];
+                                                  
 
 
-                                                  $query3= "UPDATE `topic` SET `topName`='$topname',`courId`='$courId'  WHERE topId = ?";
+                                                  $query3= "UPDATE `topic` SET `topName`='$topname',`courId`='$selectedcourseId'  WHERE topId = ?";
                                                   $stmt3 = mysqli_prepare($conn,$query3);
                                                   mysqli_stmt_bind_param($stmt3,"i",$id) or die("unable to bind param");
                                                   mysqli_stmt_execute($stmt3) or die("Unable to execute");

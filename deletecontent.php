@@ -1,12 +1,19 @@
 
 <!DOCTYPE html>
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
 include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM content WHERE conId = $id";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
-$title = $row['conDes'];
+$title = $row['ConHeadline'];
 function custom_echo($x, $length)
 {
   if(strlen($x)<=$length)
@@ -144,29 +151,16 @@ function custom_echo($x, $length)
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                      <div class="col-md-9">
+                      <div class="col-md-12">
                               <div class="card ">
 
 
                                                                     <div class="card-body">
                                                                       <div class="row">
-                                                                        <div class="col-4"><h5><span class="text-primary">Content Description </span></h5></div>
-                                                                        <div class="col-8"><h5><?php custom_echo($row['conDes'], 100);?></h5></div>
-                                                                        <div class="col-4"><h5><span class="text-primary">Text Content A </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['conTypeA'];?></h5></div>
-                                                                        <hr/>
-                                                                        <div class="col-4"><h5><span class="text-primary">Text Content B </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['conTypeB'];?></h5></div>
-                                                                        <hr/>
-                                                                        <div class="col-4"><h5><span class="text-primary">Text Content C </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['conTypeC'];?></h5></div>
-                                                                        <hr/>
-                                                                        <div class="col-4"><h5><span class="text-primary">Link Content A </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['conLinkA'];?></h5></div>
-                                                                        <hr/>
-                                                                        <div class="col-4"><h5><span class="text-primary">Link Content B </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['conLinkB'];?></h5></div>
-                                                                        <hr/>                                                                        <hr/>
+                                                                        <div class="col-12"><h5><span class="text-primary">Content Headline </span></h5></div>
+                                                                        <div class="col-12"><h5><?php echo $title;?></h5></div>
+
+                                                                                                                                            <hr/>
 
                                   &nbsp;
                                                                     </div>

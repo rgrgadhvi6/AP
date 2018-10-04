@@ -1,6 +1,13 @@
 
 <!DOCTYPE html>
 <?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
 include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM course WHERE courId = $id";
@@ -86,7 +93,7 @@ $title = $row['courName'];
             <div class="container-fluid">
 
                 <div class="row justify-content-center">
-                    <div class="col-md-9 ">
+                    <div class="col-md-10 ">
                         <div class="card">
                             <div class="card-body">
 
@@ -133,14 +140,14 @@ $title = $row['courName'];
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                      <div class="col-md-9">
+                      <div class="col-md-12">
                               <div class="card ">
 
 
                                                                     <div class="card-body">
                                                                       <div class="row">
-                                                                        <div class="col-4"><h5><span class="text-primary">Course Name </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['courName'];?></h5></div>
+                                                                        <div class="col-12"><h5><span class="text-primary">Course Name </span></h5></div>
+                                                                        <div class="col-12"><h5><?php echo $row['courName'];?></h5></div>
                                                                       </div>
                                                                         <hr/>
 

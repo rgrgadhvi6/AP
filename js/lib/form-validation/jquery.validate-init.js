@@ -23,6 +23,10 @@ var form_validation = function() {
 
 
                     },
+                    "courName": {
+
+                      required: !0,
+                    },
                     "busAddress": {
                         required: !0,
 
@@ -103,6 +107,10 @@ var form_validation = function() {
                 messages: {
                     "busName": {
                         required: "Please enter business name",
+
+                    },
+                    "courName": {
+                        required: "Please enter course name",
 
                     },
                     "busAddress": {

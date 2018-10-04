@@ -29,12 +29,9 @@
         <ul class="navbar-nav my-lg-0">
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/logo.png" alt="user" class="profile-pic">Logout</a>
-                <div class="dropdown-menu dropdown-menu-right animated zoomIn">
-                    <ul class="dropdown-user">
-                      <li><a href="logout.php"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
-                    </ul>
-                </div>
+              
+              <a class="btn btn-success btn-sm m-b m-l-6" href="logout.php"><i class="fa fa-sign-in-alt"></i>Logout</a>
+
             </li>
         </ul>
           <?php
