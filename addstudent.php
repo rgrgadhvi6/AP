@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php"; ?>
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+$id= $_SESSION['id'];
+include "include/db_config.php";include "include/db_config.php"; ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,7 +70,7 @@
                     <h3 class="text-primary">Add Student</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                            <?php include "include/breadcrum.php"; ?>
                         <li class="breadcrumb-item"><a href="business.php">Student</a></li>
                         <li class="breadcrumb-item active">Add Student</li>
                     </ol>
@@ -211,10 +220,10 @@
                                           $courseName=$_POST['courseName'];
                                           $reasonOfDropout=$_POST['reasonOfDropout'];
 
-                                            $query = "INSERT INTO `student`(`stuFirstName`, `stuLastName`, `parentName`, `email`, `contact`, `stuContact`, `age`, `schoolName`, `courseLevel`, `courseName`, `schoolContact`, `schoolLocation`, `reasonOfDropout`, `flagged`)
-                                                      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                                            $query = "INSERT INTO `student`(`UId`,`stuFirstName`, `stuLastName`, `parentName`, `email`, `contact`, `stuContact`, `age`, `schoolName`, `courseLevel`, `courseName`, `schoolContact`, `schoolLocation`, `reasonOfDropout`, `flagged`)
+                                                      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"ssssssssssssss",$stuFirstName, $stuLastName, $parentName, $email, $contact, $stuContact, $age, $schoolName, $courseLevel, $courseName, $schoolContact, $schoolLocation, $reasonOfDropout, $flagged);
+                                            mysqli_stmt_bind_param($stmt,"issssssssssssss",$id,$stuFirstName, $stuLastName, $parentName, $email, $contact, $stuContact, $age, $schoolName, $courseLevel, $courseName, $schoolContact, $schoolLocation, $reasonOfDropout, $flagged);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM business WHERE busId = $id";
 $result = mysqli_query($conn,$query);
@@ -22,6 +23,7 @@ $row = mysqli_fetch_assoc($result);
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
@@ -205,11 +207,6 @@ $row = mysqli_fetch_assoc($result);
                                            </div>
                                           <div class="tab-pane p-20" id="messages8" role="tabpanel">
 
-
-                                            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
-
-
-
                                             <h3 class=" text-center">Messaging</h3>
                                             <div class="messaging">
                                                   <div class="inbox_msg">
@@ -218,21 +215,34 @@ $row = mysqli_fetch_assoc($result);
                                                       <div class="msg_history">
                                                         <?php
 
-                                                          $query4 = "SELECT * FROM message WHERE senId = 4 AND recId=5 ";
+                                                          $query4 = "SELECT * FROM message WHERE senId = 3 AND recId=21 OR senId = 21 AND recId=3";
                                                           $result4 = mysqli_query($conn,$query4);
-                                                          $query5 = "SELECT * FROM message WHERE senId = 5 AND recId=4 ";
-                                                          $result5 = mysqli_query($conn,$query5);
-
                                                           while($row4 = mysqli_fetch_assoc($result4))
                                                         {
-                                                          $nameId= $row4['senId'];
-                                                          $query6 = "SELECT * FROM users WHERE id = $nameId";
+                                                          $senId= $row4['senId'];
+                                                          echo $senId;
+                                                          $recId=$row4['recId'];
+                                                          echo $recId;
+                                                          $query6 = "SELECT * FROM users WHERE id = $senId";
                                                           $result6 = mysqli_query($conn,$query6);
                                                           $row6 = mysqli_fetch_assoc($result6);
-                                                          $firstName = $row6['uFirstName'];
-                                                          $lastName = $row6['uLastName'];
-                                                           $displaytime= $row4['time'];
-                                                           $D = strtotime($displaytime);
+                                                          $fullname=$row6['username'];
+                                                          $fullnameexplode=explode(" ", $fullname);
+                                                          $firstName = $fullnameexplode[0];
+                                                          if (!empty($fullnameexplode[1]))
+                                                          {
+                                                              $lastName = $fullnameexplode[1];
+                                                          }
+                                                          else
+                                                          {
+                                                            $lastName = "";
+                                                          }
+
+                                                          $displaytime= $row4['time'];
+                                                          $D = strtotime($displaytime);
+
+                                                           if(($senId==3) && ($recId==21))
+                                                           {
                                                           ?>
                                                           <div class="incoming_msg">
                                                             <div class="incoming_msg_img"> </div>
@@ -240,47 +250,65 @@ $row = mysqli_fetch_assoc($result);
                                                               <div class="received_withd_msg">
                                                                 <p><?php echo $row4['message'];?></p>
                                                                 <span class="time_date"> <span id="firstName"><?php echo $firstName; echo " | "; ?></span><?php  echo date("j M, Y  |  h:i A", $D);?></span>
-
                                                                 <span id="lastName"style="visibility: hidden"><?php echo $lastName?></span>
                                                               </div>
                                                             </div>
                                                           </div>
-                                                          <?php
-                                                        }
-                                                        ?>
                                                         <?php
-
-                                                          while($row5 = mysqli_fetch_assoc($result5))
-                                                        {
-                                                           $displaytime2= $row5['time'];
-                                                           $D2 = strtotime($displaytime2);
-                                                          ?>
+                                                        }
+                                                         else
+                                                       {
+                                                        ?>
                                                           <div class="outgoing_msg">
                                                             <div class="sent_msg">
-                                                              <p><?php echo $row5['message'];?></p>
-                                                              <span class="time_date">  <?php  echo date("j M, Y  |  h:i A", $D2);?></span> </div>
+                                                              <p><?php echo $row4['message'];?></p>
+                                                              <span class="time_date">  <?php  echo date("j M, Y  |  h:i A", $D);?></span> </div>
                                                           </div>
-                                                          <?php
+
+                                                      <?php
                                                         }
                                                         ?>
 
-
+                                                <?php
+                                                  }
+                                                ?>
 
 
                                                       </div>
                                                       <div class="type_msg">
                                                         <div class="input_msg_write">
                                                           <div class="form-validation">
-                                                              <form action="postmsg.php" class="form-valide" method="post">
+                                                              <form action="#add" class="form-valide" method="post">
 
                                                                     <div class="row">
                                                                           <textarea  id="message" name="message" class="col-md-11 col-xs-6 form-control"   placeholder="Type a message"></textarea>
                                                                           <div stype=" max-width: 5px;"><button class="btn btn-success" name="submitmsg" type="submit" ><i class="fa fa-paper-plane"></i> </button> </div>
+                                                                    </div>
+
+                                                                          <div id="add">
+                                                                          <?php
+                                                                          if(isset($_POST['submitmsg']))
+                                                                          {
+                                                                          $senId=3 ;
+                                                                          $recId=21;
+                                                                          $message= $_POST['message'];
+                                                                          $query7 = "INSERT INTO `message` (`senId`,`recId`,`message`)
+                                                                                      VALUES (?,?,?)";
+                                                                                      $stmt7 = mysqli_prepare($conn,$query7);
+                                                                            mysqli_stmt_bind_param($stmt7,"iis",$senId,$recId,$message)or die("unable to bind param");
+                                                                            mysqli_stmt_execute($stmt7)or die("Unable to execute");
+                                                                            if(($rows7=mysqli_stmt_affected_rows($stmt7))==1)
+                                                                              {
+                                                                                header("Refresh:0");
+                                                                              }
+
+                                                                          }
+                                                                                ?>
                                                                           </div>
 
-                                                          </div>
-                                                              </form>
 
+                                                                </form>
+                                                              </div>
 
 
 
@@ -302,7 +330,7 @@ $row = mysqli_fetch_assoc($result);
 
 
 
-                                          </div>
+                                                </div>
 
 
 

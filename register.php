@@ -71,16 +71,8 @@ include "include/server.php";
                                 <form method="post" action="register.php">
 
                                     <div class="form-group">
-                                        <label>User Name</label>
-                                        <input type="text" class="form-control" placeholder="User Name" name="username">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="First Name" name="firstName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last Name" name="lastName">
+                                        <label>Full Name</label>
+                                        <input type="text" class="form-control" placeholder="Full Name" name="username">
                                     </div>
                                     <div class="form-group">
                                         <label>Email address</label>

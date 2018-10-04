@@ -2568,8 +2568,8 @@ table.dataTable thead .sorting::after {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  background-color: #67757c;
-  border: 1px solid #67757c;
+  background-color: #F25F24;
+  border: 1px solid #F25F24;
   color: #F25F24 !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,

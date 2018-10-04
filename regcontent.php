@@ -8,6 +8,11 @@ $query3 = "SELECT * FROM topic WHERE topId= $id ";
 $result3 = mysqli_query($conn,$query3);
 $row3 = mysqli_fetch_assoc($result3);
 $topicname =$row3['topName'];
+
+$query = "SELECT * FROM content WHERE topId = $id";
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_assoc($result);
+
 ?>
 
 <head>
@@ -88,14 +93,7 @@ $topicname =$row3['topName'];
           <div class="container-fluid">
 
                 <?php
-                $query = "SELECT * FROM content WHERE topId = $id";
-                $result = mysqli_query($conn,$query);
-                $row = mysqli_fetch_assoc($result);
-
-                while($row = mysqli_fetch_assoc($result))
-                {
                   echo $row['conDescrip'];
-                }
                 ?>
 
 

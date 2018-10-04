@@ -108,7 +108,16 @@ $row = mysqli_fetch_assoc($result);
                                                         <div class="m-t-20 row">
                                                             <div class="col-md-5 col-xs-12"><img src="<?php echo $row['bullImage'];?>" alt="user" class="img-responsive radius"></div>
                                                             <div class="col-md-7 col-xs-12">
-                                                                <p class="text-justify"> <?php echo $row['bullContent'];?></p> <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"><i class="fa fa-external-link"></i> Source</a>
+                                                                <p class="text-justify"> <?php echo $row['bullContent'];?></p>
+                                                                  <p <class="text-justify"><b> <?php echo $row['bullOther'];?></b></p>
+                                                                  <?php
+                                                                  if(!empty($row['bullReadMore']))
+                                                                       {
+                                                                   ?>
+                                                                           <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"><i class="fa fa-external-link"></i> Source</a>
+                                                                 <?php
+                                                                      }
+                                                                   ?>
                                                                   <hr><div class="addthis_inline_share_toolbox"></div>
                                                             </div>
 
@@ -128,19 +137,13 @@ $row = mysqli_fetch_assoc($result);
                                                           <div class="card card-body">
                                                             <form action="#add" class="form-valide" method="post">
                                                                 <div class="form-group row">
-                                                                    <label class="col-lg-4 col-form-label" for="val-firstname">First Name <span class="text-danger">*</span></label>
+                                                                    <label class="col-lg-4 col-form-label" for="val-fullname">Full Name <span class="text-danger">*</span></label>
                                                                     <div class="col-lg-6">
-                                                                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+                                                                        <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter Your Name">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label class="col-lg-4 col-form-label" for="val-lastname">Last Name <span class="text-danger">*</span></label>
-                                                                    <div class="col-lg-6">
-                                                                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group row">
-                                                                    <label class="col-lg-4 col-form-label" for="val-email">First Name <span class="text-danger">*</span></label>
+                                                                    <label class="col-lg-4 col-form-label" for="val-email">Email <span class="text-danger">*</span></label>
                                                                     <div class="col-lg-6">
                                                                         <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email Address">
                                                                     </div>
@@ -156,14 +159,13 @@ $row = mysqli_fetch_assoc($result);
                                                                 {
 
                                                                   $comDescrip=	$_POST['comDescrip'];
-                                                                  $firstname= $_POST['firstname'];
-                                                                  $lastname= $_POST['lastname'];
+                                                                  $fullname= $_POST['fullname'];
                                                                   $useremail= $_POST['email'];
 
-                                                                  $query = "INSERT INTO `comment`(`bullId`, `firstname`,`lastname`,`email`, `comDescrip`)
-                                                                            VALUES (?,?,?,?,?)";
+                                                                  $query = "INSERT INTO `comment`(`bullId`, `fullname`,`email`, `comDescrip`)
+                                                                            VALUES (?,?,?,?)";
                                                                   $stmt = mysqli_prepare($conn,$query);
-                                                                  mysqli_stmt_bind_param($stmt,"issss",$id, $firstname,$lastname ,$useremail, $comDescrip);
+                                                                  mysqli_stmt_bind_param($stmt,"isss",$id, $fullname,$useremail, $comDescrip);
                                                                   mysqli_stmt_execute($stmt);
                                                                   if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                                                   {
@@ -229,20 +231,19 @@ $row = mysqli_fetch_assoc($result);
                                         $ComDate=$row2['ComDate'];
                                         $D2 = strtotime($ComDate);
                                         $comDescrip=$row2['comDescrip'];
-                                        $firstname= $row2['firstname'];
-                                        $lastname= $row2['lastname'];
+                                        $fullname= $row2['fullname'];
                                         $useremail= $row2['email'];
 
                                       ?>
                                         <div class="profiletimeline">
 
                                             <div class="sl-item">
-                                                <div class="sl-left"> <img src="images/users/5.jpeg" alt="user" class="img-circle"> </div>
+                                                <div class="sl-left"> <img src="images/users/6.png" alt="user" class="img-circle"> </div>
                                                 <div class="sl-right">
 
 
 
-                                                    <div><a class="link"><?php echo $firstname." ".$lastname;?></a> <div class="sl-date">  <?php echo date("j M, Y", $D2);?></div>
+                                                    <div><a class="link"><?php echo $fullname?></a> <div class="sl-date">  <?php echo date("j M, Y", $D2);?></div>
                                                         <p class="text-justify m-t-10"><?php echo $comDescrip;?> </p>
                                                     </div>
 

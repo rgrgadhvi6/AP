@@ -114,7 +114,7 @@ if(!isset($_SESSION['username']))
                         </thead>
                         <tbody>
                         <?php
-                          $query = "SELECT bullId, bullTopic, bullDate, bullLocation, bullTime, bullImage FROM bulletin";
+                          $query = "SELECT bullId, bullTopic, bullDate, bullImage FROM bulletin";
                           $result = mysqli_query($conn,$query);
                           while($row = mysqli_fetch_assoc($result))
                           {

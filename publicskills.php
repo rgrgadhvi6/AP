@@ -51,7 +51,7 @@
     <!--************************************ lEFT SIDEBAR*************************************************  -->
         <div class="left-sidebar" style="overflow: visible;">
             <!-- Sidebar scroll-->
-            <?php include "include/side_nav.php"; ?>
+                <?php include "include/publicside_nav.php"; ?>
             <!-- End Sidebar scroll-->
         </div>
         <!-- End Left Sidebar  -->

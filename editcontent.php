@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include "include/db_config.php";
-$courId = $_POST['courId'];
-$query3 = "SELECT * FROM topic WHERE courId= $courId";
-$result3 = mysqli_query($conn,$query3);
+$id = $_GET['id'];
+$query10 = "SELECT * FROM content  WHERE conId = $id";
+$result10 = mysqli_query($conn,$query10);
+$row10 = mysqli_fetch_assoc($result10);
+$selectedcontopId= $row10['topId'];
+
+$query = "SELECT * FROM topic  WHERE topId = $selectedcontopId";
+$result = mysqli_query($conn,$query);
+$row = mysqli_fetch_assoc($result);
+$selectedcontopName= $row['topName'];
+$selectedconcourId= $row['courId'];
+
+
+$query11 = "SELECT * FROM course  WHERE courId = $selectedconcourId";
+$result11 = mysqli_query($conn,$query11);
+$row11 = mysqli_fetch_assoc($result11);
+$selectedconcourName= $row11['courName'];
 ?>
 <head>
     <meta charset="utf-8">
@@ -92,34 +106,25 @@ $result3 = mysqli_query($conn,$query3);
 
 
                                                 <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-topName"> Please Select Topic for the content<span class="text-danger">*</span></label>
+                                                    <label class="col-lg-4 col-form-label" for="val-Bsize">Content Course <span class="text-danger"></span></label>
                                                     <div class="col-lg-6">
-                                                        <select class="form-control" id="topId" name="topId">
-                                                        <option value=""  disabled selected>Please select</option>
-
-                                                          <?php
-
-                                                            while($row3 = mysqli_fetch_assoc($result3))
-                                                            {
-                                                          ?>
-                                                            <option value="<?php echo $row3['topId'];?>"><?php echo $row3['topName']; ?></option>
-                                                            <?php
-                                                            }
-                                                            ?>
-                                                        </select>
+                                                      <label class="col-form-label"><?php echo $selectedconcourName;?></label>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content Description<span class="text-danger">*</span></label>
+                                                    <label class="col-lg-4 col-form-label" for="val-Bsize">Content Topic <span class="text-danger"></span></label>
+                                                    <div class="col-lg-6">
+                                                      <label class="col-form-label"><?php echo $selectedcontopName;?></label>
+                                                    </div>
+
                                                 </div>
-                                                <?php
-                                                $query5 = "SELECT * FROM content WHERE topId= $courId";
-                                                $result5 = mysqli_query($conn,$query5);
-                                                $row5 = mysqli_fetch_assoc($result5);
-                                                ?>
-                                                <textarea value="<?php echo $row5['conDescrip'];?>  "id="conDescrip" name="conDescrip" style="width: 600px; height: 300px;"> </textarea>
+
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content<span class="text-danger">*</span></label>
+                                                </div>
+                                                <textarea id="conDescrip" name="conDescrip" style="width: 600px; height: 300px;"><?php echo $row10['conDescrip'];?>  </textarea>
 
                                                 &nbsp;
                                                 <div class="form-group row">
@@ -133,7 +138,7 @@ $result3 = mysqli_query($conn,$query3);
                                       <div id="edit">
                                       <?php
                                               if(isset($_POST['submitbtn']))
-                                              { $id = $_GET['id'];
+                                              {
                                                 $conDes= $_POST['conDes'];
 
 

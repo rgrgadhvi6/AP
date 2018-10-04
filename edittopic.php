@@ -2,9 +2,15 @@
 <html lang="en">
 <?php include "include/db_config.php";
 $id = $_GET['id'];
-$query = "SELECT * FROM topic WHERE topId = $id";
+$query = "SELECT * FROM topic  WHERE topId = $id";
 $result = mysqli_query($conn,$query);
 $row = mysqli_fetch_assoc($result);
+$selectedcourseId= $row['courId'];
+$query2 = "SELECT * FROM course  WHERE courId = $selectedcourseId";
+$result2 = mysqli_query($conn,$query2);
+$row2 = mysqli_fetch_assoc($result2);
+$selectedcourse= $row2['courName'];
+
 ?>
 <head>
     <meta charset="utf-8">
@@ -94,22 +100,7 @@ $row = mysqli_fetch_assoc($result);
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-Bsize">Topic Course <span class="text-danger"></span></label>
                                             <div class="col-lg-6">
-                                                <select class="form-control" id="courId" name="courId">
-
-                                                  <?php
-                                                  $query2 = "SELECT courName FROM course";
-                                                  $result2 = mysqli_query($conn,$query2);
-                                                  ?>
-                                                  <option value=""disabled selected> Please Select</option>
-                                                  <?php
-                                                    while($row2 = mysqli_fetch_assoc($result2))
-                                                    {
-                                                  ?>
-                                                    <option value="<?php echo $row2['courName'];?>"> <?php echo $row2['courName'];?></option>
-                                                    <?php
-                                                    }
-                                                    ?>
-                                                </select>
+                                              <label class="col-form-label" id="courId" name="courId"><?php echo $selectedcourse;?></label>
                                             </div>
 
                                         </div>

@@ -107,18 +107,6 @@ include "include/db_config.php"; ?>
                                               </div>
                                           </div>
                                           <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-bullLocation">Bulletin Location <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="bullLocation" name="bullLocation" placeholder="399 Lonsdale Street,Victoria 3000(if any)">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-bullTime">Bulletin Time <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="bullTime" name="bullTime" placeholder="12pm (if any)">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-bullOther">Bulletin Extra Info <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
                                                   <input type="text" class="form-control" id="bullOther" name="bullOther" placeholder="Other Important Info (if any)">
@@ -127,7 +115,8 @@ include "include/db_config.php"; ?>
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-bullContent">Bulletin Content<span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="bullContent" name="bullContent" placeholder="Short Content about Bulletin">
+
+                                                  <textarea type="text" class="form-control" id="bullContent" name="bullContent" placeholder="Short Content about Bulletin"></textarea>
                                               </div>
                                           </div>
 
@@ -160,17 +149,15 @@ include "include/db_config.php"; ?>
                                           include "upload2.php";
                                           $bullTopic=$_POST['bullTopic'];
                                           $bullDate=$_POST['bullDate'];
-                                          $bullLocation=$_POST['bullLocation'];
-                                          $bullTime=$_POST['bullTime'];
                                           $bullOther=$_POST['bullOther'];
                                           $bullContent=$_POST["bullContent"];
                                           $bullReadMore=$_POST['bullReadMore'];
 
 
-                                            $query = "INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullLocation`, `bullTime`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`)
-                                                      VALUES (?,?,?,?,?,?,?,?)";
+                                            $query = "INSERT INTO `bulletin`(`bullTopic`, `bullDate`, `bullOther`, `bullContent`, `bullReadMore`, `bullImage`)
+                                                      VALUES (?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"ssssssss",$bullTopic, $bullDate, $bullLocation, $bullTime, $bullOther, $bullContent, $bullReadMore, $fileToUpload);
+                                            mysqli_stmt_bind_param($stmt,"ssssss",$bullTopic, $bullDate, $bullOther, $bullContent, $bullReadMore, $fileToUpload);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {

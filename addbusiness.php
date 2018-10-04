@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php"; ?>
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+$id= $_SESSION['id'];
+include "include/db_config.php"; ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,7 +70,7 @@
                     <h3 class="text-primary">Add Business</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                          <?php include "include/breadcrum.php"; ?>
                         <li class="breadcrumb-item"><a href="business.php">Business</a></li>
                         <li class="breadcrumb-item active">Add Business</li>
                     </ol>
@@ -171,7 +180,7 @@
                                           if(isset($_POST['submit']))
                                           {
                                           $busName=$_POST['busName'];
-                                          $Uid=1;
+
 
                                           $busAddress=$_POST['busAddress'];
                                           $busType=$_POST['busType'];
@@ -183,10 +192,10 @@
                                           $busWebsite=$_POST['busWebsite'];
                                           $busSize=$_POST['busSize'];
 
-                                            $query = "INSERT INTO `business`(`busName`,`UId`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
+                                            $query = "INSERT INTO `business`(`UId`,`busName`, `busAddress`, `busType`, `busABN`, `busEmail`, `busContact`, `busContactPerson`, `busContactPersonRole`, `busWebsite`, `busSize`)
                                                       VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"sisssssssss",$busName,$Uid, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
+                                            mysqli_stmt_bind_param($stmt,"sssssssssss",$id,$busName, $busAddress, $busType, $busABN, $busEmail, $busContact, $busContactPerson, $busContactPersonRole, $busWebsite, $busSize);
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {

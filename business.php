@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<?php include "include/db_config.php";?>
+<?php include "include/db_config.php";
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+$id= $_SESSION['id'];
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -18,6 +27,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="DataTables-1.10.18/css/jquery.dataTables.css"/>
+
 
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
@@ -62,7 +73,7 @@
                     <h3 class="text-primary">Business</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                        <?php include "include/breadcrum.php"; ?>
                         <li class="breadcrumb-item active">Business</li>
                     </ol>
                 </div>
@@ -85,13 +96,14 @@
                     <h4>Manage <b>Business</b></h4>
                   </div>
                   <div class="col-sm-6">
+                    <?php echo     $_SESSION['userType'] ; ?>
                   <a href="addbusiness.php" class="btn btn-success"><i class="material-icons"></i> <span>Add New Business</span></a>
 
 
                   </div>
                         </div>
                     </div>
-                    <table class="table table-striped table-hover">
+                    <table id="example" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -104,8 +116,19 @@
                         </thead>
                         <tbody>
                         <?php
-                          $query = "SELECT busId, busName, busType, busContactPerson, busContact FROM business";
-                          $result = mysqli_query($conn,$query);
+                        if($_SESSION['userType']==0)
+                            {
+                              $query = "SELECT busId, busName, busType, busContactPerson, busContact FROM business";
+                              $result = mysqli_query($conn,$query);
+                            }
+                        if($_SESSION['userType']==1)
+                            {
+                              $query = "SELECT busId , busName , busType , busContactPerson , busContact, UId  FROM business WHERE UId=$id ";
+                              $result = mysqli_query($conn,$query);
+                            }
+
+
+
                           while($row = mysqli_fetch_assoc($result))
                           {
                         ?>
@@ -136,20 +159,8 @@
                           ?>
                         </tbody>
                     </table>
-                <div class="clearfix">
-                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
+
+
                 </div>
 
       </div>
@@ -192,6 +203,7 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="DataTables-1.10.18/js/jquery.dataTables.js"></script>
 
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/jquery.slimscroll.js"></script>
@@ -208,6 +220,7 @@
     $(function(){
       $('[data-toggle="tooltip"]').tooltip()
     });
+      $('#example').DataTable();
     </script>
 </body>
 </html>

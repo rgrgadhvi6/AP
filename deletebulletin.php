@@ -171,16 +171,6 @@ $title = $row['bullTopic'];
                                                                       </div>
                                                                       <hr/>
                                                                       <div class="row">
-                                                                        <div class="col-4"><h5><span class="text-primary">Bulletin Location </span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['bullLocation'];?></h5></div>
-                                                                      </div>
-                                                                        <hr/>
-                                                                      <div class="row">
-                                                                        <div class="col-4"><h5><span class="text-primary">Bulletin Time</span></h5></div>
-                                                                        <div class="col-8"><h5><?php echo $row['bullTime'];?></h5></div>
-                                                                      </div>
-                                                                      <hr/>
-                                                                      <div class="row">
                                                                         <div class="col-4"><h5><span class="text-primary">Bulletin Extra Info </span></h5></div>
                                                                         <div class="col-8"><h5><?php echo $row['bullOther'];?></h5></div>
                                                                       </div>

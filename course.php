@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<?php include "include/db_config.php";?>
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";?>
 <html lang="en">
 <head>
     <meta charset="utf-8">

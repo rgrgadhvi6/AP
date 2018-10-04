@@ -2,23 +2,49 @@
   <div class="scroll-sidebar in" style="overflow-x: visible; overflow-y: hidden; width: auto; height: 100%;">
 
     <!-- Sidebar navigation-->
-    <nav class="sidebar-nav active">
-        <ul id="sidebarnav" class="in">
-            <li class="nav-devider"></li>
-            <li class="nav-label">Home</li>
-            <li> <a href="bulletin.php" aria-expanded="false" id="menu_bulletin"><i class="fa fa-tachometer"></i><span class="hide-menu">Bulletin</span></a> </li>
-            <li> <a href="business.php" aria-expanded="false" id="menu_business"><i class="fa fa-suitcase"></i><span class="hide-menu">Business</span></a></li>
-            <li> <a href="student.php" aria-expanded="false" id="menu_student"><i class="fa fa-graduation-cap"></i><span class="hide-menu">Student</span></a></li>
-            <li> <a class="has-arrow" href="skill.php" aria-expanded="false" id="menu_skill"><i class="fa fa-book"></i><span class="hide-menu">Skill</span></a>
-                <ul aria-expanded="false" class="collapse" style="height: 0px;">
-                    <li class="active"><a href="course.php">Courses</a>  </li>
-                    <li class="active"><a href="topic.php">Topics</a>  </li>
-                    <li class="active"><a href="content.php">Content</a>  </li>
-                </ul></li>
+    <?php
+     if($_SESSION['userType']==0)
+         {
+     ?>
+     <nav class="sidebar-nav active">
+         <ul id="sidebarnav" class="in">
+             <li class="nav-devider"></li>
+             <li class="nav-label">Home</li>
+             <li> <a href="bulletin.php" aria-expanded="false" id="menu_bulletin"><i class="fa fa-tachometer"></i><span class="hide-menu">Bulletin</span></a> </li>
+             <li> <a href="business.php" aria-expanded="false" id="menu_business"><i class="fa fa-suitcase"></i><span class="hide-menu">Business</span></a></li>
+             <li> <a href="student.php" aria-expanded="false" id="menu_student"><i class="fa fa-graduation-cap"></i><span class="hide-menu">Student</span></a></li>
+
+             <li> <a class="has-arrow" href="skill.php" aria-expanded="false" id="menu_skill"><i class="fa fa-book"></i><span class="hide-menu">Skill</span></a>
+                 <ul aria-expanded="false" class="collapse" style="height: 0px;">
+                     <li class="active"><a href="course.php">Courses</a>  </li>
+                     <li class="active"><a href="topic.php">Topics</a>  </li>
+                     <li class="active"><a href="content.php">Content</a>  </li>
+                 </ul></li>
 
 
-      </ul>
-  </nav>
+       </ul>
+       </nav>
+   <?php
+        }
+   if($_SESSION['userType']==1)
+        {
+      ?>
+      <nav class="sidebar-nav active">
+          <ul id="sidebarnav" class="in">
+              <li class="nav-devider"></li>
+              <li class="nav-label">Home</li>
+              <li> <a href="business.php" aria-expanded="false" id="menu_business"><i class="fa fa-suitcase"></i><span class="hide-menu">Business</span></a></li>
+              <li> <a href="student.php" aria-expanded="false" id="menu_student"><i class="fa fa-graduation-cap"></i><span class="hide-menu">Student</span></a></li>
+
+
+        </ul>
+        </nav>
+
+     <?php
+          }
+
+       ?>
+      
   <!--************************************ End Sidebar navigation ************************************************  -->
   <!-- * -->
   <!-- * -->

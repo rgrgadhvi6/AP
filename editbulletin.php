@@ -121,18 +121,7 @@ $row = mysqli_fetch_assoc($result);
                                                   <input type="date"class="form-control" id="bullDate" name="bullDate" data-provide="datepicker"value="<?php echo $row['bullDate'];?>">
                                               </div>
                                           </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-bullLocation">Bulletin Location <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="bullLocation" name="bullLocation" value="<?php echo $row['bullLocation'];?>">
-                                              </div>
-                                          </div>
-                                          <div class="form-group row">
-                                              <label class="col-lg-4 col-form-label" for="val-bullTime">Bulletin Time <span class="text-danger"></span></label>
-                                              <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="bullTime" name="bullTime" value="<?php echo $row['bullTime'];?>">
-                                              </div>
-                                          </div>
+
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-bullOther">Bulletin Extra Info <span class="text-danger"></span></label>
                                               <div class="col-lg-6">
@@ -142,7 +131,8 @@ $row = mysqli_fetch_assoc($result);
                                           <div class="form-group row">
                                               <label class="col-lg-4 col-form-label" for="val-bullContent">Bulletin Content<span class="text-danger">*</span></label>
                                               <div class="col-lg-6">
-                                                  <input type="text" class="form-control" id="bullContent" name="bullContent" value="<?php echo $row['bullContent'];?>">
+                                                <textarea type="text" class="form-control" id="bullContent" name="bullContent"><?php echo $row['bullContent'];?></textarea>
+
                                               </div>
                                           </div>
                                           <div class="form-group row">
@@ -171,15 +161,13 @@ $row = mysqli_fetch_assoc($result);
                                                   { $id = $_GET['id'];
                                                     $bullTopic=$_POST['bullTopic'];
                                                     $bullDate=$_POST['bullDate'];
-                                                    $bullLocation=$_POST['bullLocation'];
-                                                    $bullTime=$_POST['bullTime'];
                                                     $bullOther=$_POST['bullOther'];
                                                     $bullContent=$_POST["bullContent"];
                                                     $bullReadMore=$_POST['bullReadMore'];
 
 
 
-                                                  $query3= "UPDATE `bulletin` SET `bullTopic`='$bullTopic',`bullDate`='$bullDate', `bullLocation`='$bullLocation',`bullTime`='$bullTime',
+                                                  $query3= "UPDATE `bulletin` SET `bullTopic`='$bullTopic',`bullDate`='$bullDate',
                                                   `bullOther`='$bullOther',`bullContent`='$bullContent',`bullReadMore`='$bullReadMore' WHERE bullId = ?";
                                                   $stmt3 = mysqli_prepare($conn,$query3);
                                                   mysqli_stmt_bind_param($stmt3,"i",$id) or die("unable to bind param");
@@ -192,14 +180,16 @@ $row = mysqli_fetch_assoc($result);
                                                                 </div>
                                                                 <script type='text/javascript'>
                                                                     window.setTimeout(function()
-                                                                    {window.location = 'bulletin.php';} , 3000);
+                                                                    {window.location = 'bulletin.php';} , 2000);
                                                                 </script>
                                                     <?php
                                                                 }
                                                                 else
                                                                 {
                                                                   ?>
+                                                                  <div class="alert alert-success">
                                                                   <strong>Details! </strong> Updated.
+                                                                  </div>
                                                                   <script type='text/javascript'>
                                                                       window.setTimeout(function()
                                                                       {window.location = 'bulletin.php';} , 1000);

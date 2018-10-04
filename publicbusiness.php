@@ -55,7 +55,7 @@ $result = mysqli_query($conn,$query);
     <!--************************************ lEFT SIDEBAR*************************************************  -->
         <div class="left-sidebar" style="overflow: visible;">
             <!-- Sidebar scroll-->
-            <?php include "include/side_nav.php"; ?>
+              <?php include "include/publicside_nav.php"; ?>
             <!-- End Sidebar scroll-->
         </div>
         <!-- End Left Sidebar  -->
@@ -109,7 +109,7 @@ $result = mysqli_query($conn,$query);
                                           <div class="contacts" >
 
                                               <a href="tel:<?php echo $row['busContact'];?>"><i class="fa fa-phone"></i></a>
-                                              <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo $row['busEmail'];?>&body=my-text"><i class="fa fa-envelope"></i></a>
+                                              <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?php echo $row['busEmail'];?>&body=Reference: AAMEYS Portal"><i class="fa fa-envelope"></i></a>
                                               <a href="https://www.google.com/maps/search/?api=1&query=<?php echo $row['busAddress'];?>"><i class="fa fa-map-marker"></i></a>
 
 

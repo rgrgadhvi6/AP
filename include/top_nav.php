@@ -22,19 +22,38 @@
             <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)"><i class="mdi-close mdi-menu mdi"></i></a> </li>
             <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
         </ul>
-
-
+        <?php
+        if(isset($_SESSION['username']))
+        {
+        ?>
         <ul class="navbar-nav my-lg-0">
             <!-- Profile -->
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/users/5.jpeg" alt="user" class="profile-pic"></a>
+                <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/logo.png" alt="user" class="profile-pic">Logout</a>
                 <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                     <ul class="dropdown-user">
-
-                        <li><a href="logout.php"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
+                      <li><a href="logout.php"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
                     </ul>
                 </div>
             </li>
         </ul>
+          <?php
+        }
+        if(!isset($_SESSION['username']))
+        {
+          ?>
+          <ul class="navbar-nav my-lg-0">
+              <!-- Profile -->
+              <li class="nav-item dropdown">
+                <a class="btn btn-success btn-sm m-b m-l-6" href="login.php"><i class="fa fa-sign-in-alt"></i>Login</a>
+
+              </li>
+          </ul>
+          <?php
+        }
+        ?>
+
+
+
     </div>
 </nav>

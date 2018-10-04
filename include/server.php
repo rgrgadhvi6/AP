@@ -24,37 +24,35 @@ if (isset($_POST['reg_user']))
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($username)) { array_push($errors, "Username is required"); }
+  if (empty($username)) { array_push($errors, "Name is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
   if (empty($password)) { array_push($errors, "Password is required"); }
 
 
   // first check the database to make sure
   // a user does not already exist with the same username and/or email
-    $user_check_query = "SELECT * FROM users WHERE firstname='$firstname' OR lastname='$lastname' OR username='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM users WHERE email='$email' LIMIT 1";
   $result = mysqli_query($conn, $user_check_query);
   $user = mysqli_fetch_assoc($result);
-
-  if ($user) { // if user exists
-    if ($user['username'] === $username) {
-      array_push($errors, "Username already exists");
-    }
-
-    if ($user['email'] === $email) {
+  if (mysqli_num_rows($result) == 1)
+    {
       array_push($errors, "Email already exists");
     }
-  }
+
 
   // Finally, register user if there are no errors in the form
-  if (count($errors) == 0) {
+  if (count($errors) == 0)
+  {
    $password = md5($password);  //encrypt the password before saving in the database
 
-   $query = "INSERT INTO users (firstname, lastname, username, email, password  )
-         VALUES('$firstname', '$lastname', '$username', '$email', '$password' )";
+   $query = "INSERT INTO users (username, email, password  )
+              VALUES('$username', '$email', '$password' )";
    mysqli_query($conn, $query);
-   $_SESSION['username'] = $username;
-   //$_SESSION['success'] = "You are now logged in";
-   // header('location: business.php');
+
+
+
+    header('Location: login.php');
+
   }
 }
 
@@ -75,19 +73,22 @@ if (isset($_POST['login_user']))
     $logged = mysqli_fetch_assoc($results);
   	if (mysqli_num_rows($results) == 1)
     {
-
-      if($_SESSION['usertype']== 0)
+      $_SESSION['userType'] = $logged['userType'];
+      if($_SESSION['userType']== 0)
           {
 
             $_SESSION['username'] =$username;
             $_SESSION['id'] = $logged['id'];
+            $_SESSION['userType'] = $logged['userType'];
             header('location: bulletin.php');
           }
 
-          else if($_SESSION['usertype']== 1)
+          else if($_SESSION['userType']== 1)
           {
             $_SESSION['username'] = $username;
             $_SESSION['id'] = $logged['id'];
+            $_SESSION['userType'] = $logged['userType'];
+
             header('location: business.php');
           }
 

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM business WHERE busId = $id";
 $result = mysqli_query($conn,$query);
@@ -66,7 +74,7 @@ $row = mysqli_fetch_assoc($result);
                     <h3 class="text-primary">Edit Business</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                      <?php include "include/breadcrum.php"; ?>
                       <li class="breadcrumb-item"><a href="business.php">Business</a></li>
                       <li class="breadcrumb-item active">Edit Business</li>
                     </ol>

@@ -108,7 +108,14 @@ $result = mysqli_query($conn,$query);
                                                             <div class="col-md-5 col-xs-12"><img src="<?php echo $row['bullImage'];?>" alt="user" class="img-responsive radius"></div>
                                                             <div class="col-md-7 col-xs-12">
                                                                 <p class="text-justify"> <?php echo $row['bullContent'];?></p>   <a href="publicviewbulletin.php?id=<?php echo $row['bullId'];?>" class="btn btn-success"><i class="fa fa-commenting-o"></i> View</a>
-                                                                <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"><i class="fa fa-external-link"></i> Source</a>
+                                                                <?php
+                                                                if(!empty($row['bullReadMore']))
+                                                                     {
+                                                                 ?>
+                                                                         <a href="<?php echo $row['bullReadMore'];?>" class="btn btn-success"><i class="fa fa-external-link"></i> Source</a>
+                                                               <?php
+                                                                    }
+                                                                 ?>
 
                                                               </div>
 

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "include/db_config.php";
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    // not logged in
+    header('Location: login.php');
+    exit();
+}
+include "include/db_config.php";
 $id = $_GET['id'];
 $query = "SELECT * FROM student WHERE stuId = $id";
 $result = mysqli_query($conn,$query);
@@ -69,7 +77,7 @@ $fullName = $row['stuFirstName'] ." ". $row['stuLastName'];
                     <h3 class="text-primary"><?php echo $fullName?></h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="bulletin.php">Home</a></li>
+                    <?php include "include/breadcrum.php"; ?>
                       <li class="breadcrumb-item"><a href="student.php">Student</a></li>
                       <li class="breadcrumb-item active">View Student</li>
                     </ol>
