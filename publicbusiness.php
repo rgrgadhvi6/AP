@@ -100,7 +100,7 @@ $result = mysqli_query($conn,$query);
 
                                           <header>
                                               <div class="avatar">
-                                                  <img src="https://c1.staticflickr.com/1/22/34368753_05c4bee447.jpg" alt="">
+                                                  <img src="images/bus.png" alt="">
                                               </div>
                                           </header>
 

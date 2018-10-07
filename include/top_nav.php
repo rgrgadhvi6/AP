@@ -2,7 +2,7 @@
 
     <!-- Logo -->
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="" style=" pointer-events: none;">
 
             <!-- Logo icon -->
             <b><img src="images/logo.png" alt="homepage" class="dark-logo"></b>
@@ -29,7 +29,7 @@
         <ul class="navbar-nav my-lg-0">
             <!-- Profile -->
             <li class="nav-item dropdown">
-              
+
               <a class="btn btn-success btn-sm m-b m-l-6" href="logout.php"><i class="fa fa-sign-in-alt"></i>Logout</a>
 
             </li>

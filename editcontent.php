@@ -128,6 +128,12 @@ $selectedconcourName= $row11['courName'];
                                                     </div>
 
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-ConHeadline"> Content Headline<span class="text-danger">*</span></label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="ConHeadline" name="ConHeadline" value="<?php echo $row10['ConHeadline'];?>">
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group row">
                                                     <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content<span class="text-danger">*</span></label>
@@ -147,11 +153,12 @@ $selectedconcourName= $row11['courName'];
                                       <?php
                                               if(isset($_POST['submitbtn']))
                                               {
-                                                $conDes= $_POST['conDes'];
+                                                $conDescrip= $_POST['conDescrip'];
+                                                $ConHeadline= $_POST['ConHeadline'];
 
 
 
-                                              $query6= "UPDATE `content` SET `conDes` = ' $conDes' WHERE conId = ?";
+                                              $query6= "UPDATE `content` SET    `topId`='$selectedcontopId', `ConHeadline` = ' $ConHeadline', `conDescrip` = ' $conDescrip' WHERE conId = ?";
                                               $stmt6 = mysqli_prepare($conn,$query6);
                                               mysqli_stmt_bind_param($stmt6,"i",$id) or die("unable to bind param");
                                               mysqli_stmt_execute($stmt6) or die("Unable to execute");

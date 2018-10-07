@@ -12,6 +12,8 @@ include "include/db_config.php";
 $courId = $_POST['courId'];
 $query3 = "SELECT * FROM topic WHERE courId= $courId";
 $result3 = mysqli_query($conn,$query3);
+$query4 = "SELECT * FROM content";
+$result4 = mysqli_query($conn,$query4);
 ?>
 <head>
     <meta charset="utf-8">
@@ -106,23 +108,34 @@ $result3 = mysqli_query($conn,$query3);
 
                                                   <?php
 
+
                                                     while($row3 = mysqli_fetch_assoc($result3))
                                                     {
+                                                      if(($row3['topId']!=7) && ($row3['topId']!=10) && ($row3['topId']!=11) && ($row3['topId']!=9))
+                                                      {
                                                   ?>
                                                     <option value="<?php echo $row3['topId'];?>"><?php echo $row3['topName']; ?></option>
-                                                    <?php
+                                                    <?php }
+
                                                     }
                                                     ?>
                                                 </select>
                                             </div>
 
                                         </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-ConHeadline"> Content Headline<span class="text-danger">*</span></label>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" id="ConHeadline" name="ConHeadline" placeholder="Heading for Content">
+                                            </div>
+                                        </div>
 
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-conDescrip"> Write Content Description<span class="text-danger">*</span></label>
                                         </div>
 
-                                        <textarea id="conDescrip" name="conDescrip" style="width: 780px; height: 300px;"> </textarea>
+
+                                        <textarea id="conDescrip" name="conDescrip" style="width: 600px; height: 300px;"> </textarea>
                                         &nbsp;
                                         <div class="form-group row">
                                             <div class="col-lg-8 ml-auto">
@@ -141,22 +154,23 @@ $result3 = mysqli_query($conn,$query3);
 
                                           $conDescrip= $_POST['conDescrip'];
                                           $topId= $_POST['topId'];
+                                          $ConHeadline= $_POST['ConHeadline'];
 
-                                            $query = "INSERT INTO `content`( `topId`,`conDescrip`)
-                                                      VALUES (?,?)";
+                                            $query = "INSERT INTO `content`( `topId`,`ConHeadline`,`conDescrip`)
+                                                      VALUES (?,?,?)";
                                             $stmt = mysqli_prepare($conn,$query);
-                                            mysqli_stmt_bind_param($stmt,"is",$topId,$conDescrip);
+                                            mysqli_stmt_bind_param($stmt,"iss",$topId,$ConHeadline,$conDescrip) or die("unable to edit");
                                             mysqli_stmt_execute($stmt);
                                             if(($rows=mysqli_stmt_affected_rows($stmt))==1)
                                             {
                                                   ?><div class="alert alert-success">
-                                                    <strong>Success! </strong> Topic Name is Added.
+                                                    <strong>Success! </strong> Content is Added.
                                                   </div>
                                                             <script type='text/javascript'>
                                                               window.setTimeout(function(){
                                                                 window.location = 'content.php';
 
-                                                              } , 2000);
+                                                              } , 1000);
                                                             </script>
                                                 <?php
                                                             }
